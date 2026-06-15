@@ -387,21 +387,22 @@ function App() {
               <span style={{fontSize:11,opacity:.7}}>Suba o BOLAO.xlsx no repositório para atualizar.</span>
             </div>
             {(() => {
-              const grouped = {};
-              GAMES.forEach(g => { (grouped[g.date||"—"]=[...(grouped[g.date||"—"]||[])]).push(g) });
-              // rebuild properly
+              /* Propaga a data para jogos sem data (herdam a data do jogo anterior) */
               const g2 = {};
+              const order = [];
+              let currentDate = "";
               GAMES.forEach(g => {
-                const d = g.date || "__";
-                if(!g2[d]) g2[d]=[];
+                if (g.date) currentDate = g.date;
+                const d = currentDate || "—";
+                if (!g2[d]) { g2[d] = []; order.push(d); }
                 g2[d].push(g);
               });
-              return Object.entries(g2).map(([date,games]) => (
+              return order.map(date => {
+                const games = g2[date];
+                return (
                 <div key={date} style={{marginBottom:18}}>
-                  {date!=="__" && (
-                    <div style={{color:"#ffd700",fontWeight:700,fontSize:13,
-                      letterSpacing:1,marginBottom:6,paddingLeft:4}}>📅 {date}/2026</div>
-                  )}
+                  <div style={{color:"#ffd700",fontWeight:700,fontSize:13,
+                    letterSpacing:1,marginBottom:6,paddingLeft:4}}>📅 {date}/2026</div>
                   <div style={{background:"#fff",borderRadius:10,overflow:"hidden",boxShadow:"0 2px 14px #0005"}}>
                     {games.map((game,gi) => (
                       <div key={game.id}>
@@ -423,7 +424,8 @@ function App() {
                     ))}
                   </div>
                 </div>
-              ));
+                );
+              });
             })()}
           </div>
         )}
