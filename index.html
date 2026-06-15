@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bolão Copa 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0d3b1e;font-family:'Segoe UI',system-ui,sans-serif;color:#fff;min-height:100vh}
+  button{cursor:pointer;font-family:inherit}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d3b1e}
+  ::-webkit-scrollbar-thumb{background:#2d6a40;border-radius:3px}
+
+  /* ── Tabela de palpites ── */
+  .palpites-wrap{overflow-x:auto;border-radius:10px;box-shadow:0 2px 16px #0005}
+  .palpites-table{border-collapse:collapse;width:max-content;min-width:100%;font-size:13px;background:#fff}
+  .palpites-table th{
+    background:#0a2e17;color:#ffd700;font-weight:700;letter-spacing:.5px;
+    padding:10px 8px;white-space:nowrap;position:sticky;top:0;z-index:2;
+  }
+  .palpites-table th.col-jogo{position:sticky;left:0;z-index:3;min-width:160px;max-width:200px;}
+  .palpites-table th.col-res {position:sticky;left:0;z-index:3;min-width:52px;text-align:center;}
+  .palpites-table td{padding:8px 7px;border-bottom:1px solid #eaf0eb;vertical-align:middle;}
+  .palpites-table td.col-jogo{
+    position:sticky;left:0;background:#f5f9f5;z-index:1;
+    font-size:12.5px;font-weight:500;color:#1a2e1d;line-height:1.3;min-width:160px;max-width:200px;
+  }
+  .palpites-table tr:nth-child(even) td.col-jogo{background:#eef5ef;}
+  .palpites-table td.col-res{
+    position:sticky;left:0;z-index:1;text-align:center;font-weight:800;font-size:14px;
+  }
+  .palpites-table td.guess-cell{text-align:center;font-weight:700;font-size:13px;min-width:38px;}
+  .palpites-table tr:hover td{background:#f0f7f1 !important;}
+  .palpites-table tr:hover td.col-jogo{background:#e4f0e5 !important;}
+
+  /* Células de palpite */
+  .g-hit  {background:#d4edda;color:#155724;}
+  .g-miss {background:#f8d7da;color:#721c24;}
+  .g-wait {background:#f5f5f5;color:#555;}
+  .g-none {background:#fafafa;color:#ccc;}
+
+  /* Coluna destacada (participante selecionado) */
+  .col-hl th,.col-hl td{background:#fffbe6 !important;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+const MEDALS = ["🥇","🥈","🥉"];
+
+/* ══ DADOS (gerados por extract.py a partir do Excel) ══════════════════════ */
+/* Para atualizar: suba BOLAO.xlsx no GitHub e o Action gera results.json    */
+/* OU rode: python extract.py                                                 */
+
+const PARTICIPANTS = ["Alex","Bonfim","Christian","Cleiton","Daniel","David","Douglas","Dunga","Felipe","Gabriel","Giliarde","Gustavo","Gustavo Lima","Heitor","Juninho","Leonardo","Patrick","Rasta","Renan","Sanches"];
+
+const GAMES = [
+  {id:0, date:"11/06",match:"México x África do Sul",         res:"A",g:{"Alex":"A","Bonfim":"B","Christian":"A","Cleiton":"A","Daniel":"A","David":"A","Douglas":"A","Dunga":"A","Felipe":"A","Gabriel":"A","Giliarde":"A","Gustavo":"E","Gustavo Lima":"A","Heitor":"A","Juninho":"A","Leonardo":"A","Patrick":"E","Rasta":"B","Renan":"A","Sanches":"A"}},
+  {id:1, date:"",    match:"Coreia do Sul x Tchéquia",        res:"A",g:{"Alex":"E","Bonfim":"A","Christian":"A","Cleiton":"A","Daniel":"A","David":"A","Douglas":"A","Dunga":"A","Felipe":"B","Gabriel":"B","Giliarde":"B","Gustavo":"A","Gustavo Lima":"E","Heitor":"B","Juninho":"E","Leonardo":"A","Patrick":"A","Rasta":"A","Renan":"A","Sanches":"B"}},
+  {id:2, date:"12/06",match:"Canadá x Bósnia e Herzeg.",      res:"E",g:{"Alex":"A","Bonfim":"E","Christian":"B","Cleiton":"E","Daniel":"A","David":"A","Douglas":"A","Dunga":"A","Felipe":"A","Gabriel":"A","Giliarde":"A","Gustavo":"A","Gustavo Lima":"A","Heitor":"B","Juninho":"A","Leonardo":"A","Patrick":"A","Rasta":"A","Renan":"B","Sanches":"B"}},
+  {id:3, date:"",    match:"Estados Unidos x Paraguai",       res:"A",g:{"Alex":"B","Bonfim":"B","Christian":"B","Cleiton":"A","Daniel":"E","David":"A","Douglas":"B","Dunga":"A","Felipe":"B","Gabriel":"A","Giliarde":"E","Gustavo":"B","Gustavo Lima":"B","Heitor":"E","Juninho":"A","Leonardo":"B","Patrick":"A","Rasta":"B","Renan":"B","Sanches":"A"}},
+  {id:4, date:"13/06",match:"Catar x Suíça",                  res:"E",g:{"Alex":"B","Bonfim":"B","Christian":"B","Cleiton":"B","Daniel":"B","David":"B","Douglas":"B","Dunga":"B","Felipe":"B","Gabriel":"B","Giliarde":"A","Gustavo":"B","Gustavo Lima":"B","Heitor":"B","Juninho":"B","Leonardo":"B","Patrick":"B","Rasta":"B","Renan":"B","Sanches":"B"}},
+  {id:5, date:"",    match:"Brasil x Marrocos",               res:"E",g:{"Alex":"A","Bonfim":"A","Christian":"A","Cleiton":"B","Daniel":"A","David":"A","Douglas":"A","Dunga":"E","Felipe":"E","Gabriel":"A","Giliarde":"A","Gustavo":"A","Gustavo Lima":"A","Heitor":"A","Juninho":"A","Leonardo":"A","Patrick":"A","Rasta":"A","Renan":"A","Sanches":"A"}},
+  {id:6, date:"",    match:"Haiti x Escócia",                 res:"B",g:{"Alex":"A","Bonfim":"A","Christian":"B","Cleiton":"B","Daniel":"B","David":"B","Douglas":"B","Dunga":"B","Felipe":"B","Gabriel":"B","Giliarde":"B","Gustavo":"B","Gustavo Lima":"B","Heitor":"B","Juninho":"B","Leonardo":"B","Patrick":"B","Rasta":"A","Renan":"B","Sanches":"B"}},
+  {id:7, date:"",    match:"Austrália x Turquia",             res:"A",g:{"Alex":"A","Bonfim":"B","Christian":"B","Cleiton":"B","Daniel":"B","David":"B","Douglas":"B","Dunga":"B","Felipe":"B","Gabriel":"B","Giliarde":"A","Gustavo":"A","Gustavo Lima":"B","Heitor":"B","Juninho":"B","Leonardo":"B","Patrick":"B","Rasta":"A","Renan":"B","Sanches":"B"}},
+  {id:8, date:"14/06",match:"Alemanha x Curaçao",             res:"A",g:{"Alex":"A","Bonfim":"A","Christian":"A","Cleiton":"A","Daniel":"A","David":"A","Douglas":"A","Dunga":"A","Felipe":"A","Gabriel":"A","Giliarde":"A","Gustavo":"A","Gustavo Lima":"A","Heitor":"A","Juninho":"A","Leonardo":"A","Patrick":"A","Rasta":"","Renan":"A","Sanches":"A"}},
+  {id:9, date:"",    match:"Costa do Marfim x Equador",       res:"A",g:{"Alex":"A","Bonfim":"E","Christian":"A","Cleiton":"E","Daniel":"E","David":"B","Douglas":"E","Dunga":"B","Felipe":"B","Gabriel":"A","Giliarde":"A","Gustavo":"E","Gustavo Lima":"B","Heitor":"B","Juninho":"A","Leonardo":"E","Patrick":"B","Rasta":"B","Renan":"A","Sanches":"B"}},
+  {id:10,date:"",    match:"Países Baixos x Japão",           res:"E",g:{"Alex":"A","Bonfim":"B","Christian":"E","Cleiton":"A","Daniel":"B","David":"A","Douglas":"A","Dunga":"A","Felipe":"A","Gabriel":"B","Giliarde":"B","Gustavo":"A","Gustavo Lima":"A","Heitor":"E","Juninho":"B","Leonardo":"B","Patrick":"E","Rasta":"A","Renan":"A","Sanches":"A"}},
+  {id:11,date:"",    match:"Suécia x Tunísia",                res:"A",g:{"Alex":"E","Bonfim":"A","Christian":"A","Cleiton":"A","Daniel":"A","David":"B","Douglas":"A","Dunga":"A","Felipe":"E","Gabriel":"A","Giliarde":"B","Gustavo":"E","Gustavo Lima":"A","Heitor":"A","Juninho":"A","Leonardo":"E","Patrick":"A","Rasta":"A","Renan":"A","Sanches":"A"}},
+  {id:12,date:"15/06",match:"Bélgica x Egito",               res:"",g:{}},
+  {id:13,date:"",    match:"Irã x Nova Zelândia",            res:"",g:{}},
+  {id:14,date:"",    match:"Espanha x Cabo Verde",           res:"",g:{}},
+  {id:15,date:"",    match:"Arábia Saudita x Uruguai",       res:"",g:{}},
+  {id:16,date:"16/06",match:"França x Senegal",             res:"",g:{}},
+  {id:17,date:"",    match:"Iraque x Noruega",              res:"",g:{}},
+  {id:18,date:"",    match:"Argentina x Argélia",           res:"",g:{}},
+  {id:19,date:"",    match:"Áustria x Jordânia",            res:"",g:{}},
+  {id:20,date:"17/06",match:"Portugal x Rep. Dem. Congo",  res:"",g:{}},
+  {id:21,date:"",    match:"Uzbequistão x Colômbia",        res:"",g:{}},
+  {id:22,date:"",    match:"Inglaterra x Croácia",          res:"",g:{}},
+  {id:23,date:"",    match:"Gana x Panamá",                 res:"",g:{}},
+  {id:24,date:"18/06",match:"Tchéquia x África do Sul",    res:"",g:{}},
+  {id:25,date:"",    match:"México x Coreia do Sul",        res:"",g:{}},
+  {id:26,date:"",    match:"Suíça x Bósnia e Herzeg.",      res:"",g:{}},
+  {id:27,date:"",    match:"Canadá x Catar",                res:"",g:{}},
+  {id:28,date:"19/06",match:"Escócia x Marrocos",          res:"",g:{}},
+  {id:29,date:"",    match:"Brasil x Haiti",                res:"",g:{}},
+  {id:30,date:"",    match:"Estados Unidos x Austrália",    res:"",g:{}},
+  {id:31,date:"",    match:"Turquia x Paraguai",            res:"",g:{}},
+  {id:32,date:"20/06",match:"Alemanha x Costa do Marfim",  res:"",g:{}},
+  {id:33,date:"",    match:"Equador x Curaçao",             res:"",g:{}},
+  {id:34,date:"",    match:"Países Baixos x Suécia",        res:"",g:{}},
+  {id:35,date:"",    match:"Tunísia x Japão",               res:"",g:{}},
+  {id:36,date:"21/06",match:"Bélgica x Irã",               res:"",g:{}},
+  {id:37,date:"",    match:"Nova Zelândia x Egito",         res:"",g:{}},
+  {id:38,date:"",    match:"Espanha x Arábia Saudita",      res:"",g:{}},
+  {id:39,date:"",    match:"Uruguai x Cabo Verde",          res:"",g:{}},
+  {id:40,date:"22/06",match:"França x Iraque",              res:"",g:{}},
+  {id:41,date:"",    match:"Noruega x Senegal",             res:"",g:{}},
+  {id:42,date:"",    match:"Argentina x Áustria",           res:"",g:{}},
+  {id:43,date:"",    match:"Jordânia x Argélia",            res:"",g:{}},
+  {id:44,date:"23/06",match:"Portugal x Uzbequistão",       res:"",g:{}},
+  {id:45,date:"",    match:"Colômbia x Rep. Dem. Congo",    res:"",g:{}},
+  {id:46,date:"",    match:"Inglaterra x Gana",             res:"",g:{}},
+  {id:47,date:"",    match:"Panamá x Croácia",              res:"",g:{}},
+  {id:48,date:"24/06",match:"África do Sul x Coreia do Sul",res:"",g:{}},
+  {id:49,date:"",    match:"Tchéquia x México",             res:"",g:{}},
+  {id:50,date:"",    match:"Suíça x Canadá",                res:"",g:{}},
+  {id:51,date:"",    match:"Bósnia e Herzeg. x Catar",      res:"",g:{}},
+  {id:52,date:"",    match:"Marrocos x Haiti",              res:"",g:{}},
+  {id:53,date:"",    match:"Escócia x Brasil",              res:"",g:{}},
+  {id:54,date:"25/06",match:"Turquia x Estados Unidos",    res:"",g:{}},
+  {id:55,date:"",    match:"Paraguai x Austrália",          res:"",g:{}},
+  {id:56,date:"",    match:"Curaçao x Costa do Marfim",     res:"",g:{}},
+  {id:57,date:"",    match:"Equador x Alemanha",            res:"",g:{}},
+  {id:58,date:"",    match:"Tunísia x Países Baixos",       res:"",g:{}},
+  {id:59,date:"",    match:"Japão x Suécia",                res:"",g:{}},
+  {id:60,date:"26/06",match:"Nova Zelândia x Bélgica",     res:"",g:{}},
+  {id:61,date:"",    match:"Egito x Irã",                   res:"",g:{}},
+  {id:62,date:"",    match:"Cabo Verde x Arábia Saudita",   res:"",g:{}},
+  {id:63,date:"",    match:"Uruguai x Espanha",             res:"",g:{}},
+  {id:64,date:"",    match:"Noruega x França",              res:"",g:{}},
+  {id:65,date:"",    match:"Senegal x Iraque",              res:"",g:{}},
+  {id:66,date:"27/06",match:"Argélia x Áustria",           res:"",g:{}},
+  {id:67,date:"",    match:"Jordânia x Argentina",          res:"",g:{}},
+  {id:68,date:"",    match:"Colômbia x Portugal",           res:"",g:{}},
+  {id:69,date:"",    match:"Rep. Dem. Congo x Uzbequistão", res:"",g:{}},
+  {id:70,date:"",    match:"Panamá x Inglaterra",           res:"",g:{}},
+  {id:71,date:"",    match:"Croácia x Gana",                res:"",g:{}},
+];
+
+/* ══ LEGENDA DE CORES ══════════════════════════════════════════════════════ */
+const guessStyle = (guess, res) => {
+  if (!guess) return "g-none";
+  if (!res)   return "g-wait";
+  return guess === res ? "g-hit" : "g-miss";
+};
+const guessLabel = (guess, res) => {
+  if (!guess) return "–";
+  if (!res)   return guess;
+  return guess === res ? `${guess} ✓` : `${guess} ✗`;
+};
+const resColor = res => res === "A" ? "#1565C0" : res === "E" ? "#E65100" : res === "B" ? "#6A1B9A" : "#999";
+
+/* ══ APP ═══════════════════════════════════════════════════════════════════ */
+function App() {
+  const [tab, setTab]           = useState("ranking");
+  const [hlPlayer, setHlPlayer] = useState(null);   // participante em destaque (palpites)
+  const [onlyGuesses, setOnlyGuesses] = useState(true); // mostrar só jogos com palpites
+
+  /* ─── Ranking ─── */
+  const ranking = useMemo(() => {
+    return PARTICIPANTS.map(name => {
+      let pts = 0;
+      GAMES.forEach(g => {
+        if (g.res && g.g[name] && g.g[name] === g.res) pts++;
+      });
+      return { name, pts };
+    }).sort((a,b) => b.pts - a.pts || a.name.localeCompare(b.name));
+  }, []);
+
+  const played       = GAMES.filter(g => g.res).length;
+  const gamesShown   = onlyGuesses ? GAMES.filter(g => Object.keys(g.g).length > 0) : GAMES;
+
+  /* ─── Data label com continuidade ─── */
+  let lastDate = "";
+  const getDate = d => { if(d){lastDate=d;return d;} return lastDate; };
+
+  return (
+    <div style={{minHeight:"100vh",background:"#0d3b1e"}}>
+
+      {/* ══ HEADER ══ */}
+      <div style={{background:"linear-gradient(135deg,#0a2e17 0%,#1a5c30 60%,#0a2e17 100%)",
+                   borderBottom:"3px solid #ffd700",padding:"18px 16px 0"}}>
+        <div style={{maxWidth:1100,margin:"0 auto"}}>
+          <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:4}}>
+            <span style={{fontSize:38}}>🏆</span>
+            <div style={{flex:1}}>
+              <div style={{fontSize:22,fontWeight:900,color:"#ffd700",letterSpacing:1}}>BOLÃO DA COPA 2026</div>
+              <div style={{fontSize:11,color:"#a8d5b8",letterSpacing:3}}>RANKING AO VIVO</div>
+            </div>
+          </div>
+          <div style={{fontSize:12,color:"#a8d5b8",marginBottom:12,paddingLeft:4}}>
+            ⚽ {played}/{GAMES.length} jogos apurados &nbsp;|&nbsp; 👥 {PARTICIPANTS.length} participantes
+          </div>
+          <div style={{display:"flex",gap:0,flexWrap:"wrap"}}>
+            {[["ranking","🏆 Ranking"],["palpites","📋 Palpites"],["jogos","⚽ Jogos"]].map(([k,l]) => (
+              <button key={k} onClick={()=>setTab(k)} style={{
+                background:tab===k?"#ffd700":"transparent",
+                color:tab===k?"#0d3b1e":"#a8d5b8",
+                border:"none",borderRadius:"8px 8px 0 0",
+                padding:"10px 22px",fontWeight:700,fontSize:14,transition:"all .2s"
+              }}>{l}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ══ CONTEÚDO ══ */}
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"18px 12px 60px"}}>
+
+        {/* ════════════ RANKING ════════════ */}
+        {tab==="ranking" && (
+          <div style={{maxWidth:600}}>
+            {played===0 && (
+              <div style={{background:"rgba(255,215,0,.1)",border:"1px solid #ffd70044",
+                borderRadius:10,padding:14,marginBottom:16,color:"#ffd700",fontSize:14,textAlign:"center"}}>
+                Nenhum resultado ainda. Preencha a coluna <strong>RESULTADO</strong> no Excel e suba no repositório!
+              </div>
+            )}
+            <div style={{background:"#fff",borderRadius:12,overflow:"hidden",boxShadow:"0 4px 24px #0006"}}>
+              <div style={{display:"grid",gridTemplateColumns:"50px 1fr 80px 80px",
+                background:"#0a2e17",padding:"10px 16px",fontSize:12,fontWeight:700,color:"#ffd700",letterSpacing:1}}>
+                <div style={{textAlign:"center"}}>#</div>
+                <div>PARTICIPANTE</div>
+                <div style={{textAlign:"center"}}>ACERTOS</div>
+                <div style={{textAlign:"center"}}>PONTOS</div>
+              </div>
+              {ranking.map((p,i) => {
+                const isTop = i<3 && p.pts>0;
+                let pos=i+1; for(let j=0;j<i;j++) if(ranking[j].pts===p.pts){pos=j+1;break;}
+                return (
+                  <div key={p.name} style={{
+                    display:"grid",gridTemplateColumns:"50px 1fr 80px 80px",
+                    padding:"13px 16px",alignItems:"center",
+                    background:i%2===0?"#f9fbf9":"#fff",borderBottom:"1px solid #e8f0ea"
+                  }}>
+                    <div style={{textAlign:"center",fontSize:isTop?20:15,fontWeight:700,color:isTop?"#0d3b1e":"#8a9a8e"}}>
+                      {isTop?MEDALS[i]:`${pos}º`}
+                    </div>
+                    <div style={{fontWeight:isTop?700:500,fontSize:15,color:"#1a2e1d"}}>{p.name}</div>
+                    <div style={{textAlign:"center",fontSize:14,color:"#3d7a4e"}}>{p.pts}</div>
+                    <div style={{textAlign:"center"}}>
+                      <span style={{background:p.pts>0?"#0d3b1e":"#e8f0ea",color:p.pts>0?"#ffd700":"#8a9a8e",
+                        borderRadius:20,padding:"3px 16px",fontWeight:700,fontSize:14}}>
+                        {p.pts} pt{p.pts!==1?"s":""}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div style={{marginTop:10,color:"#a8d5b8",fontSize:12,textAlign:"center"}}>
+              1 ponto por acerto · A = vitória time esq · E = empate · B = vitória time dir
+            </div>
+          </div>
+        )}
+
+        {/* ════════════ PALPITES ════════════ */}
+        {tab==="palpites" && (
+          <div>
+            {/* Controles */}
+            <div style={{display:"flex",flexWrap:"wrap",gap:10,alignItems:"center",marginBottom:14}}>
+              {/* Filtro por participante */}
+              <div style={{display:"flex",flexWrap:"wrap",gap:6,flex:1}}>
+                <span style={{color:"#a8d5b8",fontSize:13,alignSelf:"center",whiteSpace:"nowrap"}}>
+                  Destacar:
+                </span>
+                <button onClick={()=>setHlPlayer(null)} style={{
+                  padding:"5px 12px",borderRadius:20,border:"2px solid",fontSize:12,fontWeight:700,
+                  borderColor:!hlPlayer?"#ffd700":"#2d6a40",
+                  background:!hlPlayer?"#ffd700":"transparent",
+                  color:!hlPlayer?"#0d3b1e":"#a8d5b8"
+                }}>Todos</button>
+                {PARTICIPANTS.map(p => (
+                  <button key={p} onClick={()=>setHlPlayer(hlPlayer===p?null:p)} style={{
+                    padding:"5px 12px",borderRadius:20,border:"2px solid",fontSize:12,fontWeight:700,
+                    borderColor:hlPlayer===p?"#ffd700":"#2d6a40",
+                    background:hlPlayer===p?"#ffd700":"transparent",
+                    color:hlPlayer===p?"#0d3b1e":"#a8d5b8",
+                    transition:"all .15s"
+                  }}>{p}</button>
+                ))}
+              </div>
+            </div>
+
+            {/* Toggle jogos sem palpites */}
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:14}}>
+              <label style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer",color:"#a8d5b8",fontSize:13}}>
+                <input type="checkbox" checked={onlyGuesses}
+                  onChange={e=>setOnlyGuesses(e.target.checked)}
+                  style={{width:16,height:16,cursor:"pointer"}}/>
+                Exibir apenas jogos com palpites registrados
+              </label>
+            </div>
+
+            {/* Legenda */}
+            <div style={{display:"flex",gap:12,marginBottom:14,flexWrap:"wrap"}}>
+              {[["#d4edda","#155724","✓ Acertou"],["#f8d7da","#721c24","✗ Errou"],
+                ["#f5f5f5","#555","Aguardando resultado"],["#fafafa","#ccc","Sem palpite"]].map(([bg,cl,lb])=>(
+                <span key={lb} style={{background:bg,color:cl,padding:"3px 10px",
+                  borderRadius:20,fontSize:12,fontWeight:600}}>{lb}</span>
+              ))}
+            </div>
+
+            {/* Tabela */}
+            <div className="palpites-wrap">
+              <table className="palpites-table">
+                <thead>
+                  <tr>
+                    <th className="col-jogo" style={{textAlign:"left",paddingLeft:10}}>JOGO</th>
+                    <th style={{minWidth:52,textAlign:"center"}}>RES.</th>
+                    {PARTICIPANTS.map(p => (
+                      <th key={p} style={{
+                        minWidth:38,textAlign:"center",cursor:"pointer",
+                        background:hlPlayer===p?"#1a4a28":undefined,
+                        color:hlPlayer===p?"#ffd700":undefined,
+                        transition:"background .15s"
+                      }} onClick={()=>setHlPlayer(hlPlayer===p?null:p)} title={`Destacar ${p}`}>
+                        {/* Divide nome longo */}
+                        {p.includes(" ")
+                          ? <>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>
+                          : p}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {(() => {
+                    let lastD = "";
+                    return gamesShown.map((game,gi) => {
+                      const showDate = game.date && game.date !== lastD;
+                      if (game.date) lastD = game.date;
+                      return (
+                        <tr key={game.id}>
+                          <td className="col-jogo" style={{paddingLeft:10}}>
+                            {showDate && (
+                              <div style={{fontSize:10,fontWeight:700,color:"#3d7a4e",
+                                letterSpacing:.5,marginBottom:2}}>
+                                📅 {game.date}/2026
+                              </div>
+                            )}
+                            {game.match}
+                          </td>
+                          <td className="col-res" style={{color:resColor(game.res)}}>
+                            {game.res || <span style={{color:"#ccc",fontSize:11}}>—</span>}
+                          </td>
+                          {PARTICIPANTS.map(p => {
+                            const guess = game.g[p] || "";
+                            const cls   = guessStyle(guess, game.res);
+                            const isHl  = hlPlayer === p;
+                            return (
+                              <td key={p} className={`guess-cell ${cls}`}
+                                style={isHl ? {outline:"2px solid #ffd700",outlineOffset:"-2px"} : {}}>
+                                {guessLabel(guess, game.res)}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      );
+                    });
+                  })()}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Resumo por participante (quando filtrado) */}
+            {hlPlayer && (() => {
+              const hits  = GAMES.filter(g => g.res && g.g[hlPlayer] && g.g[hlPlayer]===g.res).length;
+              const total = GAMES.filter(g => g.res && g.g[hlPlayer]).length;
+              const rank  = ranking.findIndex(r=>r.name===hlPlayer)+1;
+              return (
+                <div style={{marginTop:16,background:"rgba(255,215,0,.1)",
+                  border:"1px solid #ffd70055",borderRadius:10,padding:"14px 18px",
+                  display:"flex",gap:24,flexWrap:"wrap",alignItems:"center"}}>
+                  <span style={{color:"#ffd700",fontWeight:700,fontSize:16}}>👤 {hlPlayer}</span>
+                  <span style={{color:"#a8d5b8",fontSize:14}}>Posição: <strong style={{color:"#fff"}}>{rank}º</strong></span>
+                  <span style={{color:"#a8d5b8",fontSize:14}}>Acertos: <strong style={{color:"#fff"}}>{hits}/{total}</strong></span>
+                  <span style={{color:"#a8d5b8",fontSize:14}}>Pontos: <strong style={{color:"#ffd700"}}>{hits}</strong></span>
+                </div>
+              );
+            })()}
+          </div>
+        )}
+
+        {/* ════════════ JOGOS ════════════ */}
+        {tab==="jogos" && (
+          <div style={{maxWidth:640}}>
+            <div style={{color:"#a8d5b8",fontSize:13,marginBottom:14,textAlign:"center",lineHeight:1.7}}>
+              Resultados lidos da coluna <strong style={{color:"#ffd700"}}>RESULTADO</strong> da planilha.<br/>
+              <span style={{fontSize:11,opacity:.7}}>Suba o BOLAO.xlsx no repositório para atualizar.</span>
+            </div>
+            {(() => {
+              /* Propaga a data para jogos sem data (herdam a data do jogo anterior) */
+              const g2 = {};
+              const order = [];
+              let currentDate = "";
+              GAMES.forEach(g => {
+                if (g.date) currentDate = g.date;
+                const d = currentDate || "—";
+                if (!g2[d]) { g2[d] = []; order.push(d); }
+                g2[d].push(g);
+              });
+              return order.map(date => {
+                const games = g2[date];
+                return (
+                <div key={date} style={{marginBottom:18}}>
+                  <div style={{color:"#ffd700",fontWeight:700,fontSize:13,
+                    letterSpacing:1,marginBottom:6,paddingLeft:4}}>📅 {date}/2026</div>
+                  <div style={{background:"#fff",borderRadius:10,overflow:"hidden",boxShadow:"0 2px 14px #0005"}}>
+                    {games.map((game,gi) => (
+                      <div key={game.id}>
+                        {gi>0 && <div style={{height:1,background:"#e8f0ea"}}/>}
+                        <div style={{padding:"11px 14px",display:"flex",alignItems:"center",gap:10}}>
+                          <div style={{flex:1,fontSize:14,color:"#1a2e1d",fontWeight:500,lineHeight:1.3}}>
+                            {game.match}
+                          </div>
+                          {game.res ? (
+                            <span style={{background:"#0d3b1e",color:"#ffd700",borderRadius:8,
+                              padding:"5px 18px",fontWeight:800,fontSize:15,letterSpacing:1}}>
+                              {game.res}
+                            </span>
+                          ) : (
+                            <span style={{color:"#bbb",fontSize:13}}>Aguardando</span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                );
+              });
+            })()}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
