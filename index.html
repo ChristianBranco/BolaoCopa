@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Bolão Copa 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#0d3b1e;font-family:'Segoe UI',system-ui,sans-serif;color:#fff;min-height:100vh}
+  button{cursor:pointer;font-family:inherit}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:#0d3b1e}
+  ::-webkit-scrollbar-thumb{background:#2d6a40;border-radius:3px}
+  .palpites-wrap{overflow-x:auto;border-radius:10px;box-shadow:0 2px 16px #0005}
+  .pt{border-collapse:collapse;width:max-content;min-width:100%;font-size:13px;background:#fff}
+  .pt th{background:#0a2e17;color:#ffd700;font-weight:700;letter-spacing:.5px;padding:10px 7px;white-space:nowrap;position:sticky;top:0;z-index:2}
+  .pt th.cj{position:sticky;left:0;z-index:3;min-width:170px}
+  .pt th.cr{min-width:46px;text-align:center}
+  .pt td{padding:8px 6px;border-bottom:1px solid #eaf0eb;vertical-align:middle}
+  .pt td.cj{position:sticky;left:0;background:#f5f9f5;z-index:1;font-size:12.5px;font-weight:500;color:#1a2e1d;line-height:1.3;min-width:170px}
+  .pt tr:nth-child(even) td.cj{background:#eef5ef}
+  .pt td.cr{text-align:center;font-weight:800;font-size:14px;min-width:46px}
+  .pt td.gc{text-align:center;font-weight:700;font-size:12px;min-width:36px}
+  .pt tr:hover td{background:#f0f7f1!important}.pt tr:hover td.cj{background:#e4f0e5!important}
+  .g-hit{background:#d4edda;color:#155724}
+  .g-mis{background:#f8d7da;color:#721c24}
+  .g-wai{background:#f5f5f5;color:#666}
+  .g-non{background:#fafafa;color:#ccc}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect, useMemo } = React;
+const MEDALS = ["🥇","🥈","🥉"];
+
+function App() {
+  const [tab, setTab]     = useState("ranking");
+  const [data, setData]   = useState(null);
+  const [err,  setErr]    = useState(null);
+  const [hl,   setHl]     = useState(null);
+  const [onlyG,setOnlyG]  = useState(true);
+  const [ts,   setTs]     = useState(Date.now());
+
+  /* ── Carrega results.json (gerado pelo extract.py a partir do Excel) ── */
+  useEffect(() => {
+    fetch("results.json?t=" + ts)
+      .then(r => { if(!r.ok) throw new Error("results.json não encontrado"); return r.json(); })
+      .then(setData)
+      .catch(e => setErr(e.message));
+  }, [ts]);
+
+  /* ── Ranking ── */
+  const ranking = useMemo(() => {
+    if (!data) return [];
+    return data.participants.map(name => {
+      let pts = 0;
+      data.games.forEach(g => {
+        if (g.resultado && g.guesses[name] && g.guesses[name] === g.resultado) pts++;
+      });
+      return { name, pts };
+    }).sort((a,b) => b.pts - a.pts || a.name.localeCompare(b.name));
+  }, [data]);
+
+  /* ── Agrupamento por data (propaga data do jogo anterior) ── */
+  const grouped = useMemo(() => {
+    if (!data) return { order:[], map:{} };
+    const map = {}, order = [];
+    let cur = "";
+    data.games.forEach(g => {
+      if (g.date) cur = g.date;
+      const d = cur || "—";
+      if (!map[d]) { map[d]=[]; order.push(d); }
+      map[d].push(g);
+    });
+    return { order, map };
+  }, [data]);
+
+  const gamesShown = useMemo(() => {
+    if (!data) return [];
+    return onlyG ? data.games.filter(g => Object.values(g.guesses).some(v=>v)) : data.games;
+  }, [data, onlyG]);
+
+  /* ── Helpers de célula ── */
+  const gCls  = (guess, res) => !guess?"g-non":!res?"g-wai":guess===res?"g-hit":"g-mis";
+  const gLbl  = (guess, res) => !guess?"–":!res?guess:guess===res?`${guess}✓`:`${guess}✗`;
+  const rClr  = r => r==="A"?"#1565C0":r==="E"?"#E65100":r==="B"?"#6A1B9A":"#999";
+
+  /* ── Loading ── */
+  if (!data && !err) return (
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",
+      height:"100vh",gap:16,color:"#ffd700",fontSize:18}}>
+      <div style={{fontSize:52}}>⚽</div>Carregando dados…
+    </div>
+  );
+
+  /* ── Erro ── */
+  if (err) return (
+    <div style={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",
+      height:"100vh",gap:14,padding:24,textAlign:"center"}}>
+      <div style={{fontSize:48}}>⚠️</div>
+      <div style={{fontSize:18,color:"#ffd700"}}>results.json não encontrado</div>
+      <div style={{color:"#a8d5b8",fontSize:14,maxWidth:440,lineHeight:1.8}}>
+        Rode <code style={{background:"#0a2e17",padding:"2px 8px",borderRadius:4,color:"#ffd700"}}>python extract.py</code> na pasta do projeto,<br/>
+        ou suba o <strong>BOLAO.xlsx</strong> no GitHub para geração automática.
+      </div>
+    </div>
+  );
+
+  const played = data.games.filter(g=>g.resultado).length;
+
+  return (
+    <div style={{minHeight:"100vh",background:"#0d3b1e"}}>
+
+      {/* ══ HEADER ══ */}
+      <div style={{background:"linear-gradient(135deg,#0a2e17 0%,#1a5c30 60%,#0a2e17 100%)",
+        borderBottom:"3px solid #ffd700",padding:"18px 16px 0"}}>
+        <div style={{maxWidth:1100,margin:"0 auto"}}>
+          <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:4}}>
+            <span style={{fontSize:38}}>🏆</span>
+            <div style={{flex:1}}>
+              <div style={{fontSize:22,fontWeight:900,color:"#ffd700",letterSpacing:1}}>BOLÃO DA COPA 2026</div>
+              <div style={{fontSize:11,color:"#a8d5b8",letterSpacing:3}}>RANKING AO VIVO</div>
+            </div>
+            <button onClick={()=>setTs(Date.now())} title="Recarregar dados" style={{
+              background:"transparent",border:"1px solid #2d6a40",color:"#a8d5b8",
+              borderRadius:8,padding:"6px 12px",fontSize:12,display:"flex",alignItems:"center",gap:6}}>
+              🔄 Atualizar
+            </button>
+          </div>
+          <div style={{fontSize:12,color:"#a8d5b8",marginBottom:12,paddingLeft:4}}>
+            ⚽ {played}/{data.games.length} jogos apurados &nbsp;|&nbsp; 👥 {data.participants.length} participantes
+          </div>
+          <div style={{display:"flex",gap:0,flexWrap:"wrap"}}>
+            {[["ranking","🏆 Ranking"],["palpites","📋 Palpites"],["jogos","⚽ Jogos"]].map(([k,l])=>(
+              <button key={k} onClick={()=>setTab(k)} style={{
+                background:tab===k?"#ffd700":"transparent",color:tab===k?"#0d3b1e":"#a8d5b8",
+                border:"none",borderRadius:"8px 8px 0 0",padding:"10px 22px",fontWeight:700,fontSize:14,transition:"all .2s"
+              }}>{l}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ══ CONTEÚDO ══ */}
+      <div style={{maxWidth:1100,margin:"0 auto",padding:"18px 12px 60px"}}>
+
+        {/* ════ RANKING ════ */}
+        {tab==="ranking" && (
+          <div style={{maxWidth:580}}>
+            {played===0 && (
+              <div style={{background:"rgba(255,215,0,.1)",border:"1px solid #ffd70044",
+                borderRadius:10,padding:14,marginBottom:16,color:"#ffd700",fontSize:14,textAlign:"center"}}>
+                Nenhum resultado ainda. Preencha a coluna <strong>RESULTADO</strong> no Excel e suba no repositório!
+              </div>
+            )}
+            <div style={{background:"#fff",borderRadius:12,overflow:"hidden",boxShadow:"0 4px 24px #0006"}}>
+              <div style={{display:"grid",gridTemplateColumns:"50px 1fr 80px 80px",
+                background:"#0a2e17",padding:"10px 16px",fontSize:12,fontWeight:700,color:"#ffd700",letterSpacing:1}}>
+                <div style={{textAlign:"center"}}>#</div><div>PARTICIPANTE</div>
+                <div style={{textAlign:"center"}}>ACERTOS</div><div style={{textAlign:"center"}}>PONTOS</div>
+              </div>
+              {ranking.map((p,i)=>{
+                const isTop=i<3&&p.pts>0;
+                let pos=i+1; for(let j=0;j<i;j++) if(ranking[j].pts===p.pts){pos=j+1;break;}
+                return (
+                  <div key={p.name} style={{display:"grid",gridTemplateColumns:"50px 1fr 80px 80px",
+                    padding:"13px 16px",alignItems:"center",
+                    background:i%2===0?"#f9fbf9":"#fff",borderBottom:"1px solid #e8f0ea"}}>
+                    <div style={{textAlign:"center",fontSize:isTop?20:15,fontWeight:700,color:isTop?"#0d3b1e":"#8a9a8e"}}>
+                      {isTop?MEDALS[i]:`${pos}º`}
+                    </div>
+                    <div style={{fontWeight:isTop?700:500,fontSize:15,color:"#1a2e1d"}}>{p.name}</div>
+                    <div style={{textAlign:"center",fontSize:14,color:"#3d7a4e"}}>{p.pts}</div>
+                    <div style={{textAlign:"center"}}>
+                      <span style={{background:p.pts>0?"#0d3b1e":"#e8f0ea",color:p.pts>0?"#ffd700":"#8a9a8e",
+                        borderRadius:20,padding:"3px 16px",fontWeight:700,fontSize:14}}>
+                        {p.pts} pt{p.pts!==1?"s":""}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div style={{marginTop:10,color:"#a8d5b8",fontSize:12,textAlign:"center"}}>
+              1 ponto por acerto · A = vitória time esq · E = empate · B = vitória time dir
+            </div>
+          </div>
+        )}
+
+        {/* ════ PALPITES ════ */}
+        {tab==="palpites" && (
+          <div>
+            {/* Chips participantes */}
+            <div style={{display:"flex",flexWrap:"wrap",gap:6,marginBottom:12,alignItems:"center"}}>
+              <span style={{color:"#a8d5b8",fontSize:13,whiteSpace:"nowrap"}}>Destacar:</span>
+              <button onClick={()=>setHl(null)} style={{padding:"5px 12px",borderRadius:20,border:"2px solid",fontSize:12,fontWeight:700,
+                borderColor:!hl?"#ffd700":"#2d6a40",background:!hl?"#ffd700":"transparent",color:!hl?"#0d3b1e":"#a8d5b8"}}>
+                Todos
+              </button>
+              {data.participants.map(p=>(
+                <button key={p} onClick={()=>setHl(hl===p?null:p)} style={{padding:"5px 12px",borderRadius:20,border:"2px solid",fontSize:12,fontWeight:700,
+                  borderColor:hl===p?"#ffd700":"#2d6a40",background:hl===p?"#ffd700":"transparent",
+                  color:hl===p?"#0d3b1e":"#a8d5b8",transition:"all .15s"}}>
+                  {p}
+                </button>
+              ))}
+            </div>
+
+            {/* Toggle */}
+            <label style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer",
+              color:"#a8d5b8",fontSize:13,marginBottom:12}}>
+              <input type="checkbox" checked={onlyG} onChange={e=>setOnlyG(e.target.checked)}
+                style={{width:16,height:16,cursor:"pointer"}}/>
+              Exibir apenas jogos com palpites registrados
+            </label>
+
+            {/* Legenda */}
+            <div style={{display:"flex",gap:10,marginBottom:12,flexWrap:"wrap"}}>
+              {[["#d4edda","#155724","✓ Acertou"],["#f8d7da","#721c24","✗ Errou"],
+                ["#f5f5f5","#666","Aguardando resultado"],["#fafafa","#ccc","Sem palpite"]].map(([bg,cl,lb])=>(
+                <span key={lb} style={{background:bg,color:cl,padding:"3px 10px",borderRadius:20,fontSize:12,fontWeight:600}}>{lb}</span>
+              ))}
+            </div>
+
+            {/* Tabela */}
+            <div className="palpites-wrap">
+              <table className="pt">
+                <thead><tr>
+                  <th className="cj" style={{textAlign:"left",paddingLeft:10}}>JOGO</th>
+                  <th className="cr">RES.</th>
+                  {data.participants.map(p=>(
+                    <th key={p} onClick={()=>setHl(hl===p?null:p)} style={{
+                      minWidth:36,textAlign:"center",cursor:"pointer",
+                      background:hl===p?"#1a4a28":undefined,color:hl===p?"#ffd700":undefined,transition:"background .15s"
+                    }} title={`Destacar ${p}`}>
+                      {p.includes(" ")
+                        ?<>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>
+                        :p}
+                    </th>
+                  ))}
+                </tr></thead>
+                <tbody>
+                  {(() => {
+                    let lastD="";
+                    return gamesShown.map(game=>{
+                      const showDate = game.date && game.date!==lastD;
+                      if(game.date) lastD=game.date;
+                      return (
+                        <tr key={game.id}>
+                          <td className="cj" style={{paddingLeft:10}}>
+                            {showDate&&<div style={{fontSize:10,fontWeight:700,color:"#3d7a4e",letterSpacing:.5,marginBottom:2}}>
+                              📅 {game.date}/2026</div>}
+                            {game.match}
+                          </td>
+                          <td className="cr" style={{color:rClr(game.resultado)}}>
+                            {game.resultado||<span style={{color:"#ccc",fontSize:11}}>—</span>}
+                          </td>
+                          {data.participants.map(p=>{
+                            const guess=(game.guesses||{})[p]||"";
+                            return (
+                              <td key={p} className={`gc ${gCls(guess,game.resultado)}`}
+                                style={hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}}>
+                                {gLbl(guess,game.resultado)}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      );
+                    });
+                  })()}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Resumo do destacado */}
+            {hl&&(()=>{
+              const hits=data.games.filter(g=>g.resultado&&(g.guesses[hl]||"")=== g.resultado).length;
+              const tot =data.games.filter(g=>g.resultado&&g.guesses[hl]).length;
+              const rank=ranking.findIndex(r=>r.name===hl)+1;
+              return (
+                <div style={{marginTop:14,background:"rgba(255,215,0,.1)",border:"1px solid #ffd70055",
+                  borderRadius:10,padding:"14px 18px",display:"flex",gap:24,flexWrap:"wrap",alignItems:"center"}}>
+                  <span style={{color:"#ffd700",fontWeight:700,fontSize:16}}>👤 {hl}</span>
+                  <span style={{color:"#a8d5b8",fontSize:14}}>Posição: <strong style={{color:"#fff"}}>{rank}º</strong></span>
+                  <span style={{color:"#a8d5b8",fontSize:14}}>Acertos: <strong style={{color:"#fff"}}>{hits}/{tot}</strong></span>
+                  <span style={{color:"#a8d5b8",fontSize:14}}>Pontos: <strong style={{color:"#ffd700"}}>{hits}</strong></span>
+                </div>
+              );
+            })()}
+          </div>
+        )}
+
+        {/* ════ JOGOS ════ */}
+        {tab==="jogos" && (
+          <div style={{maxWidth:640}}>
+            <div style={{color:"#a8d5b8",fontSize:13,marginBottom:14,textAlign:"center",lineHeight:1.7}}>
+              Resultados lidos da coluna <strong style={{color:"#ffd700"}}>RESULTADO</strong> da planilha.<br/>
+              <span style={{fontSize:11,opacity:.7}}>Suba o BOLAO.xlsx no GitHub → site atualiza em ~1 min.</span>
+            </div>
+            {grouped.order.map(date=>{
+              const games=grouped.map[date];
+              return (
+                <div key={date} style={{marginBottom:18}}>
+                  <div style={{color:"#ffd700",fontWeight:700,fontSize:13,letterSpacing:1,marginBottom:6,paddingLeft:4}}>
+                    📅 {date}/2026
+                  </div>
+                  <div style={{background:"#fff",borderRadius:10,overflow:"hidden",boxShadow:"0 2px 14px #0005"}}>
+                    {games.map((game,gi)=>(
+                      <div key={game.id}>
+                        {gi>0&&<div style={{height:1,background:"#e8f0ea"}}/>}
+                        <div style={{padding:"11px 14px",display:"flex",alignItems:"center",gap:10}}>
+                          <div style={{flex:1,fontSize:14,color:"#1a2e1d",fontWeight:500,lineHeight:1.3}}>
+                            {game.match}
+                          </div>
+                          {game.resultado
+                            ?<span style={{background:"#0d3b1e",color:"#ffd700",borderRadius:8,
+                              padding:"5px 18px",fontWeight:800,fontSize:15,letterSpacing:1}}>
+                              {game.resultado}
+                            </span>
+                            :<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+</body>
+</html>
