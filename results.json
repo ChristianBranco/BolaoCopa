@@ -390,7 +390,7 @@
       "id": 13,
       "match": "Irã x Nova Zelândia",
       "date": "",
-      "resultado": "",
+      "resultado": "E",
       "guesses": {
         "Alex": "E",
         "Bonfim": "E",
@@ -2053,6 +2053,7 @@
     "10": "E",
     "11": "A",
     "12": "E",
+    "13": "E",
     "14": "E",
     "15": "E"
   }
