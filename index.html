@@ -121,17 +121,16 @@
   .jogo-sep{height:1px;background:#e8f0ea;}
   .jogo-match{flex:1;font-size:14px;color:#1a2e1d;font-weight:600;line-height:1.3;}
   .placar-badge{
-    background:linear-gradient(135deg,#0a2e17,#1a5c30);
     color:#fff;border-radius:10px;
-    padding:6px 14px;font-weight:800;font-size:15px;
+    padding:6px 14px;font-weight:700;font-size:14px;
     letter-spacing:1px;white-space:nowrap;
-    box-shadow:0 3px 10px rgba(0,0,0,.3);
+    box-shadow:0 2px 6px rgba(0,0,0,.18);
     display:flex;align-items:center;gap:4px;
   }
   .res-badge{
     border-radius:10px;padding:6px 12px;
-    font-weight:800;font-size:13px;letter-spacing:1px;
-    box-shadow:0 2px 8px rgba(0,0,0,.2);
+    font-weight:700;font-size:13px;letter-spacing:1px;
+    box-shadow:0 1px 5px rgba(0,0,0,.15);
   }
 
   /* chips */
@@ -167,9 +166,9 @@ const MEDALS = ["🥇","🥈","🥉"];
 
 /* ─── cores por resultado ─── */
 const RES_STYLE = {
-  A:{bg:"#1565C0",color:"#fff",label:"Vitória Casa"},
-  E:{bg:"#E65100",color:"#fff",label:"Empate"},
-  B:{bg:"#6A1B9A",color:"#fff",label:"Vitória Visitante"},
+  A:{bg:"rgba(30,90,160,0.62)",color:"#dce8f8",label:"Vitória Casa"},
+  E:{bg:"rgba(180,75,10,0.60)",color:"#f5dcc8",label:"Empate"},
+  B:{bg:"rgba(90,30,130,0.60)",color:"#e8d4f5",label:"Vitória Visitante"},
 };
 
 function App() {
@@ -529,7 +528,7 @@ function App() {
                             <div className="jogo-match">{game.match}</div>
                             {placar&&rs
                               ?<div style={{display:"flex",alignItems:"center",gap:8}}>
-                                <span className="placar-badge" style={{background:`linear-gradient(135deg,${rs.bg},${rs.bg}dd)`}}>
+                                <span className="placar-badge" style={{background:rs.bg}}>
                                   {placar}
                                 </span>
                                 <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
