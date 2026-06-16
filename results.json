@@ -446,7 +446,7 @@
       "id": 15,
       "match": "Arábia Saudita x Uruguai",
       "date": "",
-      "resultado": "B",
+      "resultado": "",
       "guesses": {
         "Alex": "B",
         "Bonfim": "B",
@@ -2053,7 +2053,6 @@
     "10": "E",
     "11": "A",
     "12": "E",
-    "14": "E",
-    "15": "B"
+    "14": "E"
   }
 }
