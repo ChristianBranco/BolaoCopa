@@ -536,9 +536,9 @@
       "id": 17,
       "match": "Iraque x Noruega",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "1",
+      "gols_b": "4",
       "guesses": {
         "Alex": "E",
         "Bonfim": "B",
@@ -2200,6 +2200,7 @@
     "13": "E",
     "14": "E",
     "15": "E",
-    "16": "A"
+    "16": "A",
+    "17": "B"
   }
 }
