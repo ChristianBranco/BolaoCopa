@@ -686,8 +686,8 @@
       "id": 22,
       "match": "Inglaterra x Croácia",
       "date": "",
-      "resultado": "E",
-      "gols_a": "2",
+      "resultado": "A",
+      "gols_a": "3",
       "gols_b": "2",
       "guesses": {
         "Alex": "A",
@@ -2205,6 +2205,6 @@
     "18": "A",
     "19": "A",
     "20": "E",
-    "22": "E"
+    "22": "A"
   }
 }
