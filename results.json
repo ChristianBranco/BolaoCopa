@@ -566,9 +566,9 @@
       "id": 18,
       "match": "Argentina x Argélia",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "3",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -596,9 +596,9 @@
       "id": 19,
       "match": "Áustria x Jordânia",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "3",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "E",
@@ -2201,6 +2201,8 @@
     "14": "E",
     "15": "E",
     "16": "A",
-    "17": "B"
+    "17": "B",
+    "18": "A",
+    "19": "A"
   }
 }
