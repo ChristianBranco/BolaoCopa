@@ -716,9 +716,9 @@
       "id": 23,
       "match": "Gana x Panamá",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "1",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2205,6 +2205,7 @@
     "18": "A",
     "19": "A",
     "20": "E",
-    "22": "A"
+    "22": "A",
+    "23": "A"
   }
 }
