@@ -776,9 +776,9 @@
       "id": 25,
       "match": "México x Coreia do Sul",
       "date": "",
-      "resultado": "A",
-      "gols_a": "4",
-      "gols_b": "1",
+      "resultado": "",
+      "gols_a": "",
+      "gols_b": "",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -806,9 +806,9 @@
       "id": 26,
       "match": "Suíça x Bósnia e Herzeg.",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "4",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2209,6 +2209,6 @@
     "22": "A",
     "23": "A",
     "24": "E",
-    "25": "A"
+    "26": "A"
   }
 }
