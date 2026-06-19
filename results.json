@@ -836,9 +836,9 @@
       "id": 27,
       "match": "Canadá x Catar",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "6",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2209,6 +2209,7 @@
     "22": "A",
     "23": "A",
     "24": "E",
-    "26": "A"
+    "26": "A",
+    "27": "A"
   }
 }
