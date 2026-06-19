@@ -776,9 +776,9 @@
       "id": 25,
       "match": "México x Coreia do Sul",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "1",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2209,6 +2209,7 @@
     "22": "A",
     "23": "A",
     "24": "E",
+    "25": "A",
     "26": "A",
     "27": "A"
   }
