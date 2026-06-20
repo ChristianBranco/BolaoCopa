@@ -896,9 +896,9 @@
       "id": 29,
       "match": "Brasil x Haiti",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "3",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2213,6 +2213,7 @@
     "26": "A",
     "27": "A",
     "28": "B",
+    "29": "A",
     "30": "A"
   }
 }
