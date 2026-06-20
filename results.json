@@ -866,9 +866,9 @@
       "id": 28,
       "match": "Escócia x Marrocos",
       "date": "19/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "1",
       "guesses": {
         "Alex": "B",
         "Bonfim": "B",
@@ -912,7 +912,7 @@
         "Gabriel": "A",
         "Giliarde": "A",
         "Gustavo": "A",
-        "Gustavo Lima": "",
+        "Gustavo Lima": "A",
         "Heitor": "A",
         "Juninho": "A",
         "Leonardo": "A",
@@ -972,7 +972,7 @@
         "Gabriel": "A",
         "Giliarde": "E",
         "Gustavo": "A",
-        "Gustavo Lima": "",
+        "Gustavo Lima": "E",
         "Heitor": "A",
         "Juninho": "A",
         "Leonardo": "A",
@@ -2212,6 +2212,7 @@
     "25": "A",
     "26": "A",
     "27": "A",
+    "28": "B",
     "30": "A"
   }
 }
