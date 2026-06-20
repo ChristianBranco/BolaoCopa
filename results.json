@@ -956,9 +956,9 @@
       "id": 31,
       "match": "Turquia x Paraguai",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "B",
@@ -2214,6 +2214,7 @@
     "27": "A",
     "28": "B",
     "29": "A",
-    "30": "A"
+    "30": "A",
+    "31": "B"
   }
 }
