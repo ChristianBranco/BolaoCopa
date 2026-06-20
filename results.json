@@ -986,9 +986,9 @@
       "id": 32,
       "match": "Alemanha x Costa do Marfim",
       "date": "20/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2216,6 +2216,7 @@
     "29": "A",
     "30": "A",
     "31": "B",
+    "32": "B",
     "34": "A"
   }
 }
