@@ -1016,9 +1016,9 @@
       "id": 33,
       "match": "Equador x Curaçao",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "0",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -1030,7 +1030,7 @@
         "Dunga": "A",
         "Felipe": "A",
         "Gabriel": "A",
-        "Giliarde": "",
+        "Giliarde": "A",
         "Gustavo": "A",
         "Gustavo Lima": "A",
         "Heitor": "A",
@@ -2217,6 +2217,7 @@
     "30": "A",
     "31": "B",
     "32": "A",
+    "33": "E",
     "34": "A"
   }
 }
