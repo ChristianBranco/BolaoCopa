@@ -1120,7 +1120,7 @@
         "Dunga": "A",
         "Felipe": "A",
         "Gabriel": "A",
-        "Giliarde": "",
+        "Giliarde": "A",
         "Gustavo": "",
         "Gustavo Lima": "E",
         "Heitor": "A",
@@ -1150,7 +1150,7 @@
         "Dunga": "B",
         "Felipe": "B",
         "Gabriel": "B",
-        "Giliarde": "",
+        "Giliarde": "A",
         "Gustavo": "",
         "Gustavo Lima": "E",
         "Heitor": "B",
@@ -1166,9 +1166,9 @@
       "id": 38,
       "match": "Espanha x Arábia Saudita",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "4",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -1180,7 +1180,7 @@
         "Dunga": "A",
         "Felipe": "A",
         "Gabriel": "A",
-        "Giliarde": "",
+        "Giliarde": "A",
         "Gustavo": "",
         "Gustavo Lima": "A",
         "Heitor": "A",
@@ -1210,7 +1210,7 @@
         "Dunga": "A",
         "Felipe": "A",
         "Gabriel": "A",
-        "Giliarde": "",
+        "Giliarde": "E",
         "Gustavo": "",
         "Gustavo Lima": "A",
         "Heitor": "A",
@@ -2219,6 +2219,7 @@
     "32": "A",
     "33": "E",
     "34": "A",
-    "35": "B"
+    "35": "B",
+    "38": "A"
   }
 }
