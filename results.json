@@ -1136,9 +1136,9 @@
       "id": 37,
       "match": "Nova Zelândia x Egito",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "1",
+      "gols_b": "3",
       "guesses": {
         "Alex": "E",
         "Bonfim": "A",
@@ -2221,6 +2221,7 @@
     "34": "A",
     "35": "B",
     "36": "E",
+    "37": "B",
     "38": "A",
     "39": "E"
   }
