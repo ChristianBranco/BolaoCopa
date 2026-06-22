@@ -1226,9 +1226,9 @@
       "id": 40,
       "match": "França x Iraque",
       "date": "22/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "1",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -1286,9 +1286,9 @@
       "id": 42,
       "match": "Argentina x Áustria",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "2",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2223,6 +2223,8 @@
     "36": "E",
     "37": "B",
     "38": "A",
-    "39": "E"
+    "39": "E",
+    "40": "A",
+    "42": "A"
   }
 }
