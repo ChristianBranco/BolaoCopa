@@ -1106,9 +1106,9 @@
       "id": 36,
       "match": "Bélgica x Irã",
       "date": "21/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "0",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -1151,7 +1151,7 @@
         "Felipe": "B",
         "Gabriel": "B",
         "Giliarde": "A",
-        "Gustavo": "",
+        "Gustavo": "A",
         "Gustavo Lima": "E",
         "Heitor": "B",
         "Juninho": "B",
@@ -1196,9 +1196,9 @@
       "id": 39,
       "match": "Uruguai x Cabo Verde",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "2",
+      "gols_b": "2",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2220,6 +2220,8 @@
     "33": "E",
     "34": "A",
     "35": "B",
-    "38": "A"
+    "36": "E",
+    "38": "A",
+    "39": "E"
   }
 }
