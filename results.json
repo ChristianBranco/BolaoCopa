@@ -1346,9 +1346,9 @@
       "id": 44,
       "match": "Portugal x Uzbequistão",
       "date": "23/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "5",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2227,6 +2227,7 @@
     "40": "A",
     "41": "A",
     "42": "A",
-    "43": "B"
+    "43": "B",
+    "44": "A"
   }
 }
