@@ -1406,9 +1406,9 @@
       "id": 46,
       "match": "Inglaterra x Gana",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "0",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2228,6 +2228,7 @@
     "41": "A",
     "42": "A",
     "43": "B",
-    "44": "A"
+    "44": "A",
+    "46": "E"
   }
 }
