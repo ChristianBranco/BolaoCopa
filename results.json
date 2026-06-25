@@ -1528,7 +1528,7 @@
       "date": "",
       "resultado": "A",
       "gols_a": "2",
-      "gols_b": "0",
+      "gols_b": "1",
       "guesses": {
         "Alex": "B",
         "Bonfim": "A",
@@ -1557,7 +1557,7 @@
       "match": "Bósnia e Herzeg. x Catar",
       "date": "",
       "resultado": "A",
-      "gols_a": "2",
+      "gols_a": "3",
       "gols_b": "1",
       "guesses": {
         "Alex": "A",
@@ -1586,9 +1586,9 @@
       "id": 52,
       "match": "Marrocos x Haiti",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "4",
+      "gols_b": "2",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -1616,9 +1616,9 @@
       "id": 53,
       "match": "Escócia x Brasil",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "3",
       "guesses": {
         "Alex": "B",
         "Bonfim": "B",
@@ -2233,6 +2233,8 @@
     "46": "E",
     "47": "B",
     "50": "A",
-    "51": "A"
+    "51": "A",
+    "52": "A",
+    "53": "B"
   }
 }
