@@ -1646,9 +1646,9 @@
       "id": 54,
       "match": "Turquia x Estados Unidos",
       "date": "25/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "3",
+      "gols_b": "2",
       "guesses": {
         "Alex": "B",
         "Bonfim": "B",
@@ -1676,9 +1676,9 @@
       "id": 55,
       "match": "Paraguai x Austrália",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "0",
+      "gols_b": "0",
       "guesses": {
         "Alex": "B",
         "Bonfim": "A",
@@ -1766,9 +1766,9 @@
       "id": 58,
       "match": "Tunísia x Países Baixos",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "1",
+      "gols_b": "3",
       "guesses": {
         "Alex": "B",
         "Bonfim": "B",
@@ -1796,9 +1796,9 @@
       "id": 59,
       "match": "Japão x Suécia",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "1",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2238,7 +2238,11 @@
     "51": "A",
     "52": "A",
     "53": "B",
+    "54": "A",
+    "55": "E",
     "56": "B",
-    "57": "A"
+    "57": "A",
+    "58": "B",
+    "59": "E"
   }
 }
