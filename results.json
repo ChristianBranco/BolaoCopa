@@ -1886,9 +1886,9 @@
       "id": 62,
       "match": "Cabo Verde x Arábia Saudita",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "0",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "E",
@@ -1916,9 +1916,9 @@
       "id": 63,
       "match": "Uruguai x Espanha",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "B",
@@ -2244,6 +2244,8 @@
     "57": "A",
     "58": "B",
     "59": "E",
+    "62": "E",
+    "63": "B",
     "64": "B",
     "65": "A"
   }
