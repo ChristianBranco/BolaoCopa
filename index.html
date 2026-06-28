@@ -431,40 +431,48 @@ function App() {
 
             {subPage==="matamata" && (
               <>
-                <div style={{color:"#6db882",fontSize:12,fontWeight:600,marginBottom:20,letterSpacing:.5}}>
-                  Vencedores em destaque | Atualiza automaticamente quando o resultado é preenchido
+                <div style={{color:"#6db882",fontSize:12,fontWeight:600,marginBottom:14,letterSpacing:.5}}>
+                  Mata-Mata: Acompanhe os palpites e resultados das eliminatórias
                 </div>
 
-                <div className="mm-grid">
-                  {data.games.filter(g=>g.sheet==="MATA-MATA 32").map(game=>{
-                    const times = game.match.split(" x ");
-                    const timeA = times[0]?.trim() || "";
-                    const timeB = times[1]?.trim() || "";
-                    const placar = game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}x${game.gols_b}`:"";
-                    const winner = getWinner(game);
-                    const flagUrlA = getFlagUrl(timeA);
-                    const flagUrlB = getFlagUrl(timeB);
-                    
-                    return (
-                      <div key={game.id} className="mm-card">
-                        <div className="mm-label">Partida {game.id - 71}</div>
-                        <div className="mm-teams">
-                          <div className={`mm-team ${winner===0?"winner":winner!==null?"loser":""}`}>
-                            <img src={flagUrlA} alt={timeA} className="mm-team-flag" onError={(e)=>e.target.style.display='none'}/>
-                            <div className="mm-team-name">{timeA}</div>
-                          </div>
-                          <div className="mm-vs">vs</div>
-                          <div className={`mm-team ${winner===1?"winner":winner!==null?"loser":""}`}>
-                            <img src={flagUrlB} alt={timeB} className="mm-team-flag" onError={(e)=>e.target.style.display='none'}/>
-                            <div className="mm-team-name">{timeB}</div>
-                          </div>
-                        </div>
-                        {placar && <div className="mm-placar">{placar}</div>}
-                        {winner===2 && <div style={{marginTop:10,padding:8,background:"#fff3cd",borderRadius:8,textAlign:"center",color:"#856404",fontWeight:700,fontSize:12}}>⚖️ Empate</div>}
-                        {!placar && <div className="mm-time">Aguardando resultado</div>}
-                      </div>
-                    );
-                  })}
+                <div className="pt-wrap">
+                  <table className="pt">
+                    <thead><tr>
+                      <th className="cj">JOGO</th>
+                      <th className="cr">PLACAR</th>
+                      {data.participants.map(p=>(
+                        <th key={p} onClick={()=>setHl(hl===p?null:p)} title={`Destacar ${p}`} style={{minWidth:36,textAlign:"center",cursor:"pointer",background:hl===p?"#1a4a28":undefined,color:hl===p?"#ffd700":undefined,transition:"background .15s"}}>
+                          {p.includes(" ")?<>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>:p}
+                        </th>
+                      ))}
+                    </tr></thead>
+                    <tbody>
+                      {data.games.filter(g=>g.sheet==="MATA-MATA 32").map((game,idx)=>{
+                        const r=game.resultado;
+                        const rs=r?RES_STYLE[r]:null;
+                        const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}–${game.gols_b}`:"";
+                        return (
+                          <tr key={game.id}>
+                            <td className="cj">
+                              <div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:3}}>PARTIDA {idx+1}</div>
+                              {game.match}
+                            </td>
+                            <td className="cr">
+                              {placar&&rs?<span style={{background:rs.bg,color:rs.color,borderRadius:8,padding:"3px 9px",fontWeight:800,fontSize:13,whiteSpace:"nowrap"}}>{placar}</span>:<span style={{color:"#ccc",fontSize:11}}>—</span>}
+                            </td>
+                            {data.participants.map(p=>{
+                              const guess=(game.guesses||{})[p]||"";
+                              return (
+                                <td key={p} className={`gc ${gCls(guess,r)}`} style={hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}}>
+                                  {gLbl(guess,r)}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
                 </div>
               </>
             )}
