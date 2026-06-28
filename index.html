@@ -122,8 +122,8 @@
   .mm-teams{display:flex;align-items:stretch;gap:0;min-height:100px;}
   .mm-team{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
     padding:12px;background:#f9f9f9;border-radius:8px;transition:all .2s;}
-  .mm-team-flag{font-size:36px;margin-bottom:6px;}
-  .mm-team-name{color:#1a2e1d;font-weight:700;font-size:13px;text-align:center;line-height:1.2;}
+  .mm-team-flag{font-size:40px;margin-bottom:6px;line-height:1;}
+  .mm-team-name{color:#1a2e1d;font-weight:700;font-size:12px;text-align:center;line-height:1.2;}
   .mm-vs{display:flex;align-items:center;justify-content:center;color:#ccc;font-weight:700;font-size:12px;padding:0 6px;}
   .mm-time{color:#999;font-size:11px;margin-top:10px;text-align:center;}
   .mm-placar{margin-top:12px;padding:10px;background:linear-gradient(135deg,#0a2e17,#1a5c30);
@@ -146,6 +146,151 @@ const RES_STYLE = {
   E:{bg:"rgba(180,75,10,0.60)",color:"#f5dcc8",label:"Empate"},
   B:{bg:"rgba(90,30,130,0.60)",color:"#e8d4f5",label:"Vitória Visitante"},
 };
+
+/* Mapa de bandeiras dos países */
+const BANDEIRAS = {
+  "África do Sul": "🇿🇦",
+  "Alemanha": "🇩🇪",
+  "Argélia": "🇩🇿",
+  "Argentina": "🇦🇷",
+  "Áustria": "🇦🇹",
+  "Austrália": "🇦🇺",
+  "Arábia Saudita": "🇸🇦",
+  "Bélgica": "🇧🇪",
+  "Brasil": "🇧🇷",
+  "Bósnia e Herzeg.": "🇧🇦",
+  "Canadá": "🇨🇦",
+  "Cabo Verde": "🇨🇻",
+  "Catar": "🇶🇦",
+  "Cleiton": "🇧🇷",
+  "Colômbia": "🇨🇴",
+  "Coreia do Sul": "🇰🇷",
+  "Costa do Marfim": "🇨🇮",
+  "Costa Rica": "🇨🇷",
+  "Croácia": "🇭🇷",
+  "Curaçao": "🇨🇼",
+  "Dinamarca": "🇩🇰",
+  "Egito": "🇪🇬",
+  "Equador": "🇪🇨",
+  "Escócia": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+  "Espanha": "🇪🇸",
+  "Estados Unidos": "🇺🇸",
+  "Eslováquia": "🇸🇰",
+  "Eslovênia": "🇸🇮",
+  "Essuatíni": "🇸🇿",
+  "Estônia": "🇪🇪",
+  "Finlândia": "🇫🇮",
+  "França": "🇫🇷",
+  "Gana": "🇬🇭",
+  "Geórgia": "🇬🇪",
+  "Grécia": "🇬🇷",
+  "Groenlândia": "🇬🇱",
+  "Haiti": "🇭🇹",
+  "Holanda": "🇳🇱",
+  "Honduras": "🇭🇳",
+  "Hong Kong": "🇭🇰",
+  "Hungria": "🇭🇺",
+  "Índia": "🇮🇳",
+  "Inglaterra": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+  "Indonésia": "🇮🇩",
+  "Irã": "🇮🇷",
+  "Iraque": "🇮🇶",
+  "Irlanda": "🇮🇪",
+  "Islândia": "🇮🇸",
+  "Israel": "🇮🇱",
+  "Itália": "🇮🇹",
+  "Jamaica": "🇯🇲",
+  "Japão": "🇯🇵",
+  "Jordânia": "🇯🇴",
+  "Kazaquistão": "🇰🇿",
+  "Letônia": "🇱🇻",
+  "Líbano": "🇱🇧",
+  "Lituânia": "🇱🇹",
+  "Luxemburgo": "🇱🇺",
+  "Macedônia": "🇲🇰",
+  "Malásia": "🇲🇾",
+  "Malawi": "🇲🇼",
+  "Maldivas": "🇲🇻",
+  "Mali": "🇲🇱",
+  "Malta": "🇲🇹",
+  "Marrocos": "🇲🇦",
+  "Maurício": "🇲🇺",
+  "Maurilândia": "🇲🇷",
+  "México": "🇲🇽",
+  "Mianmar": "🇲🇲",
+  "Moçambique": "🇲🇿",
+  "Moldávia": "🇲🇩",
+  "Mônaco": "🇲🇨",
+  "Mongólia": "🇲🇳",
+  "Montenegro": "🇲🇪",
+  "Namíbia": "🇳🇦",
+  "Nepal": "🇳🇵",
+  "Nicarágua": "🇳🇮",
+  "Nigéria": "🇳🇬",
+  "Noruega": "🇳🇴",
+  "Nova Zelândia": "🇳🇿",
+  "Omã": "🇴🇲",
+  "Países Baixos": "🇳🇱",
+  "Paquistão": "🇵🇰",
+  "Panamá": "🇵🇦",
+  "Papua-Nova Guiné": "🇵🇬",
+  "Paraguai": "🇵🇾",
+  "País de Gales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+  "Peru": "🇵🇪",
+  "Polônia": "🇵🇱",
+  "Portugal": "🇵🇹",
+  "Porto Rico": "🇵🇷",
+  "Quênia": "🇰🇪",
+  "República Checa": "🇨🇿",
+  "República Dem. Congo": "🇨🇩",
+  "República Democrática do Congo": "🇨🇩",
+  "Rep. Dem. Congo": "🇨🇩",
+  "República Dominicana": "🇩🇴",
+  "Reino Unido": "🇬🇧",
+  "Romênia": "🇷🇴",
+  "Rússia": "🇷🇺",
+  "Ruanda": "🇷🇼",
+  "Samoa": "🇼🇸",
+  "San Marino": "🇸🇲",
+  "Senegal": "🇸🇳",
+  "Sérvia": "🇷🇸",
+  "Singapura": "🇸🇬",
+  "Síria": "🇸🇾",
+  "Somalilândia": "🇸🇴",
+  "Somália": "🇸🇴",
+  "Sri Lanka": "🇱🇰",
+  "Suazilândia": "🇸🇿",
+  "Sudão": "🇸🇩",
+  "Sudão do Sul": "🇸🇸",
+  "Suécia": "🇸🇪",
+  "Suíça": "🇨🇭",
+  "Surinã": "🇸🇷",
+  "Tailândia": "🇹🇭",
+  "Taiwan": "🇹🇼",
+  "Tajiquistão": "🇹🇯",
+  "Tanzânia": "🇹🇿",
+  "Tchéquia": "🇨🇿",
+  "Tcheca": "🇨🇿",
+  "Terra Nova e Labrador": "🇨🇦",
+  "Timor-Leste": "🇹🇱",
+  "Togo": "🇹🇬",
+  "Tonga": "🇹🇴",
+  "Trinidad e Tobago": "🇹🇹",
+  "Tunísia": "🇹🇳",
+  "Turquia": "🇹🇷",
+  "Turcomenistão": "🇹🇲",
+  "Ucrânia": "🇺🇦",
+  "Uganda": "🇺🇬",
+  "Uruguai": "🇺🇾",
+  "Uzbequistão": "🇺🇿",
+  "Vaticano": "🇻🇦",
+  "Venezuela": "🇻🇪",
+  "Vietnã": "🇻🇳",
+  "Zâmbia": "🇿🇲",
+  "Zimbábue": "🇿🇼",
+};
+
+const getBandeira = (pais) => BANDEIRAS[pais] || "🏴";
 
 function App() {
   const [page, setPage]   = useState("home");
@@ -201,13 +346,11 @@ function App() {
   const played    = playedOrg + playedMM;
   const total     = totalOrg + totalMM;
 
-  /* Detectar vencedor baseado no resultado */
   const getWinner = (game) => {
     if (!game.resultado && (game.gols_a === "" || game.gols_b === "")) return null;
-    
-    if (game.resultado === "A") return 0; // time A venceu
-    if (game.resultado === "B") return 1; // time B venceu
-    if (game.resultado === "E") return 2; // empate
+    if (game.resultado === "A") return 0;
+    if (game.resultado === "B") return 1;
+    if (game.resultado === "E") return 2;
     return null;
   };
 
@@ -447,18 +590,20 @@ function App() {
                 const timeB = times[1]?.trim() || "";
                 const placar = game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}x${game.gols_b}`:"";
                 const winner = getWinner(game);
+                const bandA = getBandeira(timeA);
+                const bandB = getBandeira(timeB);
                 
                 return (
                   <div key={game.id} className="mm-card">
                     <div className="mm-label">Partida {game.id - 71}</div>
                     <div className="mm-teams">
                       <div className={`mm-team ${winner===0?"winner":winner!==null?"loser":""}`}>
-                        <div className="mm-team-flag">🏴</div>
+                        <div className="mm-team-flag">{bandA}</div>
                         <div className="mm-team-name">{timeA}</div>
                       </div>
                       <div className="mm-vs">vs</div>
                       <div className={`mm-team ${winner===1?"winner":winner!==null?"loser":""}`}>
-                        <div className="mm-team-flag">🏴</div>
+                        <div className="mm-team-flag">{bandB}</div>
                         <div className="mm-team-name">{timeB}</div>
                       </div>
                     </div>
