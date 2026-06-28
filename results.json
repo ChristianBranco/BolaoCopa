@@ -2259,9 +2259,9 @@
       "sheet": "MATA-MATA 32",
       "match": "África do Sul x Canadá",
       "date": "28/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "1",
       "guesses": {
         "Alex": "B",
         "Bonfim": "A",
@@ -2823,6 +2823,7 @@
     "68": "E",
     "69": "A",
     "70": "B",
-    "71": "A"
+    "71": "A",
+    "72": "B"
   }
 }
