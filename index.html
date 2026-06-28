@@ -287,11 +287,11 @@ function App() {
             <div className="home-btn-sub">Confira o que cada um votou</div>
           </div>
         </button>
-        <button className="home-btn btn-jogos" onClick={()=>setPage("jogos")}>
+        <button className="home-btn btn-jogos" onClick={()=>{setPage("jogos"); setSubPage("grupos");}}>
           <span className="home-btn-icon">⚽</span>
           <div>
-            <div className="home-btn-label">Jogos</div>
-            <div className="home-btn-sub">Placares e resultados</div>
+            <div className="home-btn-label">Placares</div>
+            <div className="home-btn-sub">Resultados dos jogos</div>
           </div>
         </button>
       </div>
@@ -313,7 +313,7 @@ function App() {
         </div>
         <div style={{display:"flex",gap:4,flexWrap:"wrap",overflowX:"auto"}}>
           {[["ranking","🏆 Ranking"],["palpites","📋 Palpites"],["jogos","⚽ Placares"]].map(([k,l])=>(
-            <button key={k} onClick={()=>{setPage(k);if(k==="palpites")setSubPage("grupos");}}
+            <button key={k} onClick={()=>{setPage(k);if(k!=="ranking")setSubPage("grupos");}}
               className={`nav-btn ${page===k?"active":"inactive"}`}>{l}</button>
           ))}
         </div>
@@ -358,7 +358,7 @@ function App() {
 
         {page==="palpites" && (
           <div>
-            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:16,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>📋 Palpites</div>
+            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:16,textShadow:"0 2px 12px rgba(255,915,0,.3)"}}>📋 Palpites</div>
             
             <div className="sub-nav">
               <button className={`sub-nav-btn ${subPage==="grupos"?"active":""}`} onClick={()=>setSubPage("grupos")}>📊 Fase de Grupos</button>
@@ -472,36 +472,82 @@ function App() {
         )}
 
         {page==="jogos" && (
-          <div style={{maxWidth:640}}>
-            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:8,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>⚽ Placares</div>
+          <div>
+            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:16,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>⚽ Placares</div>
+            
+            <div className="sub-nav">
+              <button className={`sub-nav-btn ${subPage==="grupos"?"active":""}`} onClick={()=>setSubPage("grupos")}>📊 Fase de Grupos</button>
+              <button className={`sub-nav-btn ${subPage==="matamata"?"active":""}`} onClick={()=>setSubPage("matamata")}>🔴 Mata-Mata</button>
+            </div>
 
-            {grouped.order.map(date=>{
-              const games=grouped.map[date];
-              return (
-                <div key={date} style={{marginBottom:22}}>
-                  <div className="date-label">📅 {date}/2026</div>
-                  <div className="jogos-card">
-                    {games.map((game,gi)=>{
-                      const r=game.resultado;
-                      const rs=r?RES_STYLE[r]:null;
-                      const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a} – ${game.gols_b}`:"";
-                      return (
-                        <div key={game.id}>
-                          {gi>0&&<div className="jogo-sep"/>}
-                          <div className="jogo-row">
-                            <div className="jogo-match">{game.match}</div>
-                            {placar&&rs?<div style={{display:"flex",alignItems:"center",gap:8}}>
-                              <span className="placar-badge" style={{background:rs.bg}}>{placar}</span>
-                              <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
-                            </div>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
+            {subPage==="grupos" && (
+              <>
+                {grouped.order.map(date=>{
+                  const games=grouped.map[date].filter(g=>g.sheet==="ORGANIZAÇÃO");
+                  if(games.length===0) return null;
+                  return (
+                    <div key={date} style={{marginBottom:22}}>
+                      <div className="date-label">📅 {date}/2026</div>
+                      <div className="jogos-card">
+                        {games.map((game,gi)=>{
+                          const r=game.resultado;
+                          const rs=r?RES_STYLE[r]:null;
+                          const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a} – ${game.gols_b}`:"";
+                          return (
+                            <div key={game.id}>
+                              {gi>0&&<div className="jogo-sep"/>}
+                              <div className="jogo-row">
+                                <div className="jogo-match">{game.match}</div>
+                                {placar&&rs?<div style={{display:"flex",alignItems:"center",gap:8}}>
+                                  <span className="placar-badge" style={{background:rs.bg}}>{placar}</span>
+                                  <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
+                                </div>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </>
+            )}
+
+            {subPage==="matamata" && (
+              <>
+                <div className="mm-grid">
+                  {data.games.filter(g=>g.sheet==="MATA-MATA 32").map(game=>{
+                    const times = game.match.split(" x ");
+                    const timeA = times[0]?.trim() || "";
+                    const timeB = times[1]?.trim() || "";
+                    const placar = game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}x${game.gols_b}`:"";
+                    const winner = getWinner(game);
+                    const flagUrlA = getFlagUrl(timeA);
+                    const flagUrlB = getFlagUrl(timeB);
+                    
+                    return (
+                      <div key={game.id} className="mm-card">
+                        <div className="mm-label">Partida {game.id - 71}</div>
+                        <div className="mm-teams">
+                          <div className={`mm-team ${winner===0?"winner":winner!==null?"loser":""}`}>
+                            <img src={flagUrlA} alt={timeA} className="mm-team-flag" onError={(e)=>e.target.style.display='none'}/>
+                            <div className="mm-team-name">{timeA}</div>
+                          </div>
+                          <div className="mm-vs">vs</div>
+                          <div className={`mm-team ${winner===1?"winner":winner!==null?"loser":""}`}>
+                            <img src={flagUrlB} alt={timeB} className="mm-team-flag" onError={(e)=>e.target.style.display='none'}/>
+                            <div className="mm-team-name">{timeB}</div>
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                        {placar && <div className="mm-placar">{placar}</div>}
+                        {winner===2 && <div style={{marginTop:10,padding:8,background:"#fff3cd",borderRadius:8,textAlign:"center",color:"#856404",fontWeight:700,fontSize:12}}>⚖️ Empate</div>}
+                        {!placar && <div className="mm-time">Aguardando resultado</div>}
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
+              </>
+            )}
           </div>
         )}
 
