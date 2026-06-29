@@ -1,104 +1,72 @@
-"""
-Lê a planilha BOLAO.xlsx (abas ORGANIZAÇÃO e MATA-MATA 32) e gera results.json
-Execute localmente com:  python extract.py
-O GitHub Actions roda isso automaticamente quando você faz upload do Excel.
-"""
-import json, sys
 import pandas as pd
+import json
 
-EXCEL = "BOLAO.xlsx"
+excel = pd.ExcelFile('BOLAO.xlsx')
+org = pd.read_excel('BOLAO.xlsx', sheet_name='ORGANIZAÇÃO')
+mm = pd.read_excel('BOLAO.xlsx', sheet_name='MATA-MATA 32')
 
-try:
-    excel = pd.ExcelFile(EXCEL)
-except FileNotFoundError:
-    print(f"❌ Arquivo {EXCEL} não encontrado.")
-    sys.exit(1)
+participants = sorted([c for c in org.columns[6:-2] if c and 'Unnamed' not in str(c)])
 
-SHEETS = ["ORGANIZAÇÃO", "MATA-MATA 32"]
-RESULTADO_COL = "RESULTADO"
-MATCH_COL     = "CONFRONTOS"
-DATE_COL      = "DATAS"
-GOLS_A_COL    = "Gols A"
-GOLS_B_COL    = "Gols B"
+games = []
 
-all_games = []
-participants = []
-results = {}
+for sheet_name, df in [('ORGANIZAÇÃO', org), ('MATA-MATA 32', mm)]:
+  for idx, row in df.iterrows():
+    match = row.get('CONFRONTOS','')
+    if not match or pd.isna(match):
+      continue
 
-# Processar ambas as abas
-for sheet_name in SHEETS:
-    if sheet_name not in excel.sheet_names:
-        print(f"⚠️ Aba '{sheet_name}' não encontrada.")
-        continue
+    game_id = len(games)
+    date = row.get('DATAS')
+    date_str = ''
+    if pd.notna(date):
+      if isinstance(date, str):
+        date_str = date.split()[0]
+      else:
+        try:
+          date_str = date.strftime('%d/%m')
+        except:
+          date_str = str(date)
     
-    df = pd.read_excel(EXCEL, sheet_name=sheet_name, header=0)
-    cols = list(df.columns)
-    
-    # Encontrar participantes (entre "Unnamed: 5" e "Gols A")
-    try:
-        start = cols.index("Unnamed: 5") + 1
-        end   = cols.index("Gols A")
-        sheet_participants = cols[start:end]
-        
-        if not participants:
-            participants = sheet_participants
-    except ValueError:
-        print(f"⚠️ Estrutura não reconhecida em '{sheet_name}'")
-        continue
+    guesses = {}
+    for p in participants:
+      guess = row.get(p, '')
+      guesses[p] = str(guess).upper() if pd.notna(guess) and guess != '' else ''
 
-    game_id = len(all_games)  # ID global
-    
-    for i, row in df.iterrows():
-        match = row.get(MATCH_COL, "")
-        if pd.isna(match) or str(match).strip() in ["", "nan"]:
-            continue
-        if str(match).strip() == str(participants[0]):
-            continue
+    resultado = row.get('RESULTADO','')
+    resultado = str(resultado).upper() if pd.notna(resultado) and resultado != '' else ''
 
-        resultado = row.get(RESULTADO_COL, "")
-        resultado = "" if pd.isna(resultado) or str(resultado) in ["#x#","nan"] else str(resultado).strip()
+    gols_a = row.get('Gols A','')
+    gols_a = str(int(gols_a)) if pd.notna(gols_a) and gols_a != '' else ''
 
-        date_val = row.get(DATE_COL, "")
-        date_str = date_val.strftime("%d/%m") if pd.notna(date_val) and hasattr(date_val, "strftime") else ""
+    gols_b = row.get('Gols B','')
+    gols_b = str(int(gols_b)) if pd.notna(gols_b) and gols_b != '' else ''
 
-        ga = row.get(GOLS_A_COL, "")
-        gb = row.get(GOLS_B_COL, "")
-        gols_a = "" if pd.isna(ga) else str(int(ga))
-        gols_b = "" if pd.isna(gb) else str(int(gb))
+    # Ler coluna "Passou" (classificado)
+    passou = row.get('Passou', '')
+    passou = str(passou).strip() if pd.notna(passou) and passou != '' else ''
 
-        guesses = {}
-        for p in participants:
-            val = row.get(p, "")
-            guesses[p] = "" if pd.isna(val) or str(val) == "nan" else str(val).strip()
+    # Detectar se foi decidido nos pênaltis
+    penalties = False
+    if resultado == 'E' and passou:  # Empate E alguém se classificou = pênaltis
+      penalties = True
 
-        all_games.append({
-            "id":        game_id,
-            "sheet":     sheet_name,
-            "match":     str(match).strip(),
-            "date":      date_str,
-            "resultado": resultado,
-            "gols_a":    gols_a,
-            "gols_b":    gols_b,
-            "guesses":   guesses,
-        })
+    games.append({
+      'id': game_id,
+      'match': match,
+      'date': date_str,
+      'resultado': resultado,
+      'gols_a': gols_a,
+      'gols_b': gols_b,
+      'guesses': guesses,
+      'sheet': sheet_name,
+      'passou': passou,
+      'penalties': penalties
+    })
 
-        if resultado:
-            results[game_id] = resultado
+results = {'participants': participants, 'games': games}
+with open('results.json', 'w', encoding='utf-8') as f:
+  json.dump(results, f, ensure_ascii=False, indent=2)
 
-        game_id += 1
-
-output = {
-    "participants": list(participants),
-    "games":        all_games,
-    "results":      results,
-}
-
-with open("results.json", "w", encoding="utf-8") as f:
-    json.dump(output, f, ensure_ascii=False, indent=2)
-
-org_games = sum(1 for g in all_games if g["sheet"] == "ORGANIZAÇÃO")
-mm_games = sum(1 for g in all_games if g["sheet"] == "MATA-MATA 32")
-played = sum(1 for g in all_games if g["resultado"])
-
-print(f"✅ results.json gerado: {org_games} jogos (Organização) + {mm_games} jogos (Mata-Mata) = {len(all_games)} total")
-print(f"   {played} com resultado | {len(participants)} participantes")
+print(f"✅ results.json gerado: {sum(1 for g in games if g['sheet']=='ORGANIZAÇÃO')} jogos (Organização) + {sum(1 for g in games if g['sheet']=='MATA-MATA 32')} jogos (Mata-Mata) = {len(games)} total")
+print(f"   {sum(1 for g in games if g.get('resultado'))} com resultado | {len(participants)} participantes")
+print(f"   {sum(1 for g in games if g.get('penalties'))} jogos decididos nos pênaltis")
