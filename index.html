@@ -118,24 +118,6 @@
 
   .loading-spinner{animation:spin 1s linear infinite;}
   @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-
-  .mm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:20px;}
-  .mm-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.3);overflow:hidden;}
-  .mm-label{color:#6db882;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
-  .mm-teams{display:flex;align-items:stretch;gap:0;min-height:100px;}
-  .mm-team{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:12px;background:#f9f9f9;border-radius:8px;transition:all .2s;}
-  .mm-team-flag{width:100%;height:60px;margin-bottom:8px;object-fit:contain;border-radius:6px;}
-  .mm-team-name{color:#1a2e1d;font-weight:700;font-size:12px;text-align:center;line-height:1.2;}
-  .mm-vs{display:flex;align-items:center;justify-content:center;color:#ccc;font-weight:700;font-size:12px;padding:0 6px;}
-  .mm-time{color:#999;font-size:11px;margin-top:10px;text-align:center;}
-  .mm-placar{margin-top:12px;padding:10px;background:linear-gradient(135deg,#0a2e17,#1a5c30);
-    border-radius:8px;text-align:center;color:#ffd700;font-weight:800;font-size:18px;letter-spacing:1px;}
-  
-  .mm-team.winner{background:linear-gradient(135deg,#d4edda,#c3e6cb);color:#155724;}
-  .mm-team.winner .mm-team-name{color:#155724;}
-  .mm-team.loser{background:#e8e8e8;opacity:.6;}
-  .mm-team.loser .mm-team-name{color:#666;}
 </style>
 </head>
 <body>
@@ -437,7 +419,7 @@ function App() {
                   <table className="pt">
                     <thead><tr>
                       <th className="cj">JOGO</th>
-                      <th className="cr">PLACAR</th>
+                      <th className="cr" style={{minWidth:100}}>DECISÃO</th>
                       {data.participants.map(p=>(
                         <th key={p} onClick={()=>setHl(hl===p?null:p)} title={`Destacar ${p}`} style={{minWidth:36,textAlign:"center",cursor:"pointer",background:hl===p?"#1a4a28":undefined,color:hl===p?"#ffd700":undefined,transition:"background .15s"}}>
                           {p.includes(" ")?<>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>:p}
@@ -447,13 +429,10 @@ function App() {
                     <tbody>
                       {data.games.filter(g=>g.sheet==="MATA-MATA 32").map((game,idx)=>{
                         const r=game.resultado;
-                        const rs=r?RES_STYLE[r]:null;
-                        const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}–${game.gols_b}`:"";
                         const times = game.match.split(" x ");
                         const timeA = times[0]?.trim() || "";
                         const timeB = times[1]?.trim() || "";
                         const passou = game.passou || "";
-                        const isPenalties = game.penalties || false;
                         
                         return (
                           <tr key={game.id}>
@@ -466,8 +445,10 @@ function App() {
                               </div>
                               {passou && <div style={{marginTop:8,padding:6,background:"#155724",color:"#fff",borderRadius:6,fontSize:10,fontWeight:700,textAlign:"center"}}>✅ {passou}</div>}
                             </td>
-                            <td className="cr" style={{background:passou?'#d4edda':'#f5f9f5'}}>
-                              {placar&&rs?<span style={{background:rs.bg,color:rs.color,borderRadius:8,padding:"3px 9px",fontWeight:800,fontSize:13,whiteSpace:"nowrap"}}>{placar}</span>:<span style={{color:"#ccc",fontSize:11}}>—</span>}
+                            <td className="cr" style={{background:passou?'#d4edda':'#f5f9f5',textAlign:'center'}}>
+                              {game.penalties && <span style={{background:"#ff9800",color:"#fff",borderRadius:8,padding:"4px 8px",fontWeight:700,fontSize:11,whiteSpace:"nowrap",display:'inline-block'}}>⚽ Pênaltis</span>}
+                              {game.overtime && <span style={{background:"#2196F3",color:"#fff",borderRadius:8,padding:"4px 8px",fontWeight:700,fontSize:11,whiteSpace:"nowrap",display:'inline-block'}}>⏱ Prorrogação</span>}
+                              {!game.penalties && !game.overtime && <span style={{color:"#999",fontSize:12}}>—</span>}
                             </td>
                             {data.participants.map(p=>{
                               const guess=(game.guesses||{})[p]||"";
@@ -538,14 +519,13 @@ function App() {
                     const timeA = times[0]?.trim() || "";
                     const timeB = times[1]?.trim() || "";
                     const passou = game.passou || "";
-                    const isPenalties = game.penalties || false;
                     const r=game.resultado;
                     const rs=r?RES_STYLE[r]:null;
                     const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a} – ${game.gols_b}`:"";
                     return (
                       <div key={game.id}>
                         {idx>0&&<div className="jogo-sep"/>}
-                        <div className={`jogo-row ${game.penalties?"penalties":""}`} style={{background:passou?"#d4edda":"inherit"}}>
+                        <div className="jogo-row" style={{background:passou?"#d4edda":"inherit"}}>
                           <div style={{flex:1}}>
                             <div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:4}}>PARTIDA {idx+1}</div>
                             <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:6}}>
@@ -560,7 +540,8 @@ function App() {
                               <span className="placar-badge" style={{background:rs.bg}}>{placar}</span>
                               <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
                             </div>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
-                            {isPenalties&&<span className="penalty-badge">⚽ Pênaltis</span>}
+                            {game.penalties && <span className="penalty-badge">⚽ Pênaltis</span>}
+                            {game.overtime && <span className="penalty-badge" style={{background:"linear-gradient(135deg,#2196F3,#1976D2)"}}>⏱ Prorrogação</span>}
                           </div>
                         </div>
                       </div>

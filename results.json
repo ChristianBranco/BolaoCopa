@@ -54,8 +54,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "México",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 1,
@@ -88,8 +90,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Coreia do Sul",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 2,
@@ -123,7 +127,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 3,
@@ -156,8 +162,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Estados Unidos",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 4,
@@ -191,7 +199,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 5,
@@ -225,7 +235,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 6,
@@ -258,8 +270,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Escócia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 7,
@@ -292,8 +306,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Austrália",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 8,
@@ -326,8 +342,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Alemanha",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 9,
@@ -360,8 +378,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Costa do Marfim",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 10,
@@ -395,7 +415,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 11,
@@ -428,8 +450,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Suécia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 12,
@@ -463,7 +487,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 13,
@@ -497,7 +523,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 14,
@@ -531,7 +559,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 15,
@@ -565,7 +595,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 16,
@@ -598,8 +630,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "França",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 17,
@@ -632,8 +666,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Noruega",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 18,
@@ -666,8 +702,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Argentina",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 19,
@@ -700,8 +738,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Áustria",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 20,
@@ -735,7 +775,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 21,
@@ -768,8 +810,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Colômbia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 22,
@@ -802,8 +846,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Inglaterra",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 23,
@@ -836,8 +882,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Gana",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 24,
@@ -871,7 +919,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 25,
@@ -904,8 +954,10 @@
         "Sanches": ""
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "México",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 26,
@@ -938,8 +990,10 @@
         "Sanches": ""
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Suíça",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 27,
@@ -972,8 +1026,10 @@
         "Sanches": ""
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Canadá",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 28,
@@ -1006,8 +1062,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Marrocos",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 29,
@@ -1040,8 +1098,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Brasil",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 30,
@@ -1074,8 +1134,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Estados Unidos",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 31,
@@ -1108,8 +1170,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Paraguai",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 32,
@@ -1142,8 +1206,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Alemanha",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 33,
@@ -1177,7 +1243,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 34,
@@ -1210,8 +1278,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Países Baixos",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 35,
@@ -1244,8 +1314,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Japão",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 36,
@@ -1279,7 +1351,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 37,
@@ -1312,8 +1386,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Egito",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 38,
@@ -1346,8 +1422,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Espanha",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 39,
@@ -1381,7 +1459,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 40,
@@ -1414,8 +1494,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "França",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 41,
@@ -1448,8 +1530,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Noruega",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 42,
@@ -1482,8 +1566,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Argentina",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 43,
@@ -1516,8 +1602,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Argélia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 44,
@@ -1550,8 +1638,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Portugal",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 45,
@@ -1584,8 +1674,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Colômbia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 46,
@@ -1619,7 +1711,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 47,
@@ -1652,8 +1746,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Croácia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 48,
@@ -1686,8 +1782,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "África do Sul",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 49,
@@ -1720,8 +1818,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "México",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 50,
@@ -1754,8 +1854,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Suíça",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 51,
@@ -1788,8 +1890,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Bósnia e Herzeg.",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 52,
@@ -1822,8 +1926,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Marrocos",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 53,
@@ -1856,8 +1962,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Brasil",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 54,
@@ -1890,8 +1998,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Turquia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 55,
@@ -1925,7 +2035,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 56,
@@ -1958,8 +2070,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Costa do Marfim",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 57,
@@ -1992,8 +2106,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Equador",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 58,
@@ -2026,8 +2142,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Países Baixos",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 59,
@@ -2061,7 +2179,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 60,
@@ -2094,8 +2214,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Bélgica",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 61,
@@ -2129,7 +2251,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 62,
@@ -2163,7 +2287,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 63,
@@ -2196,8 +2322,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Espanha",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 64,
@@ -2230,8 +2358,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "França",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 65,
@@ -2264,8 +2394,10 @@
         "Sanches": "A"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Senegal",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 66,
@@ -2299,7 +2431,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 67,
@@ -2332,8 +2466,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Argentina",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 68,
@@ -2367,7 +2503,9 @@
       },
       "sheet": "ORGANIZAÇÃO",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 69,
@@ -2400,8 +2538,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Rep. Dem. Congo",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 70,
@@ -2434,8 +2574,10 @@
         "Sanches": "B"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Inglaterra",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 71,
@@ -2468,8 +2610,10 @@
         "Sanches": "E"
       },
       "sheet": "ORGANIZAÇÃO",
-      "passou": "",
-      "penalties": false
+      "passou": "Croácia",
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 72,
@@ -2503,7 +2647,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "Canadá",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 73,
@@ -2537,7 +2683,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "Paraguai",
-      "penalties": true
+      "penalties": true,
+      "overtime": false,
+      "tipo_decisao": "Pênaltis"
     },
     {
       "id": 74,
@@ -2571,7 +2719,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 75,
@@ -2605,7 +2755,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "Brasil",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 76,
@@ -2639,7 +2791,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 77,
@@ -2673,7 +2827,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 78,
@@ -2707,7 +2863,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 79,
@@ -2741,7 +2899,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 80,
@@ -2775,7 +2935,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 81,
@@ -2809,7 +2971,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 82,
@@ -2843,7 +3007,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 83,
@@ -2877,7 +3043,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 84,
@@ -2911,7 +3079,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 85,
@@ -2945,7 +3115,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 86,
@@ -2979,7 +3151,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     },
     {
       "id": 87,
@@ -3013,7 +3187,9 @@
       },
       "sheet": "MATA-MATA 32",
       "passou": "",
-      "penalties": false
+      "penalties": false,
+      "overtime": false,
+      "tipo_decisao": ""
     }
   ]
 }
