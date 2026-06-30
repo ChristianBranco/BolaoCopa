@@ -5,7 +5,13 @@ excel = pd.ExcelFile('BOLAO.xlsx')
 org = pd.read_excel('BOLAO.xlsx', sheet_name='ORGANIZAÇÃO')
 mm = pd.read_excel('BOLAO.xlsx', sheet_name='MATA-MATA 32')
 
-participants = sorted([c for c in org.columns[6:-2] if c and 'Unnamed' not in str(c)])
+# Excluir colunas que não são participantes
+exclude_cols = ['DATAS', 'CONFRONTOS', 'TIME A', 'TIME B', 'PLACAR', 'Penalti', 'Prorrogação', 
+                'Unnamed: 7', 'Gols A', 'Gols B', 'RESULTADO', 'Passou']
+
+# Pegar apenas colunas de participantes (entre PLACAR e Gols A)
+participants = sorted([c for c in org.columns 
+                       if c and 'Unnamed' not in str(c) and c not in exclude_cols])
 
 games = []
 
@@ -73,7 +79,7 @@ for sheet_name, df in [('ORGANIZAÇÃO', org), ('MATA-MATA 32', mm)]:
       elif resultado == "B":
         passou = timeB
       elif resultado == "E":
-        passed = ""  # Empate sem pênaltis/prorrogação
+        passou = ""
 
     penalties = (penalti != "")
     overtime = (prorrogacao != "")
@@ -98,6 +104,7 @@ with open('results.json', 'w', encoding='utf-8') as f:
   json.dump(results, f, ensure_ascii=False, indent=2)
 
 print(f"✅ results.json gerado: {sum(1 for g in games if g['sheet']=='ORGANIZAÇÃO')} jogos (Organização) + {sum(1 for g in games if g['sheet']=='MATA-MATA 32')} jogos (Mata-Mata) = {len(games)} total")
-print(f"   {sum(1 for g in games if g.get('resultado'))} com resultado | {len(participants)} participantes")
-print(f"   {sum(1 for g in games if g.get('penalties'))} jogos decididos nos pênaltis")
-print(f"   {sum(1 for g in games if g.get('overtime'))} jogos decididos na prorrogação")
+print(f"   {len(participants)} participantes: {', '.join(participants[:5])}...")
+print(f"   {sum(1 for g in games if g.get('resultado'))} com resultado")
+print(f"   {sum(1 for g in games if g.get('penalties'))} jogos nos pênaltis")
+print(f"   {sum(1 for g in games if g.get('overtime'))} jogos na prorrogação")
