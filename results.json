@@ -2686,9 +2686,9 @@
       "id": 76,
       "match": "França x Suécia",
       "date": "30/06",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "3",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2712,7 +2712,7 @@
         "Sanches": "A"
       },
       "sheet": "MATA-MATA 32",
-      "passou": "",
+      "passou": "França",
       "penalties": false,
       "overtime": false,
       "tipo_decisao": ""
