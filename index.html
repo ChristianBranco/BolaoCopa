@@ -449,19 +449,30 @@ function App() {
                         const r=game.resultado;
                         const rs=r?RES_STYLE[r]:null;
                         const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}–${game.gols_b}`:"";
+                        const times = game.match.split(" x ");
+                        const timeA = times[0]?.trim() || "";
+                        const timeB = times[1]?.trim() || "";
+                        const passou = game.passou || "";
+                        const isPenalties = game.penalties || false;
+                        
                         return (
                           <tr key={game.id}>
-                            <td className="cj">
+                            <td className="cj" style={{background:passou?'#d4edda':'#f5f9f5'}}>
                               <div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:3}}>PARTIDA {idx+1}</div>
-                              {game.match}
+                              <div style={{display:'flex',flexDirection:'column',gap:6}}>
+                                <span style={{color:passou===timeA?"#155724":"#1a2e1d",fontWeight:passou===timeA?800:600}}>{timeA}</span>
+                                <span style={{fontSize:11,color:"#666"}}>vs</span>
+                                <span style={{color:passou===timeB?"#155724":"#1a2e1d",fontWeight:passou===timeB?800:600}}>{timeB}</span>
+                              </div>
+                              {passou && <div style={{marginTop:8,padding:6,background:"#155724",color:"#fff",borderRadius:6,fontSize:10,fontWeight:700,textAlign:"center"}}>✅ {passou}</div>}
                             </td>
-                            <td className="cr">
+                            <td className="cr" style={{background:passou?'#d4edda':'#f5f9f5'}}>
                               {placar&&rs?<span style={{background:rs.bg,color:rs.color,borderRadius:8,padding:"3px 9px",fontWeight:800,fontSize:13,whiteSpace:"nowrap"}}>{placar}</span>:<span style={{color:"#ccc",fontSize:11}}>—</span>}
                             </td>
                             {data.participants.map(p=>{
                               const guess=(game.guesses||{})[p]||"";
                               return (
-                                <td key={p} className={`gc ${gCls(guess,r)}`} style={hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}}>
+                                <td key={p} className={`gc ${gCls(guess,r)}`} style={{...{hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}},background:passou?'#d4edda':'inherit'}}>
                                   {gLbl(guess,r)}
                                 </td>
                               );
@@ -523,24 +534,33 @@ function App() {
               <>
                 <div className="jogos-card">
                   {data.games.filter(g=>g.sheet==="MATA-MATA 32").map((game,idx)=>{
+                    const times = game.match.split(" x ");
+                    const timeA = times[0]?.trim() || "";
+                    const timeB = times[1]?.trim() || "";
+                    const passou = game.passou || "";
+                    const isPenalties = game.penalties || false;
                     const r=game.resultado;
                     const rs=r?RES_STYLE[r]:null;
                     const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a} – ${game.gols_b}`:"";
                     return (
                       <div key={game.id}>
                         {idx>0&&<div className="jogo-sep"/>}
-                        <div className={`jogo-row ${game.penalties?"penalties":""}`}>
-                          <div>
+                        <div className={`jogo-row ${game.penalties?"penalties":""}`} style={{background:passou?"#d4edda":"inherit"}}>
+                          <div style={{flex:1}}>
                             <div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:4}}>PARTIDA {idx+1}</div>
-                            <div className="jogo-match">{game.match}</div>
-                            {game.passou&&<div style={{fontSize:11,fontWeight:700,color:"#1a5c30",marginTop:4}}>✅ Classificado: <strong>{game.passou}</strong></div>}
+                            <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:6}}>
+                              <span style={{flex:1,color:passou===timeA?"#155724":"#1a2e1d",fontWeight:passou===timeA?800:600}}>{timeA}</span>
+                              <span style={{color:"#ccc",fontSize:12}}>vs</span>
+                              <span style={{flex:1,textAlign:'right',color:passou===timeB?"#155724":"#1a2e1d",fontWeight:passou===timeB?800:600}}>{timeB}</span>
+                            </div>
+                            {passou && <div style={{padding:6,background:"#155724",color:"#fff",borderRadius:6,fontSize:11,fontWeight:700,textAlign:"center"}}>✅ Classificado: {passou}</div>}
                           </div>
-                          <div style={{display:"flex",alignItems:"center",gap:8}}>
-                            {placar&&rs?<>
+                          <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:6}}>
+                            {placar&&rs?<div style={{display:"flex",alignItems:"center",gap:4}}>
                               <span className="placar-badge" style={{background:rs.bg}}>{placar}</span>
                               <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
-                            </>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
-                            {game.penalties&&<span className="penalty-badge">⚽ Pênaltis</span>}
+                            </div>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
+                            {isPenalties&&<span className="penalty-badge">⚽ Pênaltis</span>}
                           </div>
                         </div>
                       </div>
