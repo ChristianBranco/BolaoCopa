@@ -2756,9 +2756,9 @@
       "id": 78,
       "match": "México x Equador",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "2",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2782,7 +2782,7 @@
         "Sanches": "A"
       },
       "sheet": "MATA-MATA 32",
-      "passou": "",
+      "passou": "México",
       "penalties": false,
       "overtime": false,
       "tipo_decisao": ""
