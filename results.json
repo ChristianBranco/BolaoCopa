@@ -2861,9 +2861,9 @@
       "id": 81,
       "match": "Bélgica x Senegal",
       "date": "",
-      "resultado": "A",
-      "gols_a": "2",
-      "gols_b": "0",
+      "resultado": "B",
+      "gols_a": "0",
+      "gols_b": "2",
       "guesses": {
         "Alex": "A",
         "Bonfim": "B",
@@ -2887,7 +2887,7 @@
         "Sanches": "E"
       },
       "sheet": "MATA-MATA 32",
-      "passou": "Bélgica",
+      "passou": "Senegal",
       "penalties": false,
       "overtime": false,
       "tipo_decisao": ""
