@@ -2887,10 +2887,10 @@
         "Sanches": "E"
       },
       "sheet": "MATA-MATA 32",
-      "passou": "",
+      "passou": "Bélgica",
       "penalties": false,
-      "overtime": false,
-      "tipo_decisao": ""
+      "overtime": true,
+      "tipo_decisao": "Prorrogação"
     },
     {
       "id": 82,
