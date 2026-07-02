@@ -2826,9 +2826,9 @@
       "id": 80,
       "match": "Estados Unidos x Bósnia e Herzeg.",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "2",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2852,7 +2852,7 @@
         "Sanches": "A"
       },
       "sheet": "MATA-MATA 32",
-      "passou": "",
+      "passou": "Estados Unidos",
       "penalties": false,
       "overtime": false,
       "tipo_decisao": ""
