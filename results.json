@@ -2896,9 +2896,9 @@
       "id": 82,
       "match": "Portugal x Croácia",
       "date": "02/07",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "2",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -2922,7 +2922,7 @@
         "Sanches": "B"
       },
       "sheet": "MATA-MATA 32",
-      "passou": "",
+      "passou": "Portugal",
       "penalties": false,
       "overtime": false,
       "tipo_decisao": ""
