@@ -23,15 +23,15 @@
   .home-bg::before{content:"";position:absolute;inset:0;
     background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 
-  .home-btn{width:100%;max-width:420px;padding:28px 32px;border-radius:20px;border:none;
-    display:flex;align-items:center;gap:20px;text-align:left;cursor:pointer;
+  .home-btn{width:100%;max-width:420px;padding:24px 28px;border-radius:20px;border:none;
+    display:flex;align-items:center;gap:18px;text-align:left;cursor:pointer;
     transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
   .home-btn:hover{transform:translateY(-4px) scale(1.01);}
   .home-btn::after{content:"";position:absolute;inset:0;
     background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,transparent 60%);
     border-radius:20px;pointer-events:none;}
-  .home-btn-icon{font-size:42px;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));}
-  .home-btn-label{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;line-height:1;}
+  .home-btn-icon{font-size:38px;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));}
+  .home-btn-label{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:2px;line-height:1;}
   .home-btn-sub{font-size:12px;font-weight:600;opacity:.8;margin-top:4px;letter-spacing:.5px;}
 
   .btn-ranking{background:linear-gradient(135deg,#b8860b 0%,#ffd700 50%,#e6a800 100%);
@@ -42,31 +42,38 @@
   .btn-jogos{background:linear-gradient(135deg,#0d2d5c 0%,#1a4fa8 50%,#0a3a80 100%);
     color:#fff;box-shadow:0 8px 32px rgba(26,79,168,.5),0 2px 8px rgba(0,0,0,.4);
     border:1px solid rgba(255,255,255,.1);}
+  .btn-chave{background:linear-gradient(135deg,#5c0d2d 0%,#a81a4f 50%,#800a3a 100%);
+    color:#fff;box-shadow:0 8px 32px rgba(168,26,79,.5),0 2px 8px rgba(0,0,0,.4);
+    border:1px solid rgba(255,255,255,.1);}
 
   .app-header{background:linear-gradient(180deg,#0a2e17 0%,#071c0e 100%);
     border-bottom:3px solid #ffd700;padding:16px 16px 0;
     box-shadow:0 4px 24px rgba(0,0,0,.5);}
-  .nav-btn{padding:10px 18px;font-weight:700;font-size:12px;
-    border:none;border-radius:10px 10px 0 0;transition:all .2s;letter-spacing:.5px;}
+  .nav-btn{padding:10px 16px;font-weight:700;font-size:12px;
+    border:none;border-radius:10px 10px 0 0;transition:all .2s;letter-spacing:.5px;white-space:nowrap;}
   .nav-btn.active{background:#ffd700;color:#0d3b1e;box-shadow:0 -4px 12px rgba(255,215,0,.3);}
   .nav-btn.inactive{background:transparent;color:#a8d5b8;}
   .nav-btn.inactive:hover{background:rgba(255,255,255,.07);color:#fff;}
 
-  .sub-nav{display:flex;gap:4;margin-bottom:16px;border-bottom:2px solid rgba(255,255,255,.1);padding-bottom:8px;}
-  .sub-nav-btn{padding:8px 16px;font-weight:700;font-size:12px;border:none;background:transparent;color:#a8d5b8;
-    border-bottom:3px solid transparent;transition:all .2s;letter-spacing:.5px;cursor:pointer;}
+  .sub-nav{display:flex;gap:4px;margin-bottom:16px;border-bottom:2px solid rgba(255,255,255,.1);padding-bottom:8px;overflow-x:auto;}
+  .sub-nav-btn{padding:8px 14px;font-weight:700;font-size:11.5px;border:none;background:transparent;color:#a8d5b8;
+    border-bottom:3px solid transparent;transition:all .2s;letter-spacing:.5px;cursor:pointer;white-space:nowrap;}
   .sub-nav-btn.active{color:#ffd700;border-bottom-color:#ffd700;}
   .sub-nav-btn:hover{color:#fff;}
 
   .rank-table{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.4);}
-  .rank-head{display:grid;grid-template-columns:54px 1fr 72px 90px;
+  .rank-head{display:grid;grid-template-columns:54px 1fr 72px 90px 30px;
     background:linear-gradient(90deg,#0a2e17,#1a5c30);
     padding:12px 16px;font-size:11px;font-weight:700;color:#ffd700;letter-spacing:1.5px;}
-  .rank-row{display:grid;grid-template-columns:54px 1fr 72px 90px;
-    padding:14px 16px;align-items:center;border-bottom:1px solid #e8f0ea;transition:background .15s;}
+  .rank-row{padding:14px 16px;border-bottom:1px solid #e8f0ea;transition:background .15s;cursor:pointer;}
+  .rank-row-main{display:grid;grid-template-columns:54px 1fr 72px 90px 30px;align-items:center;}
   .rank-row:hover{background:#f0f7f1;}
   .rank-pos{text-align:center;}
   .pts-badge{border-radius:30px;padding:4px 18px;font-weight:800;font-size:14px;letter-spacing:.5px;}
+  .rank-detail{margin-top:12px;padding-top:12px;border-top:1px dashed #dde8de;}
+  .rank-detail-row{display:flex;justify-content:space-between;padding:5px 4px;font-size:12.5px;color:#3a4a3d;}
+  .rank-detail-row:nth-child(even){background:#f7faf7;border-radius:6px;}
+  .rank-detail-pts{font-weight:800;color:#0d6030;}
 
   .pt-wrap{overflow-x:auto;border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.4);}
   .pt{border-collapse:collapse;width:max-content;min-width:100%;font-size:12.5px;background:#fff;}
@@ -120,9 +127,11 @@
 
   .loading-spinner{animation:spin 1s linear infinite;}
   @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  @keyframes popIn{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
 
   .mm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:20px;}
-  .mm-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.3);overflow:hidden;}
+  .mm-card{background:#fff;border-radius:14px;padding:16px;box-shadow:0 4px 16px rgba(0,0,0,.3);overflow:hidden;
+    animation:popIn .25s ease;}
   .mm-label{color:#6db882;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;}
   .mm-teams{display:flex;align-items:stretch;gap:0;min-height:100px;}
   .mm-team{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -133,11 +142,39 @@
   .mm-time{color:#999;font-size:11px;margin-top:10px;text-align:center;}
   .mm-placar{margin-top:12px;padding:10px;background:linear-gradient(135deg,#0a2e17,#1a5c30);
     border-radius:8px;text-align:center;color:#ffd700;font-weight:800;font-size:18px;letter-spacing:1px;}
-  
+
   .mm-team.winner{background:linear-gradient(135deg,#d4edda,#c3e6cb);color:#155724;}
   .mm-team.winner .mm-team-name{color:#155724;}
   .mm-team.loser{background:#e8e8e8;opacity:.6;}
   .mm-team.loser .mm-team-name{color:#666;}
+  .mm-team.pending{opacity:.55;}
+
+  /* ---- Chaveamento (bracket) FIFA style, com conectores SVG ---- */
+  .bracket-wrap{background:#fff;border-radius:16px;padding:20px 12px;box-shadow:0 8px 40px rgba(0,0,0,.4);
+    overflow-x:auto;color:#1a2e1d;}
+  .bracket-outer{display:flex;align-items:flex-start;width:max-content;}
+  .bracket-roundcol{width:168px;flex-shrink:0;}
+  .bracket-roundcol-final{width:186px;flex-shrink:0;}
+  .bracket-gap{flex-shrink:0;position:relative;}
+  .bracket-round-title{text-align:center;font-family:'Bebas Neue',sans-serif;
+    letter-spacing:1.5px;font-size:13px;color:#0d6030;margin-bottom:12px;text-transform:uppercase;}
+  .bracket-stage{position:relative;}
+  .bmatch{border:1px solid #e0e8e2;border-radius:10px;overflow:hidden;background:#fbfcfb;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);position:absolute;left:0;right:0;animation:popIn .3s ease;}
+  .bmatch-row{display:flex;align-items:center;gap:6px;padding:6px 8px;font-size:11.5px;font-weight:700;color:#2a3a2d;}
+  .bmatch-row+.bmatch-row{border-top:1px solid #eef2ee;}
+  .bmatch-row.win{background:#eaf7ec;color:#0f5e26;}
+  .bmatch-row.lose{opacity:.5;}
+  .bmatch-flag{width:20px;height:14px;object-fit:cover;border-radius:2px;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,.08);}
+  .bmatch-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .bmatch-score{font-family:'Bebas Neue',sans-serif;font-size:14px;min-width:16px;text-align:center;}
+  .bmatch-meta{font-size:9px;text-align:center;padding:2px;letter-spacing:.5px;text-transform:uppercase;font-weight:800;}
+  .bmatch-meta.pen{background:#ff9800;color:#fff;}
+  .bmatch-meta.ot{background:#2196F3;color:#fff;}
+  .bracket-final-card{border:2px solid #ffd700;box-shadow:0 4px 18px rgba(255,215,0,.35);}
+  .bracket-champion{margin-top:14px;text-align:center;background:linear-gradient(135deg,#ffd700,#e6a800);
+    color:#1a0e00;border-radius:12px;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;
+    box-shadow:0 6px 20px rgba(255,215,0,.4);}
 </style>
 </head>
 <body>
@@ -182,18 +219,30 @@ const PAISES_CODIGOS = {
 };
 
 const getFlagUrl = (pais) => {
-  const codigo = PAISES_CODIGOS[pais] || "xx";
+  const codigo = PAISES_CODIGOS[pais];
+  if (!codigo) return null;
   return `https://flagcdn.com/w160/${codigo}.webp`;
+};
+
+// Rótulos curtos para as abas de fase (usados em Palpites/Placares/Chaveamento)
+const PHASE_ICON = {
+  "ORGANIZAÇÃO": "📊",
+  "MATA-MATA 32": "🔴",
+  "MATA-MATA 16": "🟠",
+  "MATA-MATA 8": "🟡",
+  "MATA-MATA 4": "🟢",
+  "MATA-MATA 2": "🏆",
 };
 
 function App() {
   const [page, setPage]   = useState("home");
-  const [subPage, setSubPage] = useState("grupos");
+  const [subPage, setSubPage] = useState("ORGANIZAÇÃO");
   const [data, setData]   = useState(null);
   const [err,  setErr]    = useState(null);
   const [hl,   setHl]     = useState(null);
   const [onlyG,setOnlyG]  = useState(true);
   const [ts,   setTs]     = useState(Date.now());
+  const [openRank, setOpenRank] = useState(null);
 
   useEffect(() => {
     fetch("results.json?t=" + ts)
@@ -202,51 +251,58 @@ function App() {
       .catch(e => setErr(e.message));
   }, [ts]);
 
+  const phases = data ? data.phases : [];
+  const phaseLabel = (s) => (data && data.phase_labels[s]) || s;
+
+  // ranking: usa o ranking já calculado no results.json (pontuação acumulativa por fase)
   const ranking = useMemo(() => {
     if (!data) return [];
+    if (data.ranking) return data.ranking;
+    // fallback (compatibilidade com results.json antigo)
     return data.participants.map(name => {
       let pts = 0;
-      data.games.forEach(g => {
-        if (g.resultado && (g.guesses[name]||"") === g.resultado) pts++;
-      });
-      return { name, pts };
-    }).sort((a,b) => b.pts - a.pts || a.name.localeCompare(b.name));
+      data.games.forEach(g => { if (g.resultado && (g.guesses[name]||"") === g.resultado) pts++; });
+      return { name, total_points: pts };
+    }).sort((a,b) => b.total_points - a.total_points || a.name.localeCompare(b.name));
   }, [data]);
+
+  const gamesOfPhase = (sheet) => data ? data.games.filter(g=>g.sheet===sheet) : [];
 
   const grouped = useMemo(() => {
     if (!data) return { order:[], map:{} };
     const map={}, order=[];
     let cur="";
-    data.games.forEach(g => {
+    gamesOfPhase(subPage).forEach(g => {
       if(g.date) cur=g.date;
       const d=cur||"—";
       if(!map[d]){map[d]=[];order.push(d);}
       map[d].push(g);
     });
     return { order, map };
-  }, [data]);
+  }, [data, subPage]);
 
   const gamesShown = useMemo(() => {
-    if(!data) return [];
-    return onlyG ? data.games.filter(g=>Object.values(g.guesses).some(v=>v)) : data.games;
-  },[data,onlyG]);
+    const list = gamesOfPhase(subPage);
+    return onlyG ? list.filter(g=>Object.values(g.guesses).some(v=>v)) : list;
+  },[data,onlyG,subPage]);
 
   const gCls = (g,r) => !g?"g-non":!r?"g-wai":g===r?"g-hit":"g-mis";
   const gLbl = (g,r) => !g?"–":!r?g:g===r?`${g}✓`:`${g}✗`;
 
-  const playedOrg = data ? data.games.filter(g=>g.sheet==="ORGANIZAÇÃO"&&g.resultado).length : 0;
-  const totalOrg  = data ? data.games.filter(g=>g.sheet==="ORGANIZAÇÃO").length : 0;
-  const playedMM  = data ? data.games.filter(g=>g.sheet==="MATA-MATA 32"&&g.resultado).length : 0;
-  const totalMM   = data ? data.games.filter(g=>g.sheet==="MATA-MATA 32").length : 0;
-  const played    = playedOrg + playedMM;
-  const total     = totalOrg + totalMM;
+  const played = data ? data.games.filter(g=>g.resultado).length : 0;
+  const total  = data ? data.games.length : 0;
 
   const getWinner = (game) => {
-    if (!game.resultado && (game.gols_a === "" || game.gols_b === "")) return null;
     if (game.resultado === "A") return 0;
     if (game.resultado === "B") return 1;
     if (game.resultado === "E") return 2;
     return null;
+  };
+
+  const Flag = ({pais, className}) => {
+    const url = getFlagUrl(pais);
+    if(!url) return null;
+    return <img src={url} alt={pais} className={className} onError={(e)=>e.target.style.display='none'}/>;
   };
 
   if (!data && !err) return (
@@ -265,14 +321,14 @@ function App() {
 
   if (page==="home") return (
     <div className="home-bg">
-      <div style={{textAlign:"center",marginBottom:48,position:"relative",zIndex:1}}>
-        <div style={{fontSize:72,marginBottom:8,filter:"drop-shadow(0 4px 16px rgba(255,215,0,.5))"}}>🏆</div>
-        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:56,letterSpacing:6,color:"#ffd700",textShadow:"0 4px 24px rgba(255,215,0,.4), 0 0 60px rgba(255,215,0,.2)",lineHeight:1}}>Bolão Copa</div>
-        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:38,letterSpacing:8,color:"#fff",opacity:.7,marginTop:2}}>2026</div>
+      <div style={{textAlign:"center",marginBottom:40,position:"relative",zIndex:1}}>
+        <div style={{fontSize:64,marginBottom:8,filter:"drop-shadow(0 4px 16px rgba(255,215,0,.5))"}}>🏆</div>
+        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:52,letterSpacing:6,color:"#ffd700",textShadow:"0 4px 24px rgba(255,215,0,.4), 0 0 60px rgba(255,215,0,.2)",lineHeight:1}}>Bolão Copa</div>
+        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:34,letterSpacing:8,color:"#fff",opacity:.7,marginTop:2}}>2026</div>
         <div style={{marginTop:12,color:"#6db882",fontSize:13,fontWeight:600,letterSpacing:1}}>⚽ {played}/{total} jogos apurados &nbsp;·&nbsp; {data.participants.length} participantes</div>
       </div>
 
-      <div style={{display:"flex",flexDirection:"column",gap:16,width:"100%",maxWidth:420,position:"relative",zIndex:1}}>
+      <div style={{display:"flex",flexDirection:"column",gap:14,width:"100%",maxWidth:420,position:"relative",zIndex:1}}>
         <button className="home-btn btn-ranking" onClick={()=>setPage("ranking")}>
           <span className="home-btn-icon">🏆</span>
           <div>
@@ -280,23 +336,30 @@ function App() {
             <div className="home-btn-sub">Veja quem está na liderança</div>
           </div>
         </button>
-        <button className="home-btn btn-palpites" onClick={()=>{setPage("palpites"); setSubPage("grupos");}}>
+        <button className="home-btn btn-chave" onClick={()=>setPage("chave")}>
+          <span className="home-btn-icon">🌐</span>
+          <div>
+            <div className="home-btn-label">Chaveamento</div>
+            <div className="home-btn-sub">Mata-mata completo, estilo FIFA</div>
+          </div>
+        </button>
+        <button className="home-btn btn-palpites" onClick={()=>{setPage("palpites"); setSubPage("ORGANIZAÇÃO");}}>
           <span className="home-btn-icon">📋</span>
           <div>
             <div className="home-btn-label">Palpites</div>
             <div className="home-btn-sub">Confira o que cada um votou</div>
           </div>
         </button>
-        <button className="home-btn btn-jogos" onClick={()=>{setPage("jogos"); setSubPage("grupos");}}>
+        <button className="home-btn btn-jogos" onClick={()=>{setPage("jogos"); setSubPage("ORGANIZAÇÃO");}}>
           <span className="home-btn-icon">⚽</span>
           <div>
             <div className="home-btn-label">Placares</div>
-            <div className="home-btn-sub">Resultados dos jogos</div>
+            <div className="home-btn-sub">Resultados de todas as fases</div>
           </div>
         </button>
       </div>
 
-      <div style={{marginTop:32,color:"#3a6b48",fontSize:11,letterSpacing:1,position:"relative",zIndex:1}}>
+      <div style={{marginTop:28,color:"#3a6b48",fontSize:11,letterSpacing:1,position:"relative",zIndex:1,textAlign:"center"}}>
         Atualizado automaticamente via planilha Excel
       </div>
     </div>
@@ -304,16 +367,16 @@ function App() {
 
   const Header = () => (
     <div className="app-header">
-      <div style={{maxWidth:1100,margin:"0 auto"}}>
+      <div style={{maxWidth:1200,margin:"0 auto"}}>
         <div style={{display:"flex",alignItems:"center",gap:12,marginBottom:8}}>
           <button onClick={()=>setPage("home")} style={{background:"transparent",border:"none",color:"#ffd700",fontSize:22,cursor:"pointer",padding:"0 4px",lineHeight:1}} title="Início">⬅</button>
-          <span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:26,color:"#ffd700",letterSpacing:3}}>Bolão Copa 2026</span>
-          <span style={{marginLeft:"auto",color:"#6db882",fontSize:12}}>⚽ {played}/{total} apurados</span>
+          <span style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:24,color:"#ffd700",letterSpacing:3}}>Bolão Copa 2026</span>
+          <span style={{marginLeft:"auto",color:"#6db882",fontSize:12,whiteSpace:"nowrap"}}>⚽ {played}/{total} apurados</span>
           <button onClick={()=>setTs(Date.now())} title="Recarregar" style={{background:"rgba(255,255,255,.05)",border:"1px solid #2d6a40",color:"#a8d5b8",borderRadius:8,padding:"5px 10px",fontSize:12,display:"flex",alignItems:"center",gap:4}}>🔄</button>
         </div>
         <div style={{display:"flex",gap:4,flexWrap:"wrap",overflowX:"auto"}}>
-          {[["ranking","🏆 Ranking"],["palpites","📋 Palpites"],["jogos","⚽ Placares"]].map(([k,l])=>(
-            <button key={k} onClick={()=>{setPage(k);if(k!=="ranking")setSubPage("grupos");}}
+          {[["ranking","🏆 Ranking"],["chave","🌐 Chaveamento"],["palpites","📋 Palpites"],["jogos","⚽ Placares"]].map(([k,l])=>(
+            <button key={k} onClick={()=>{setPage(k);if(k==="palpites"||k==="jogos")setSubPage("ORGANIZAÇÃO");}}
               className={`nav-btn ${page===k?"active":"inactive"}`}>{l}</button>
           ))}
         </div>
@@ -321,34 +384,305 @@ function App() {
     </div>
   );
 
+  // ---------- Chaveamento (bracket estilo FIFA, com conectores SVG) ----------
+  const UNIT = 74;     // altura reservada por confronto "folha" (32avos, 8 por lado)
+  const CARD_H = 54;   // altura visual do card de confronto
+  const GAP_W = 34;    // largura do espaço de conexão entre colunas
+
+  // centros verticais (em px) de cada partida, por rodada, dado N confrontos-folha
+  const buildCenters = (N) => {
+    const rounds = [];
+    rounds[0] = Array.from({length:N}, (_,i) => i*UNIT + UNIT/2);
+    let cur = rounds[0];
+    while (cur.length > 1) {
+      const next = [];
+      for (let i=0; i<cur.length; i+=2) next.push((cur[i]+cur[i+1])/2);
+      rounds.push(next);
+      cur = next;
+    }
+    return rounds; // rounds[0]=folhas ... rounds[last]=1 elemento
+  };
+
+  const BracketMatch = ({game, top, isFinal}) => {
+    if (!game) return null;
+    const nameA = game.timeA_resolved || game.timeA;
+    const nameB = game.timeB_resolved || game.timeB;
+    const winner = getWinner(game);
+    const hasScore = game.gols_a!=="" && game.gols_b!=="";
+    return (
+      <div className={`bmatch ${isFinal?"bracket-final-card":""}`} style={{top, height:CARD_H}}>
+        <div className={`bmatch-row ${winner===0?"win":winner===1?"lose":""}`}>
+          <Flag pais={nameA} className="bmatch-flag"/>
+          <span className="bmatch-name">{nameA}</span>
+          <span className="bmatch-score">{hasScore?game.gols_a:""}</span>
+        </div>
+        <div className={`bmatch-row ${winner===1?"win":winner===0?"lose":""}`}>
+          <Flag pais={nameB} className="bmatch-flag"/>
+          <span className="bmatch-name">{nameB}</span>
+          <span className="bmatch-score">{hasScore?game.gols_b:""}</span>
+        </div>
+        {game.penalties && <div className="bmatch-meta pen">Pênaltis</div>}
+        {game.overtime && <div className="bmatch-meta ot">Prorrogação</div>}
+      </div>
+    );
+  };
+
+  const BracketColumn = ({title, games, centers, height, isFinal}) => (
+    <div className={isFinal?"bracket-roundcol-final":"bracket-roundcol"}>
+      <div className="bracket-round-title">{title}</div>
+      <div className="bracket-stage" style={{height}}>
+        {games.map((g,i) => <BracketMatch key={g?g.id:i} game={g} top={centers[i]-CARD_H/2} isFinal={isFinal}/>)}
+      </div>
+    </div>
+  );
+
+  // desenha os conectores em "cotovelo" entre uma coluna com feeders (2N confrontos) e a coluna seguinte (N)
+  // dir=1: feeders à esquerda do gap, alvo à direita (lado esquerdo da chave)
+  // dir=-1: feeders à direita do gap, alvo à esquerda (lado direito da chave, espelhado)
+  const BracketGap = ({feederCenters, targetCenters, height, dir}) => {
+    const mid = GAP_W/2;
+    const x = (v) => dir>0 ? v : (GAP_W - v);
+    const paths = [];
+    for (let i=0; i<targetCenters.length; i++) {
+      const y1 = feederCenters[i*2], y2 = feederCenters[i*2+1], yT = targetCenters[i];
+      paths.push(
+        <path key={i} d={`M ${x(0)} ${y1} H ${x(mid)} V ${y2} H ${x(0)} M ${x(mid)} ${(y1+y2)/2} H ${x(GAP_W)}`}
+          fill="none" stroke="#c7d6cb" strokeWidth="2"/>
+      );
+    }
+    return (
+      <div className="bracket-gap" style={{width:GAP_W, height}}>
+        <svg width={GAP_W} height={height} style={{display:"block"}}>{paths}</svg>
+      </div>
+    );
+  };
+
+  const bracketPage = () => {
+    const g32 = gamesOfPhase("MATA-MATA 32");
+    const g16 = gamesOfPhase("MATA-MATA 16");
+    const g8  = gamesOfPhase("MATA-MATA 8");
+    const g4  = gamesOfPhase("MATA-MATA 4");
+    const g2  = gamesOfPhase("MATA-MATA 2");
+
+    const left32 = g32.slice(0,8), right32 = g32.slice(8,16);
+    const left16 = g16.slice(0,4), right16 = g16.slice(4,8);
+    const left8  = g8.slice(0,2),  right8  = g8.slice(2,4);
+    const left4  = g4.slice(0,1),  right4  = g4.slice(1,2);
+    const final  = g2[0];
+
+    const champion = final && final.passou ? final.passou : null;
+
+    // centros: rounds[0]=32avos(8), [1]=oitavas(4), [2]=quartas(2), [3]=semifinal(1)
+    const rounds = buildCenters(8);
+    const H = 8*UNIT;
+
+    return (
+      <div>
+        <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:6,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>🌐 Chaveamento</div>
+        <div style={{color:"#6db882",fontSize:12,marginBottom:16}}>Mata-mata completo — os vencedores avançam automaticamente, com as linhas conectando cada confronto à fase seguinte conforme os placares são preenchidos na planilha.</div>
+        <div className="bracket-wrap">
+          <div className="bracket-outer">
+            <BracketColumn title="32avos" games={left32} centers={rounds[0]} height={H}/>
+            <BracketGap feederCenters={rounds[0]} targetCenters={rounds[1]} height={H} dir={1}/>
+            <BracketColumn title="Oitavas" games={left16} centers={rounds[1]} height={H}/>
+            <BracketGap feederCenters={rounds[1]} targetCenters={rounds[2]} height={H} dir={1}/>
+            <BracketColumn title="Quartas" games={left8} centers={rounds[2]} height={H}/>
+            <BracketGap feederCenters={rounds[2]} targetCenters={rounds[3]} height={H} dir={1}/>
+            <BracketColumn title="Semifinal" games={left4} centers={rounds[3]} height={H}/>
+            <BracketGap feederCenters={[rounds[3][0],rounds[3][0]]} targetCenters={[rounds[3][0]]} height={H} dir={1}/>
+            <BracketColumn title="Final" games={final?[final]:[]} centers={[rounds[3][0]]} height={H} isFinal/>
+            <BracketGap feederCenters={[rounds[3][0],rounds[3][0]]} targetCenters={[rounds[3][0]]} height={H} dir={-1}/>
+            <BracketColumn title="Semifinal" games={right4} centers={rounds[3]} height={H}/>
+            <BracketGap feederCenters={rounds[2]} targetCenters={rounds[3]} height={H} dir={-1}/>
+            <BracketColumn title="Quartas" games={right8} centers={rounds[2]} height={H}/>
+            <BracketGap feederCenters={rounds[1]} targetCenters={rounds[2]} height={H} dir={-1}/>
+            <BracketColumn title="Oitavas" games={right16} centers={rounds[1]} height={H}/>
+            <BracketGap feederCenters={rounds[0]} targetCenters={rounds[1]} height={H} dir={-1}/>
+            <BracketColumn title="32avos" games={right32} centers={rounds[0]} height={H}/>
+          </div>
+        </div>
+        {champion && (
+          <div className="bracket-champion">🏆 CAMPEÃO: {champion}</div>
+        )}
+      </div>
+    );
+  };
+
+  // ---------- Palpites / Placares: tabela de palpites por fase ----------
+  const GuessTable = () => (
+    <div className="pt-wrap">
+      <table className="pt">
+        <thead><tr>
+          <th className="cj">JOGO</th>
+          <th className="cr">PLACAR</th>
+          {data.participants.map(p=>(
+            <th key={p} onClick={()=>setHl(hl===p?null:p)} title={`Destacar ${p}`} style={{minWidth:36,textAlign:"center",cursor:"pointer",background:hl===p?"#1a4a28":undefined,color:hl===p?"#ffd700":undefined,transition:"background .15s"}}>
+              {p.includes(" ")?<>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>:p}
+            </th>
+          ))}
+        </tr></thead>
+        <tbody>
+          {(()=>{
+            let lastD="";
+            return gamesShown.map((game,idx)=>{
+              const showDate=game.date&&game.date!==lastD;
+              if(game.date)lastD=game.date;
+              const r=game.resultado;
+              const rs=r?RES_STYLE[r]:null;
+              const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}–${game.gols_b}`:"";
+              return (
+                <tr key={game.id}>
+                  <td className="cj">
+                    {showDate&&<div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:3}}>📅 {game.date}/2026</div>}
+                    {subPage!=="ORGANIZAÇÃO"&&<div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:3}}>PARTIDA {idx+1}</div>}
+                    {game.match_resolved || game.match}
+                  </td>
+                  <td className="cr">
+                    {placar&&rs?<span style={{background:rs.bg,color:rs.color,borderRadius:8,padding:"3px 9px",fontWeight:800,fontSize:13,whiteSpace:"nowrap"}}>{placar}</span>:<span style={{color:"#ccc",fontSize:11}}>—</span>}
+                  </td>
+                  {data.participants.map(p=>{
+                    const guess=(game.guesses||{})[p]||"";
+                    return (
+                      <td key={p} className={`gc ${gCls(guess,r)}`} style={hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}}>
+                        {gLbl(guess,r)}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            });
+          })()}
+        </tbody>
+      </table>
+    </div>
+  );
+
+  // ---------- Placares: lista agrupada por data (fase de grupos) ou grid de cards (mata-mata) ----------
+  const GamesGroupedList = () => (
+    <>
+      {grouped.order.map(date=>{
+        const games=grouped.map[date];
+        if(games.length===0) return null;
+        return (
+          <div key={date} style={{marginBottom:22}}>
+            <div className="date-label">📅 {date}/2026</div>
+            <div className="jogos-card">
+              {games.map((game,gi)=>{
+                const r=game.resultado;
+                const rs=r?RES_STYLE[r]:null;
+                const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a} – ${game.gols_b}`:"";
+                return (
+                  <div key={game.id}>
+                    {gi>0&&<div className="jogo-sep"/>}
+                    <div className="jogo-row">
+                      <div className="jogo-match">{game.match}</div>
+                      {placar&&rs?<div style={{display:"flex",alignItems:"center",gap:8}}>
+                        <span className="placar-badge" style={{background:rs.bg}}>{placar}</span>
+                        <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
+                      </div>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </>
+  );
+
+  const GamesGrid = () => (
+    <div className="mm-grid">
+      {gamesOfPhase(subPage).map((game,idx)=>{
+        const timeA = game.timeA_resolved || game.timeA;
+        const timeB = game.timeB_resolved || game.timeB;
+        const placar = game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}x${game.gols_b}`:"";
+        const passou = game.passou || "";
+        return (
+          <div key={game.id} className="mm-card">
+            <div className="mm-label">Partida {idx+1}</div>
+            <div className="mm-teams">
+              <div className={`mm-team ${passou===timeA?"winner":passou&&passou!==timeA?"loser":""} ${game.pending?"pending":""}`}>
+                <Flag pais={timeA} className="mm-team-flag"/>
+                <div className="mm-team-name">{timeA}</div>
+              </div>
+              <div className="mm-vs">vs</div>
+              <div className={`mm-team ${passou===timeB?"winner":passou&&passou!==timeB?"loser":""} ${game.pending?"pending":""}`}>
+                <Flag pais={timeB} className="mm-team-flag"/>
+                <div className="mm-team-name">{timeB}</div>
+              </div>
+            </div>
+            {placar && <div className="mm-placar">{placar}</div>}
+            {passou && <div style={{marginTop:10,padding:8,background:"#d4edda",borderRadius:8,textAlign:"center",color:"#155724",fontWeight:700,fontSize:12}}>✅ Classificado: {passou}</div>}
+            {game.penalties && <div style={{marginTop:8,padding:6,background:"#ff9800",color:"#fff",borderRadius:6,textAlign:"center",fontWeight:700,fontSize:11}}>⚽ Decidido nos Pênaltis</div>}
+            {game.overtime && <div style={{marginTop:8,padding:6,background:"#2196F3",color:"#fff",borderRadius:6,textAlign:"center",fontWeight:700,fontSize:11}}>⏱ Decidido na Prorrogação</div>}
+            {game.resultado==="E" && !game.penalties && !game.overtime && <div style={{marginTop:10,padding:8,background:"#fff3cd",borderRadius:8,textAlign:"center",color:"#856404",fontWeight:700,fontSize:12}}>⚖️ Empate</div>}
+            {!placar && <div className="mm-time">Aguardando resultado</div>}
+          </div>
+        );
+      })}
+    </div>
+  );
+
+  const PhaseSubNav = () => (
+    <div className="sub-nav">
+      {phases.map(s=>(
+        <button key={s} className={`sub-nav-btn ${subPage===s?"active":""}`} onClick={()=>setSubPage(s)}>
+          {PHASE_ICON[s]||"⚽"} {phaseLabel(s)}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <div style={{minHeight:"100vh",background:"#071c0e"}}>
       <Header/>
-      <div style={{maxWidth:1100,margin:"0 auto",padding:"22px 14px 60px"}}>
+      <div style={{maxWidth:1200,margin:"0 auto",padding:"22px 14px 60px"}}>
 
         {page==="ranking" && (
-          <div style={{maxWidth:580}}>
-            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:18,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>🏆 Classificação Geral</div>
+          <div style={{maxWidth:640}}>
+            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:6,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>🏆 Classificação Geral</div>
+            <div style={{color:"#6db882",fontSize:12,marginBottom:16}}>Pontuação acumulada de todas as fases já apuradas. Clique num participante para ver o detalhe por fase.</div>
             <div className="rank-table">
               <div className="rank-head">
                 <div style={{textAlign:"center"}}>#</div>
                 <div>PARTICIPANTE</div>
                 <div style={{textAlign:"center"}}>ACERTOS</div>
                 <div style={{textAlign:"center"}}>PONTOS</div>
+                <div></div>
               </div>
               {ranking.map((p,i)=>{
-                const isTop=i<3&&p.pts>0;
-                let pos=i+1;for(let j=0;j<i;j++)if(ranking[j].pts===p.pts){pos=j+1;break;}
+                const isTop=i<3&&p.total_points>0;
+                let pos=i+1;for(let j=0;j<i;j++)if(ranking[j].total_points===p.total_points){pos=j+1;break;}
+                const isOpen = openRank===p.name;
                 return (
-                  <div key={p.name} className="rank-row" style={{background:i%2===0?"#f9fbf9":"#fff"}}>
-                    <div className="rank-pos" style={{fontSize:isTop?22:15,fontWeight:800,color:isTop?"#0d3b1e":"#9aaa9e"}}>
-                      {isTop?MEDALS[i]:`${pos}º`}
+                  <div key={p.name} className="rank-row" style={{background:i%2===0?"#f9fbf9":"#fff"}}
+                    onClick={()=>setOpenRank(isOpen?null:p.name)}>
+                    <div className="rank-row-main">
+                      <div className="rank-pos" style={{fontSize:isTop?22:15,fontWeight:800,color:isTop?"#0d3b1e":"#9aaa9e"}}>
+                        {isTop?MEDALS[i]:`${pos}º`}
+                      </div>
+                      <div style={{fontWeight:isTop?800:600,fontSize:15,color:"#1a2e1d"}}>{p.name}</div>
+                      <div style={{textAlign:"center",fontSize:14,fontWeight:700,color:"#3d7a4e"}}>{p.acertos!=null?p.acertos:p.total_points}</div>
+                      <div style={{textAlign:"center"}}>
+                        <span className="pts-badge" style={{background:p.total_points>0?"linear-gradient(135deg,#0a2e17,#1a6030)":"#e8f0ea",color:p.total_points>0?"#ffd700":"#8a9a8e"}}>{p.total_points}</span>
+                      </div>
+                      <div style={{textAlign:"center",color:"#9aaa9e",fontSize:12}}>{isOpen?"▲":"▼"}</div>
                     </div>
-                    <div style={{fontWeight:isTop?800:600,fontSize:15,color:"#1a2e1d"}}>{p.name}</div>
-                    <div style={{textAlign:"center",fontSize:14,fontWeight:700,color:"#3d7a4e"}}>{p.pts}</div>
-                    <div style={{textAlign:"center"}}>
-                      <span className="pts-badge" style={{background:p.pts>0?"linear-gradient(135deg,#0a2e17,#1a6030)":"#e8f0ea",color:p.pts>0?"#ffd700":"#8a9a8e"}}>{p.pts}</span>
-                    </div>
+                    {isOpen && p.by_phase && (
+                      <div className="rank-detail">
+                        {phases.map(s=>{
+                          const d = p.by_phase[s];
+                          if(!d) return null;
+                          return (
+                            <div key={s} className="rank-detail-row">
+                              <span>{PHASE_ICON[s]} {d.label}</span>
+                              <span>+{d.points} pt · <span className="rank-detail-pts">{d.total_after} acum.</span></span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 );
               })}
@@ -356,210 +690,40 @@ function App() {
           </div>
         )}
 
+        {page==="chave" && bracketPage()}
+
         {page==="palpites" && (
           <div>
-            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:16,textShadow:"0 2px 12px rgba(255,915,0,.3)"}}>📋 Palpites</div>
-            
-            <div className="sub-nav">
-              <button className={`sub-nav-btn ${subPage==="grupos"?"active":""}`} onClick={()=>setSubPage("grupos")}>📊 Fase de Grupos</button>
-              <button className={`sub-nav-btn ${subPage==="matamata"?"active":""}`} onClick={()=>setSubPage("matamata")}>🔴 Mata-Mata</button>
+            <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:16,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>📋 Palpites</div>
+
+            <PhaseSubNav/>
+
+            <div style={{display:"flex",flexWrap:"wrap",gap:7,marginBottom:12,alignItems:"center"}}>
+              <span style={{color:"#6db882",fontSize:12,fontWeight:700,letterSpacing:.5,whiteSpace:"nowrap"}}>DESTACAR:</span>
+              <button className={`chip ${!hl?"chip-on":"chip-off"}`} onClick={()=>setHl(null)}>Todos</button>
+              {data.participants.map(p=>(
+                <button key={p} className={`chip ${hl===p?"chip-on":"chip-off"}`}
+                  onClick={()=>setHl(hl===p?null:p)}>{p}</button>
+              ))}
             </div>
 
-            {subPage==="grupos" && (
-              <>
-                <div style={{display:"flex",flexWrap:"wrap",gap:7,marginBottom:12,alignItems:"center"}}>
-                  <span style={{color:"#6db882",fontSize:12,fontWeight:700,letterSpacing:.5,whiteSpace:"nowrap"}}>DESTACAR:</span>
-                  <button className={`chip ${!hl?"chip-on":"chip-off"}`} onClick={()=>setHl(null)}>Todos</button>
-                  {data.participants.map(p=>(
-                    <button key={p} className={`chip ${hl===p?"chip-on":"chip-off"}`}
-                      onClick={()=>setHl(hl===p?null:p)}>{p}</button>
-                  ))}
-                </div>
+            <label style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer",color:"#a8d5b8",fontSize:13,marginBottom:14,fontWeight:600}}>
+              <input type="checkbox" checked={onlyG} onChange={e=>setOnlyG(e.target.checked)}
+                style={{width:15,height:15,cursor:"pointer",accentColor:"#ffd700"}}/>
+              Exibir apenas jogos com palpites
+            </label>
 
-                <label style={{display:"flex",alignItems:"center",gap:8,cursor:"pointer",color:"#a8d5b8",fontSize:13,marginBottom:14,fontWeight:600}}>
-                  <input type="checkbox" checked={onlyG} onChange={e=>setOnlyG(e.target.checked)}
-                    style={{width:15,height:15,cursor:"pointer",accentColor:"#ffd700"}}/>
-                  Exibir apenas jogos com palpites
-                </label>
-
-                <div className="pt-wrap">
-                  <table className="pt">
-                    <thead><tr>
-                      <th className="cj">JOGO</th>
-                      <th className="cr">PLACAR</th>
-                      {data.participants.map(p=>(
-                        <th key={p} onClick={()=>setHl(hl===p?null:p)} title={`Destacar ${p}`} style={{minWidth:36,textAlign:"center",cursor:"pointer",background:hl===p?"#1a4a28":undefined,color:hl===p?"#ffd700":undefined,transition:"background .15s"}}>
-                          {p.includes(" ")?<>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>:p}
-                        </th>
-                      ))}
-                    </tr></thead>
-                    <tbody>
-                      {(()=>{
-                        let lastD="";
-                        return gamesShown.filter(g=>g.sheet==="ORGANIZAÇÃO").map(game=>{
-                          const showDate=game.date&&game.date!==lastD;
-                          if(game.date)lastD=game.date;
-                          const r=game.resultado;
-                          const rs=r?RES_STYLE[r]:null;
-                          const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}–${game.gols_b}`:"";
-                          return (
-                            <tr key={game.id}>
-                              <td className="cj">
-                                {showDate&&<div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:3}}>📅 {game.date}/2026</div>}
-                                {game.match}
-                              </td>
-                              <td className="cr">
-                                {placar&&rs?<span style={{background:rs.bg,color:rs.color,borderRadius:8,padding:"3px 9px",fontWeight:800,fontSize:13,whiteSpace:"nowrap"}}>{placar}</span>:<span style={{color:"#ccc",fontSize:11}}>—</span>}
-                              </td>
-                              {data.participants.map(p=>{
-                                const guess=(game.guesses||{})[p]||"";
-                                return (
-                                  <td key={p} className={`gc ${gCls(guess,r)}`} style={hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}}>
-                                    {gLbl(guess,r)}
-                                  </td>
-                                );
-                              })}
-                            </tr>
-                          );
-                        });
-                      })()}
-                    </tbody>
-                  </table>
-                </div>
-              </>
-            )}
-
-            {subPage==="matamata" && (
-              <>
-                <div style={{color:"#6db882",fontSize:12,fontWeight:600,marginBottom:14,letterSpacing:.5}}>
-                  Mata-Mata: Acompanhe os palpites e resultados das eliminatórias
-                </div>
-
-                <div className="pt-wrap">
-                  <table className="pt">
-                    <thead><tr>
-                      <th className="cj">JOGO</th>
-                      <th className="cr">PLACAR</th>
-                      {data.participants.map(p=>(
-                        <th key={p} onClick={()=>setHl(hl===p?null:p)} title={`Destacar ${p}`} style={{minWidth:36,textAlign:"center",cursor:"pointer",background:hl===p?"#1a4a28":undefined,color:hl===p?"#ffd700":undefined,transition:"background .15s"}}>
-                          {p.includes(" ")?<>{p.split(" ")[0]}<br/><span style={{fontSize:10,opacity:.8}}>{p.split(" ").slice(1).join(" ")}</span></>:p}
-                        </th>
-                      ))}
-                    </tr></thead>
-                    <tbody>
-                      {data.games.filter(g=>g.sheet==="MATA-MATA 32").map((game,idx)=>{
-                        const r=game.resultado;
-                        const rs=r?RES_STYLE[r]:null;
-                        const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}–${game.gols_b}`:"";
-                        return (
-                          <tr key={game.id}>
-                            <td className="cj">
-                              <div style={{fontSize:10,fontWeight:800,color:"#3d7a4e",letterSpacing:1,marginBottom:3}}>PARTIDA {idx+1}</div>
-                              {game.match}
-                            </td>
-                            <td className="cr">
-                              {placar&&rs?<span style={{background:rs.bg,color:rs.color,borderRadius:8,padding:"3px 9px",fontWeight:800,fontSize:13,whiteSpace:"nowrap"}}>{placar}</span>:<span style={{color:"#ccc",fontSize:11}}>—</span>}
-                            </td>
-                            {data.participants.map(p=>{
-                              const guess=(game.guesses||{})[p]||"";
-                              return (
-                                <td key={p} className={`gc ${gCls(guess,r)}`} style={hl===p?{outline:"2px solid #ffd700",outlineOffset:"-2px"}:{}}>
-                                  {gLbl(guess,r)}
-                                </td>
-                              );
-                            })}
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-              </>
-            )}
+            <GuessTable/>
           </div>
         )}
 
         {page==="jogos" && (
           <div>
             <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:16,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>⚽ Placares</div>
-            
-            <div className="sub-nav">
-              <button className={`sub-nav-btn ${subPage==="grupos"?"active":""}`} onClick={()=>setSubPage("grupos")}>📊 Fase de Grupos</button>
-              <button className={`sub-nav-btn ${subPage==="matamata"?"active":""}`} onClick={()=>setSubPage("matamata")}>🔴 Mata-Mata</button>
-            </div>
 
-            {subPage==="grupos" && (
-              <>
-                {grouped.order.map(date=>{
-                  const games=grouped.map[date].filter(g=>g.sheet==="ORGANIZAÇÃO");
-                  if(games.length===0) return null;
-                  return (
-                    <div key={date} style={{marginBottom:22}}>
-                      <div className="date-label">📅 {date}/2026</div>
-                      <div className="jogos-card">
-                        {games.map((game,gi)=>{
-                          const r=game.resultado;
-                          const rs=r?RES_STYLE[r]:null;
-                          const placar=game.gols_a!==""&&game.gols_b!==""?`${game.gols_a} – ${game.gols_b}`:"";
-                          return (
-                            <div key={game.id}>
-                              {gi>0&&<div className="jogo-sep"/>}
-                              <div className="jogo-row">
-                                <div className="jogo-match">{game.match}</div>
-                                {placar&&rs?<div style={{display:"flex",alignItems:"center",gap:8}}>
-                                  <span className="placar-badge" style={{background:rs.bg}}>{placar}</span>
-                                  <span className="res-badge" style={{background:rs.bg,color:rs.color}}>{r}</span>
-                                </div>:<span style={{color:"#bbb",fontSize:13}}>Aguardando</span>}
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                })}
-              </>
-            )}
+            <PhaseSubNav/>
 
-            {subPage==="matamata" && (
-              <>
-                <div className="mm-grid">
-                  {data.games.filter(g=>g.sheet==="MATA-MATA 32").map(game=>{
-                    const times = game.match.split(" x ");
-                    const timeA = times[0]?.trim() || "";
-                    const timeB = times[1]?.trim() || "";
-                    const placar = game.gols_a!==""&&game.gols_b!==""?`${game.gols_a}x${game.gols_b}`:"";
-                    const winner = getWinner(game);
-                    const flagUrlA = getFlagUrl(timeA);
-                    const flagUrlB = getFlagUrl(timeB);
-                    const passou = game.passou || "";
-                    
-                    return (
-                      <div key={game.id} className="mm-card">
-                        <div className="mm-label">Partida {game.id - 71}</div>
-                        <div className="mm-teams">
-                          <div className={`mm-team ${passou===timeA?"winner":passou!==""&&passou!==timeA?"loser":""}`}>
-                            <img src={flagUrlA} alt={timeA} className="mm-team-flag" onError={(e)=>e.target.style.display='none'}/>
-                            <div className="mm-team-name">{timeA}</div>
-                          </div>
-                          <div className="mm-vs">vs</div>
-                          <div className={`mm-team ${passou===timeB?"winner":passou!==""&&passou!==timeB?"loser":""}`}>
-                            <img src={flagUrlB} alt={timeB} className="mm-team-flag" onError={(e)=>e.target.style.display='none'}/>
-                            <div className="mm-team-name">{timeB}</div>
-                          </div>
-                        </div>
-                        {placar && <div className="mm-placar">{placar}</div>}
-                        {passou && <div style={{marginTop:10,padding:8,background:"#d4edda",borderRadius:8,textAlign:"center",color:"#155724",fontWeight:700,fontSize:12}}>✅ Classificado: {passou}</div>}
-                        {game.penalties && <div style={{marginTop:8,padding:6,background:"#ff9800",color:"#fff",borderRadius:6,textAlign:"center",fontWeight:700,fontSize:11}}>⚽ Decidido nos Pênaltis</div>}
-                        {game.overtime && <div style={{marginTop:8,padding:6,background:"#2196F3",color:"#fff",borderRadius:6,textAlign:"center",fontWeight:700,fontSize:11}}>⏱ Decidido na Prorrogação</div>}
-                        {game.resultado==="E" && !game.penalties && !game.overtime && <div style={{marginTop:10,padding:8,background:"#fff3cd",borderRadius:8,textAlign:"center",color:"#856404",fontWeight:700,fontSize:12}}>⚖️ Empate</div>}
-                        {!placar && <div className="mm-time">Aguardando resultado</div>}
-                      </div>
-                    );
-                  })}
-                </div>
-              </>
-            )}
+            {subPage==="ORGANIZAÇÃO" ? <GamesGroupedList/> : <GamesGrid/>}
           </div>
         )}
 
