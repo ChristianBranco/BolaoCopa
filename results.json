@@ -4083,8 +4083,8 @@
     {
       "id": 94,
       "local_index": 7,
-      "match": "Vencedor Jogo 15 x Egito",
-      "timeA": "Vencedor Jogo 15",
+      "match": "Argentina x Egito",
+      "timeA": "Argentina",
       "timeB": "Egito",
       "date": "07/07",
       "resultado": "",
@@ -4126,9 +4126,9 @@
     {
       "id": 95,
       "local_index": 8,
-      "match": "Suíça x Vencedor Jogo 14",
+      "match": "Suíça x Colômbia",
       "timeA": "Suíça",
-      "timeB": "Vencedor Jogo 14",
+      "timeB": "Colômbia",
       "date": "",
       "resultado": "",
       "gols_a": "",
