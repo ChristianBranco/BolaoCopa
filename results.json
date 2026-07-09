@@ -4173,9 +4173,9 @@
       "timeA": "França",
       "timeB": "Marrocos",
       "date": "",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "A",
+      "gols_a": "2",
+      "gols_b": "0",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -4200,7 +4200,7 @@
       },
       "sheet": "MATA-MATA 8",
       "phase_label": "Quartas de Final",
-      "passou": "",
+      "passou": "França",
       "penalties": false,
       "overtime": false,
       "tipo_decisao": "",
@@ -4376,9 +4376,9 @@
       "penalties": false,
       "overtime": false,
       "tipo_decisao": "",
-      "timeA_resolved": "Vencedor Quarta 1",
+      "timeA_resolved": "França",
       "timeB_resolved": "Vencedor Quarta 2",
-      "match_resolved": "Vencedor Quarta 1 x Vencedor Quarta 2",
+      "match_resolved": "França x Vencedor Quarta 2",
       "pending": true
     },
     {
@@ -4471,8 +4471,8 @@
   "ranking": [
     {
       "name": "Dunga",
-      "total_points": 63,
-      "acertos": 63,
+      "total_points": 64,
+      "acertos": 64,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4491,26 +4491,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 63
+          "points": 1,
+          "total_after": 64
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 63
+          "total_after": 64
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 63
+          "total_after": 64
         }
       },
       "position": 1
     },
     {
       "name": "Alex",
-      "total_points": 59,
-      "acertos": 59,
+      "total_points": 60,
+      "acertos": 60,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4529,26 +4529,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 59
+          "points": 1,
+          "total_after": 60
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 59
+          "total_after": 60
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 59
+          "total_after": 60
         }
       },
       "position": 2
     },
     {
       "name": "Douglas",
-      "total_points": 59,
-      "acertos": 59,
+      "total_points": 60,
+      "acertos": 60,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4567,26 +4567,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 59
+          "points": 1,
+          "total_after": 60
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 59
+          "total_after": 60
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 59
+          "total_after": 60
         }
       },
       "position": 3
     },
     {
       "name": "Cleiton",
-      "total_points": 58,
-      "acertos": 58,
+      "total_points": 59,
+      "acertos": 59,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4605,26 +4605,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 58
+          "points": 1,
+          "total_after": 59
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 58
+          "total_after": 59
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 58
+          "total_after": 59
         }
       },
       "position": 4
     },
     {
       "name": "Christian",
-      "total_points": 57,
-      "acertos": 57,
+      "total_points": 58,
+      "acertos": 58,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4643,26 +4643,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 57
+          "points": 1,
+          "total_after": 58
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 57
+          "total_after": 58
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 57
+          "total_after": 58
         }
       },
       "position": 5
     },
     {
       "name": "Bonfim",
-      "total_points": 55,
-      "acertos": 55,
+      "total_points": 56,
+      "acertos": 56,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4681,26 +4681,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 55
+          "points": 1,
+          "total_after": 56
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 55
+          "total_after": 56
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 55
+          "total_after": 56
         }
       },
       "position": 6
     },
     {
       "name": "Gabriel",
-      "total_points": 55,
-      "acertos": 55,
+      "total_points": 56,
+      "acertos": 56,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4719,26 +4719,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 55
+          "points": 1,
+          "total_after": 56
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 55
+          "total_after": 56
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 55
+          "total_after": 56
         }
       },
       "position": 7
     },
     {
       "name": "Juninho",
-      "total_points": 55,
-      "acertos": 55,
+      "total_points": 56,
+      "acertos": 56,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4757,26 +4757,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 55
+          "points": 1,
+          "total_after": 56
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 55
+          "total_after": 56
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 55
+          "total_after": 56
         }
       },
       "position": 8
     },
     {
       "name": "Daniel",
-      "total_points": 54,
-      "acertos": 54,
+      "total_points": 55,
+      "acertos": 55,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4795,26 +4795,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 54
+          "points": 1,
+          "total_after": 55
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 54
+          "total_after": 55
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 54
+          "total_after": 55
         }
       },
       "position": 9
     },
     {
       "name": "Leonardo",
-      "total_points": 54,
-      "acertos": 54,
+      "total_points": 55,
+      "acertos": 55,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4833,26 +4833,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 54
+          "points": 1,
+          "total_after": 55
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 54
+          "total_after": 55
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 54
+          "total_after": 55
         }
       },
       "position": 10
     },
     {
       "name": "David",
-      "total_points": 53,
-      "acertos": 53,
+      "total_points": 54,
+      "acertos": 54,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4871,26 +4871,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 53
+          "points": 1,
+          "total_after": 54
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 53
+          "total_after": 54
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 53
+          "total_after": 54
         }
       },
       "position": 11
     },
     {
       "name": "Felipe",
-      "total_points": 53,
-      "acertos": 53,
+      "total_points": 54,
+      "acertos": 54,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -4909,18 +4909,18 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 53
+          "points": 1,
+          "total_after": 54
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 53
+          "total_after": 54
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 53
+          "total_after": 54
         }
       },
       "position": 12
@@ -5079,8 +5079,8 @@
     },
     {
       "name": "Gustavo Lima",
-      "total_points": 48,
-      "acertos": 48,
+      "total_points": 49,
+      "acertos": 49,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -5099,26 +5099,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 48
+          "points": 1,
+          "total_after": 49
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 48
+          "total_after": 49
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 48
+          "total_after": 49
         }
       },
       "position": 17
     },
     {
       "name": "Rasta",
-      "total_points": 48,
-      "acertos": 48,
+      "total_points": 49,
+      "acertos": 49,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -5137,26 +5137,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 48
+          "points": 1,
+          "total_after": 49
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 48
+          "total_after": 49
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 48
+          "total_after": 49
         }
       },
       "position": 18
     },
     {
       "name": "Gustavo",
-      "total_points": 45,
-      "acertos": 45,
+      "total_points": 46,
+      "acertos": 46,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -5175,26 +5175,26 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 45
+          "points": 1,
+          "total_after": 46
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 45
+          "total_after": 46
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 45
+          "total_after": 46
         }
       },
       "position": 19
     },
     {
       "name": "Sanches",
-      "total_points": 45,
-      "acertos": 45,
+      "total_points": 46,
+      "acertos": 46,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -5213,18 +5213,18 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
-          "points": 0,
-          "total_after": 45
+          "points": 1,
+          "total_after": 46
         },
         "MATA-MATA 4": {
           "label": "Semifinal",
           "points": 0,
-          "total_after": 45
+          "total_after": 46
         },
         "MATA-MATA 2": {
           "label": "Final",
           "points": 0,
-          "total_after": 45
+          "total_after": 46
         }
       },
       "position": 20
