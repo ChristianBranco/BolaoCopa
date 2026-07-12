@@ -4216,9 +4216,9 @@
       "timeA": "Noruega",
       "timeB": "Inglaterra",
       "date": "10/07",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "1",
+      "gols_b": "1",
       "guesses": {
         "Alex": "B",
         "Bonfim": "B",
@@ -4243,10 +4243,10 @@
       },
       "sheet": "MATA-MATA 8",
       "phase_label": "Quartas de Final",
-      "passou": "",
+      "passou": "Inglaterra",
       "penalties": false,
-      "overtime": false,
-      "tipo_decisao": "",
+      "overtime": true,
+      "tipo_decisao": "Prorrogação",
       "timeA_resolved": "Noruega",
       "timeB_resolved": "Inglaterra",
       "match_resolved": "Noruega x Inglaterra",
@@ -4302,9 +4302,9 @@
       "timeA": "Argentina",
       "timeB": "Suíça",
       "date": "11/07",
-      "resultado": "",
-      "gols_a": "",
-      "gols_b": "",
+      "resultado": "E",
+      "gols_a": "1",
+      "gols_b": "1",
       "guesses": {
         "Alex": "A",
         "Bonfim": "A",
@@ -4329,10 +4329,10 @@
       },
       "sheet": "MATA-MATA 8",
       "phase_label": "Quartas de Final",
-      "passou": "",
+      "passou": "Argentina",
       "penalties": false,
-      "overtime": false,
-      "tipo_decisao": "",
+      "overtime": true,
+      "tipo_decisao": "Prorrogação",
       "timeA_resolved": "Argentina",
       "timeB_resolved": "Suíça",
       "match_resolved": "Argentina x Suíça",
@@ -4377,9 +4377,9 @@
       "overtime": false,
       "tipo_decisao": "",
       "timeA_resolved": "França",
-      "timeB_resolved": "Vencedor Quarta 2",
-      "match_resolved": "França x Vencedor Quarta 2",
-      "pending": true
+      "timeB_resolved": "Inglaterra",
+      "match_resolved": "França x Inglaterra",
+      "pending": false
     },
     {
       "id": 101,
@@ -4420,9 +4420,9 @@
       "overtime": false,
       "tipo_decisao": "",
       "timeA_resolved": "Espanha",
-      "timeB_resolved": "Vencedor Quarta 4",
-      "match_resolved": "Espanha x Vencedor Quarta 4",
-      "pending": true
+      "timeB_resolved": "Argentina",
+      "match_resolved": "Espanha x Argentina",
+      "pending": false
     },
     {
       "id": 102,
@@ -4546,6 +4546,44 @@
       "position": 2
     },
     {
+      "name": "Cleiton",
+      "total_points": 61,
+      "acertos": 61,
+      "by_phase": {
+        "ORGANIZAÇÃO": {
+          "label": "Fase de Grupos",
+          "points": 44,
+          "total_after": 44
+        },
+        "MATA-MATA 32": {
+          "label": "32avos de Final",
+          "points": 10,
+          "total_after": 54
+        },
+        "MATA-MATA 16": {
+          "label": "Oitavas de Final",
+          "points": 4,
+          "total_after": 58
+        },
+        "MATA-MATA 8": {
+          "label": "Quartas de Final",
+          "points": 3,
+          "total_after": 61
+        },
+        "MATA-MATA 4": {
+          "label": "Semifinal",
+          "points": 0,
+          "total_after": 61
+        },
+        "MATA-MATA 2": {
+          "label": "Final",
+          "points": 0,
+          "total_after": 61
+        }
+      },
+      "position": 3
+    },
+    {
       "name": "Douglas",
       "total_points": 61,
       "acertos": 61,
@@ -4579,44 +4617,6 @@
           "label": "Final",
           "points": 0,
           "total_after": 61
-        }
-      },
-      "position": 3
-    },
-    {
-      "name": "Cleiton",
-      "total_points": 60,
-      "acertos": 60,
-      "by_phase": {
-        "ORGANIZAÇÃO": {
-          "label": "Fase de Grupos",
-          "points": 44,
-          "total_after": 44
-        },
-        "MATA-MATA 32": {
-          "label": "32avos de Final",
-          "points": 10,
-          "total_after": 54
-        },
-        "MATA-MATA 16": {
-          "label": "Oitavas de Final",
-          "points": 4,
-          "total_after": 58
-        },
-        "MATA-MATA 8": {
-          "label": "Quartas de Final",
-          "points": 2,
-          "total_after": 60
-        },
-        "MATA-MATA 4": {
-          "label": "Semifinal",
-          "points": 0,
-          "total_after": 60
-        },
-        "MATA-MATA 2": {
-          "label": "Final",
-          "points": 0,
-          "total_after": 60
         }
       },
       "position": 4
@@ -4774,6 +4774,44 @@
       "position": 8
     },
     {
+      "name": "Daniel",
+      "total_points": 56,
+      "acertos": 56,
+      "by_phase": {
+        "ORGANIZAÇÃO": {
+          "label": "Fase de Grupos",
+          "points": 40,
+          "total_after": 40
+        },
+        "MATA-MATA 32": {
+          "label": "32avos de Final",
+          "points": 9,
+          "total_after": 49
+        },
+        "MATA-MATA 16": {
+          "label": "Oitavas de Final",
+          "points": 5,
+          "total_after": 54
+        },
+        "MATA-MATA 8": {
+          "label": "Quartas de Final",
+          "points": 2,
+          "total_after": 56
+        },
+        "MATA-MATA 4": {
+          "label": "Semifinal",
+          "points": 0,
+          "total_after": 56
+        },
+        "MATA-MATA 2": {
+          "label": "Final",
+          "points": 0,
+          "total_after": 56
+        }
+      },
+      "position": 9
+    },
+    {
       "name": "Leonardo",
       "total_points": 56,
       "acertos": 56,
@@ -4807,44 +4845,6 @@
           "label": "Final",
           "points": 0,
           "total_after": 56
-        }
-      },
-      "position": 9
-    },
-    {
-      "name": "Daniel",
-      "total_points": 55,
-      "acertos": 55,
-      "by_phase": {
-        "ORGANIZAÇÃO": {
-          "label": "Fase de Grupos",
-          "points": 40,
-          "total_after": 40
-        },
-        "MATA-MATA 32": {
-          "label": "32avos de Final",
-          "points": 9,
-          "total_after": 49
-        },
-        "MATA-MATA 16": {
-          "label": "Oitavas de Final",
-          "points": 5,
-          "total_after": 54
-        },
-        "MATA-MATA 8": {
-          "label": "Quartas de Final",
-          "points": 1,
-          "total_after": 55
-        },
-        "MATA-MATA 4": {
-          "label": "Semifinal",
-          "points": 0,
-          "total_after": 55
-        },
-        "MATA-MATA 2": {
-          "label": "Final",
-          "points": 0,
-          "total_after": 55
         }
       },
       "position": 10
@@ -4926,6 +4926,44 @@
       "position": 12
     },
     {
+      "name": "Heitor",
+      "total_points": 54,
+      "acertos": 54,
+      "by_phase": {
+        "ORGANIZAÇÃO": {
+          "label": "Fase de Grupos",
+          "points": 36,
+          "total_after": 36
+        },
+        "MATA-MATA 32": {
+          "label": "32avos de Final",
+          "points": 11,
+          "total_after": 47
+        },
+        "MATA-MATA 16": {
+          "label": "Oitavas de Final",
+          "points": 5,
+          "total_after": 52
+        },
+        "MATA-MATA 8": {
+          "label": "Quartas de Final",
+          "points": 2,
+          "total_after": 54
+        },
+        "MATA-MATA 4": {
+          "label": "Semifinal",
+          "points": 0,
+          "total_after": 54
+        },
+        "MATA-MATA 2": {
+          "label": "Final",
+          "points": 0,
+          "total_after": 54
+        }
+      },
+      "position": 13
+    },
+    {
       "name": "Renan",
       "total_points": 54,
       "acertos": 54,
@@ -4959,44 +4997,6 @@
           "label": "Final",
           "points": 0,
           "total_after": 54
-        }
-      },
-      "position": 13
-    },
-    {
-      "name": "Heitor",
-      "total_points": 53,
-      "acertos": 53,
-      "by_phase": {
-        "ORGANIZAÇÃO": {
-          "label": "Fase de Grupos",
-          "points": 36,
-          "total_after": 36
-        },
-        "MATA-MATA 32": {
-          "label": "32avos de Final",
-          "points": 11,
-          "total_after": 47
-        },
-        "MATA-MATA 16": {
-          "label": "Oitavas de Final",
-          "points": 5,
-          "total_after": 52
-        },
-        "MATA-MATA 8": {
-          "label": "Quartas de Final",
-          "points": 1,
-          "total_after": 53
-        },
-        "MATA-MATA 4": {
-          "label": "Semifinal",
-          "points": 0,
-          "total_after": 53
-        },
-        "MATA-MATA 2": {
-          "label": "Final",
-          "points": 0,
-          "total_after": 53
         }
       },
       "position": 14
@@ -5041,8 +5041,8 @@
     },
     {
       "name": "Patrick",
-      "total_points": 50,
-      "acertos": 50,
+      "total_points": 52,
+      "acertos": 52,
       "by_phase": {
         "ORGANIZAÇÃO": {
           "label": "Fase de Grupos",
@@ -5061,7 +5061,45 @@
         },
         "MATA-MATA 8": {
           "label": "Quartas de Final",
+          "points": 2,
+          "total_after": 52
+        },
+        "MATA-MATA 4": {
+          "label": "Semifinal",
           "points": 0,
+          "total_after": 52
+        },
+        "MATA-MATA 2": {
+          "label": "Final",
+          "points": 0,
+          "total_after": 52
+        }
+      },
+      "position": 16
+    },
+    {
+      "name": "Gustavo Lima",
+      "total_points": 50,
+      "acertos": 50,
+      "by_phase": {
+        "ORGANIZAÇÃO": {
+          "label": "Fase de Grupos",
+          "points": 35,
+          "total_after": 35
+        },
+        "MATA-MATA 32": {
+          "label": "32avos de Final",
+          "points": 10,
+          "total_after": 45
+        },
+        "MATA-MATA 16": {
+          "label": "Oitavas de Final",
+          "points": 3,
+          "total_after": 48
+        },
+        "MATA-MATA 8": {
+          "label": "Quartas de Final",
+          "points": 2,
           "total_after": 50
         },
         "MATA-MATA 4": {
@@ -5075,7 +5113,7 @@
           "total_after": 50
         }
       },
-      "position": 16
+      "position": 17
     },
     {
       "name": "Rasta",
@@ -5111,44 +5149,6 @@
           "label": "Final",
           "points": 0,
           "total_after": 50
-        }
-      },
-      "position": 17
-    },
-    {
-      "name": "Gustavo Lima",
-      "total_points": 49,
-      "acertos": 49,
-      "by_phase": {
-        "ORGANIZAÇÃO": {
-          "label": "Fase de Grupos",
-          "points": 35,
-          "total_after": 35
-        },
-        "MATA-MATA 32": {
-          "label": "32avos de Final",
-          "points": 10,
-          "total_after": 45
-        },
-        "MATA-MATA 16": {
-          "label": "Oitavas de Final",
-          "points": 3,
-          "total_after": 48
-        },
-        "MATA-MATA 8": {
-          "label": "Quartas de Final",
-          "points": 1,
-          "total_after": 49
-        },
-        "MATA-MATA 4": {
-          "label": "Semifinal",
-          "points": 0,
-          "total_after": 49
-        },
-        "MATA-MATA 2": {
-          "label": "Final",
-          "points": 0,
-          "total_after": 49
         }
       },
       "position": 18
