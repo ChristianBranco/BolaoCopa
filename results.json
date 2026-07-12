@@ -79,7 +79,9 @@
       "timeA_resolved": "México",
       "timeB_resolved": "África do Sul",
       "match_resolved": "México x África do Sul",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 1,
@@ -122,7 +124,9 @@
       "timeA_resolved": "Coreia do Sul",
       "timeB_resolved": "Tchéquia",
       "match_resolved": "Coreia do Sul x Tchéquia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 2,
@@ -165,7 +169,9 @@
       "timeA_resolved": "Canadá",
       "timeB_resolved": "Bósnia e Herzeg.",
       "match_resolved": "Canadá x Bósnia e Herzeg.",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 3,
@@ -208,7 +214,9 @@
       "timeA_resolved": "Estados Unidos",
       "timeB_resolved": "Paraguai",
       "match_resolved": "Estados Unidos x Paraguai",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 4,
@@ -251,7 +259,9 @@
       "timeA_resolved": "Catar",
       "timeB_resolved": "Suíça",
       "match_resolved": "Catar x Suíça",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 5,
@@ -294,7 +304,9 @@
       "timeA_resolved": "Brasil",
       "timeB_resolved": "Marrocos",
       "match_resolved": "Brasil x Marrocos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 6,
@@ -337,7 +349,9 @@
       "timeA_resolved": "Haiti",
       "timeB_resolved": "Escócia",
       "match_resolved": "Haiti x Escócia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 7,
@@ -380,7 +394,9 @@
       "timeA_resolved": "Austrália",
       "timeB_resolved": "Turquia",
       "match_resolved": "Austrália x Turquia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 8,
@@ -423,7 +439,9 @@
       "timeA_resolved": "Alemanha",
       "timeB_resolved": "Curaçao",
       "match_resolved": "Alemanha x Curaçao",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 9,
@@ -466,7 +484,9 @@
       "timeA_resolved": "Costa do Marfim",
       "timeB_resolved": "Equador",
       "match_resolved": "Costa do Marfim x Equador",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 10,
@@ -509,7 +529,9 @@
       "timeA_resolved": "Países Baixos",
       "timeB_resolved": "Japão",
       "match_resolved": "Países Baixos x Japão",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 11,
@@ -552,7 +574,9 @@
       "timeA_resolved": "Suécia",
       "timeB_resolved": "Tunísia",
       "match_resolved": "Suécia x Tunísia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 12,
@@ -595,7 +619,9 @@
       "timeA_resolved": "Bélgica",
       "timeB_resolved": "Egito",
       "match_resolved": "Bélgica x Egito",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 13,
@@ -638,7 +664,9 @@
       "timeA_resolved": "Irã",
       "timeB_resolved": "Nova Zelândia",
       "match_resolved": "Irã x Nova Zelândia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 14,
@@ -681,7 +709,9 @@
       "timeA_resolved": "Espanha",
       "timeB_resolved": "Cabo Verde",
       "match_resolved": "Espanha x Cabo Verde",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 15,
@@ -724,7 +754,9 @@
       "timeA_resolved": "Arábia Saudita",
       "timeB_resolved": "Uruguai",
       "match_resolved": "Arábia Saudita x Uruguai",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 16,
@@ -767,7 +799,9 @@
       "timeA_resolved": "França",
       "timeB_resolved": "Senegal",
       "match_resolved": "França x Senegal",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 17,
@@ -810,7 +844,9 @@
       "timeA_resolved": "Iraque",
       "timeB_resolved": "Noruega",
       "match_resolved": "Iraque x Noruega",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 18,
@@ -853,7 +889,9 @@
       "timeA_resolved": "Argentina",
       "timeB_resolved": "Argélia",
       "match_resolved": "Argentina x Argélia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 19,
@@ -896,7 +934,9 @@
       "timeA_resolved": "Áustria",
       "timeB_resolved": "Jordânia",
       "match_resolved": "Áustria x Jordânia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 20,
@@ -939,7 +979,9 @@
       "timeA_resolved": "Portugal",
       "timeB_resolved": "Rep. Dem. Congo",
       "match_resolved": "Portugal x Rep. Dem. Congo",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 21,
@@ -982,7 +1024,9 @@
       "timeA_resolved": "Uzbequistão",
       "timeB_resolved": "Colômbia",
       "match_resolved": "Uzbequistão x Colômbia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 22,
@@ -1025,7 +1069,9 @@
       "timeA_resolved": "Inglaterra",
       "timeB_resolved": "Croácia",
       "match_resolved": "Inglaterra x Croácia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 23,
@@ -1068,7 +1114,9 @@
       "timeA_resolved": "Gana",
       "timeB_resolved": "Panamá",
       "match_resolved": "Gana x Panamá",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 24,
@@ -1111,7 +1159,9 @@
       "timeA_resolved": "Tchéquia",
       "timeB_resolved": "África do Sul",
       "match_resolved": "Tchéquia x África do Sul",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 25,
@@ -1154,7 +1204,9 @@
       "timeA_resolved": "México",
       "timeB_resolved": "Coreia do Sul",
       "match_resolved": "México x Coreia do Sul",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 26,
@@ -1197,7 +1249,9 @@
       "timeA_resolved": "Suíça",
       "timeB_resolved": "Bósnia e Herzeg.",
       "match_resolved": "Suíça x Bósnia e Herzeg.",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 27,
@@ -1240,7 +1294,9 @@
       "timeA_resolved": "Canadá",
       "timeB_resolved": "Catar",
       "match_resolved": "Canadá x Catar",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 28,
@@ -1283,7 +1339,9 @@
       "timeA_resolved": "Escócia",
       "timeB_resolved": "Marrocos",
       "match_resolved": "Escócia x Marrocos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 29,
@@ -1326,7 +1384,9 @@
       "timeA_resolved": "Brasil",
       "timeB_resolved": "Haiti",
       "match_resolved": "Brasil x Haiti",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 30,
@@ -1369,7 +1429,9 @@
       "timeA_resolved": "Estados Unidos",
       "timeB_resolved": "Austrália",
       "match_resolved": "Estados Unidos x Austrália",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 31,
@@ -1412,7 +1474,9 @@
       "timeA_resolved": "Turquia",
       "timeB_resolved": "Paraguai",
       "match_resolved": "Turquia x Paraguai",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 32,
@@ -1455,7 +1519,9 @@
       "timeA_resolved": "Alemanha",
       "timeB_resolved": "Costa do Marfim",
       "match_resolved": "Alemanha x Costa do Marfim",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 33,
@@ -1498,7 +1564,9 @@
       "timeA_resolved": "Equador",
       "timeB_resolved": "Curaçao",
       "match_resolved": "Equador x Curaçao",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 34,
@@ -1541,7 +1609,9 @@
       "timeA_resolved": "Países Baixos",
       "timeB_resolved": "Suécia",
       "match_resolved": "Países Baixos x Suécia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 35,
@@ -1584,7 +1654,9 @@
       "timeA_resolved": "Tunísia",
       "timeB_resolved": "Japão",
       "match_resolved": "Tunísia x Japão",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 36,
@@ -1627,7 +1699,9 @@
       "timeA_resolved": "Bélgica",
       "timeB_resolved": "Irã",
       "match_resolved": "Bélgica x Irã",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 37,
@@ -1670,7 +1744,9 @@
       "timeA_resolved": "Nova Zelândia",
       "timeB_resolved": "Egito",
       "match_resolved": "Nova Zelândia x Egito",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 38,
@@ -1713,7 +1789,9 @@
       "timeA_resolved": "Espanha",
       "timeB_resolved": "Arábia Saudita",
       "match_resolved": "Espanha x Arábia Saudita",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 39,
@@ -1756,7 +1834,9 @@
       "timeA_resolved": "Uruguai",
       "timeB_resolved": "Cabo Verde",
       "match_resolved": "Uruguai x Cabo Verde",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 40,
@@ -1799,7 +1879,9 @@
       "timeA_resolved": "França",
       "timeB_resolved": "Iraque",
       "match_resolved": "França x Iraque",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 41,
@@ -1842,7 +1924,9 @@
       "timeA_resolved": "Noruega",
       "timeB_resolved": "Senegal",
       "match_resolved": "Noruega x Senegal",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 42,
@@ -1885,7 +1969,9 @@
       "timeA_resolved": "Argentina",
       "timeB_resolved": "Áustria",
       "match_resolved": "Argentina x Áustria",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 43,
@@ -1928,7 +2014,9 @@
       "timeA_resolved": "Jordânia",
       "timeB_resolved": "Argélia",
       "match_resolved": "Jordânia x Argélia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 44,
@@ -1971,7 +2059,9 @@
       "timeA_resolved": "Portugal",
       "timeB_resolved": "Uzbequistão",
       "match_resolved": "Portugal x Uzbequistão",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 45,
@@ -2014,7 +2104,9 @@
       "timeA_resolved": "Colômbia",
       "timeB_resolved": "Rep. Dem. Congo",
       "match_resolved": "Colômbia x Rep. Dem. Congo",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 46,
@@ -2057,7 +2149,9 @@
       "timeA_resolved": "Inglaterra",
       "timeB_resolved": "Gana",
       "match_resolved": "Inglaterra x Gana",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 47,
@@ -2100,7 +2194,9 @@
       "timeA_resolved": "Panamá",
       "timeB_resolved": "Croácia",
       "match_resolved": "Panamá x Croácia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 48,
@@ -2143,7 +2239,9 @@
       "timeA_resolved": "África do Sul",
       "timeB_resolved": "Coreia do Sul",
       "match_resolved": "África do Sul x Coreia do Sul",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 49,
@@ -2186,7 +2284,9 @@
       "timeA_resolved": "Tchéquia",
       "timeB_resolved": "México",
       "match_resolved": "Tchéquia x México",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 50,
@@ -2229,7 +2329,9 @@
       "timeA_resolved": "Suíça",
       "timeB_resolved": "Canadá",
       "match_resolved": "Suíça x Canadá",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 51,
@@ -2272,7 +2374,9 @@
       "timeA_resolved": "Bósnia e Herzeg.",
       "timeB_resolved": "Catar",
       "match_resolved": "Bósnia e Herzeg. x Catar",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 52,
@@ -2315,7 +2419,9 @@
       "timeA_resolved": "Marrocos",
       "timeB_resolved": "Haiti",
       "match_resolved": "Marrocos x Haiti",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 53,
@@ -2358,7 +2464,9 @@
       "timeA_resolved": "Escócia",
       "timeB_resolved": "Brasil",
       "match_resolved": "Escócia x Brasil",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 54,
@@ -2401,7 +2509,9 @@
       "timeA_resolved": "Turquia",
       "timeB_resolved": "Estados Unidos",
       "match_resolved": "Turquia x Estados Unidos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 55,
@@ -2444,7 +2554,9 @@
       "timeA_resolved": "Paraguai",
       "timeB_resolved": "Austrália",
       "match_resolved": "Paraguai x Austrália",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 56,
@@ -2487,7 +2599,9 @@
       "timeA_resolved": "Curaçao",
       "timeB_resolved": "Costa do Marfim",
       "match_resolved": "Curaçao x Costa do Marfim",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 57,
@@ -2530,7 +2644,9 @@
       "timeA_resolved": "Equador",
       "timeB_resolved": "Alemanha",
       "match_resolved": "Equador x Alemanha",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 58,
@@ -2573,7 +2689,9 @@
       "timeA_resolved": "Tunísia",
       "timeB_resolved": "Países Baixos",
       "match_resolved": "Tunísia x Países Baixos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 59,
@@ -2616,7 +2734,9 @@
       "timeA_resolved": "Japão",
       "timeB_resolved": "Suécia",
       "match_resolved": "Japão x Suécia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 60,
@@ -2659,7 +2779,9 @@
       "timeA_resolved": "Nova Zelândia",
       "timeB_resolved": "Bélgica",
       "match_resolved": "Nova Zelândia x Bélgica",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 61,
@@ -2702,7 +2824,9 @@
       "timeA_resolved": "Egito",
       "timeB_resolved": "Irã",
       "match_resolved": "Egito x Irã",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 62,
@@ -2745,7 +2869,9 @@
       "timeA_resolved": "Cabo Verde",
       "timeB_resolved": "Arábia Saudita",
       "match_resolved": "Cabo Verde x Arábia Saudita",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 63,
@@ -2788,7 +2914,9 @@
       "timeA_resolved": "Uruguai",
       "timeB_resolved": "Espanha",
       "match_resolved": "Uruguai x Espanha",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 64,
@@ -2831,7 +2959,9 @@
       "timeA_resolved": "Noruega",
       "timeB_resolved": "França",
       "match_resolved": "Noruega x França",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 65,
@@ -2874,7 +3004,9 @@
       "timeA_resolved": "Senegal",
       "timeB_resolved": "Iraque",
       "match_resolved": "Senegal x Iraque",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 66,
@@ -2917,7 +3049,9 @@
       "timeA_resolved": "Argélia",
       "timeB_resolved": "Áustria",
       "match_resolved": "Argélia x Áustria",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 67,
@@ -2960,7 +3094,9 @@
       "timeA_resolved": "Jordânia",
       "timeB_resolved": "Argentina",
       "match_resolved": "Jordânia x Argentina",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 68,
@@ -3003,7 +3139,9 @@
       "timeA_resolved": "Colômbia",
       "timeB_resolved": "Portugal",
       "match_resolved": "Colômbia x Portugal",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 69,
@@ -3046,7 +3184,9 @@
       "timeA_resolved": "Rep. Dem. Congo",
       "timeB_resolved": "Uzbequistão",
       "match_resolved": "Rep. Dem. Congo x Uzbequistão",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 70,
@@ -3089,7 +3229,9 @@
       "timeA_resolved": "Panamá",
       "timeB_resolved": "Inglaterra",
       "match_resolved": "Panamá x Inglaterra",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 71,
@@ -3132,7 +3274,9 @@
       "timeA_resolved": "Croácia",
       "timeB_resolved": "Gana",
       "match_resolved": "Croácia x Gana",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 72,
@@ -3175,7 +3319,9 @@
       "timeA_resolved": "África do Sul",
       "timeB_resolved": "Canadá",
       "match_resolved": "África do Sul x Canadá",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 73,
@@ -3218,7 +3364,9 @@
       "timeA_resolved": "Alemanha",
       "timeB_resolved": "Paraguai",
       "match_resolved": "Alemanha x Paraguai",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 74,
@@ -3261,7 +3409,9 @@
       "timeA_resolved": "Países Baixos",
       "timeB_resolved": "Marrocos",
       "match_resolved": "Países Baixos x Marrocos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 75,
@@ -3304,7 +3454,9 @@
       "timeA_resolved": "Brasil",
       "timeB_resolved": "Japão",
       "match_resolved": "Brasil x Japão",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 76,
@@ -3347,7 +3499,9 @@
       "timeA_resolved": "França",
       "timeB_resolved": "Suécia",
       "match_resolved": "França x Suécia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 77,
@@ -3390,7 +3544,9 @@
       "timeA_resolved": "Costa do Marfim",
       "timeB_resolved": "Noruega",
       "match_resolved": "Costa do Marfim x Noruega",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 78,
@@ -3433,7 +3589,9 @@
       "timeA_resolved": "México",
       "timeB_resolved": "Equador",
       "match_resolved": "México x Equador",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 79,
@@ -3476,7 +3634,9 @@
       "timeA_resolved": "Inglaterra",
       "timeB_resolved": "Rep. Dem. Congo",
       "match_resolved": "Inglaterra x Rep. Dem. Congo",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 80,
@@ -3519,7 +3679,9 @@
       "timeA_resolved": "Estados Unidos",
       "timeB_resolved": "Bósnia e Herzeg.",
       "match_resolved": "Estados Unidos x Bósnia e Herzeg.",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 81,
@@ -3562,7 +3724,9 @@
       "timeA_resolved": "Bélgica",
       "timeB_resolved": "Senegal",
       "match_resolved": "Bélgica x Senegal",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 82,
@@ -3605,7 +3769,9 @@
       "timeA_resolved": "Portugal",
       "timeB_resolved": "Croácia",
       "match_resolved": "Portugal x Croácia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 83,
@@ -3648,7 +3814,9 @@
       "timeA_resolved": "Espanha",
       "timeB_resolved": "Áustria",
       "match_resolved": "Espanha x Áustria",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 84,
@@ -3691,7 +3859,9 @@
       "timeA_resolved": "Suíça",
       "timeB_resolved": "Argélia",
       "match_resolved": "Suíça x Argélia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 85,
@@ -3734,7 +3904,9 @@
       "timeA_resolved": "Colômbia",
       "timeB_resolved": "Gana",
       "match_resolved": "Colômbia x Gana",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 86,
@@ -3777,7 +3949,9 @@
       "timeA_resolved": "Argentina",
       "timeB_resolved": "Cabo Verde",
       "match_resolved": "Argentina x Cabo Verde",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 87,
@@ -3820,7 +3994,9 @@
       "timeA_resolved": "Austrália",
       "timeB_resolved": "Egito",
       "match_resolved": "Austrália x Egito",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": null,
+      "feeder_b_index": null
     },
     {
       "id": 88,
@@ -3863,7 +4039,9 @@
       "timeA_resolved": "Paraguai",
       "timeB_resolved": "França",
       "match_resolved": "Paraguai x França",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 2,
+      "feeder_b_index": 5
     },
     {
       "id": 89,
@@ -3906,7 +4084,9 @@
       "timeA_resolved": "Canadá",
       "timeB_resolved": "Marrocos",
       "match_resolved": "Canadá x Marrocos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 1,
+      "feeder_b_index": 3
     },
     {
       "id": 90,
@@ -3949,7 +4129,9 @@
       "timeA_resolved": "Brasil",
       "timeB_resolved": "Noruega",
       "match_resolved": "Brasil x Noruega",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 4,
+      "feeder_b_index": 6
     },
     {
       "id": 91,
@@ -3992,7 +4174,9 @@
       "timeA_resolved": "México",
       "timeB_resolved": "Inglaterra",
       "match_resolved": "México x Inglaterra",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 7,
+      "feeder_b_index": 8
     },
     {
       "id": 92,
@@ -4035,7 +4219,9 @@
       "timeA_resolved": "Portugal",
       "timeB_resolved": "Espanha",
       "match_resolved": "Portugal x Espanha",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 11,
+      "feeder_b_index": 12
     },
     {
       "id": 93,
@@ -4078,7 +4264,9 @@
       "timeA_resolved": "Estados Unidos",
       "timeB_resolved": "Bélgica",
       "match_resolved": "Estados Unidos x Bélgica",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 9,
+      "feeder_b_index": 10
     },
     {
       "id": 94,
@@ -4121,7 +4309,9 @@
       "timeA_resolved": "Argentina",
       "timeB_resolved": "Egito",
       "match_resolved": "Argentina x Egito",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 15,
+      "feeder_b_index": 16
     },
     {
       "id": 95,
@@ -4164,7 +4354,9 @@
       "timeA_resolved": "Suíça",
       "timeB_resolved": "Colômbia",
       "match_resolved": "Suíça x Colômbia",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 13,
+      "feeder_b_index": 14
     },
     {
       "id": 96,
@@ -4207,7 +4399,9 @@
       "timeA_resolved": "França",
       "timeB_resolved": "Marrocos",
       "match_resolved": "França x Marrocos",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 1,
+      "feeder_b_index": 2
     },
     {
       "id": 97,
@@ -4250,7 +4444,9 @@
       "timeA_resolved": "Noruega",
       "timeB_resolved": "Inglaterra",
       "match_resolved": "Noruega x Inglaterra",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 3,
+      "feeder_b_index": 4
     },
     {
       "id": 98,
@@ -4293,7 +4489,9 @@
       "timeA_resolved": "Espanha",
       "timeB_resolved": "Bélgica",
       "match_resolved": "Espanha x Bélgica",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 5,
+      "feeder_b_index": 6
     },
     {
       "id": 99,
@@ -4336,7 +4534,9 @@
       "timeA_resolved": "Argentina",
       "timeB_resolved": "Suíça",
       "match_resolved": "Argentina x Suíça",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 7,
+      "feeder_b_index": 8
     },
     {
       "id": 100,
@@ -4379,7 +4579,9 @@
       "timeA_resolved": "França",
       "timeB_resolved": "Espanha",
       "match_resolved": "França x Espanha",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 1,
+      "feeder_b_index": 3
     },
     {
       "id": 101,
@@ -4422,7 +4624,9 @@
       "timeA_resolved": "Inglaterra",
       "timeB_resolved": "Argentina",
       "match_resolved": "Inglaterra x Argentina",
-      "pending": false
+      "pending": false,
+      "feeder_a_index": 2,
+      "feeder_b_index": 4
     },
     {
       "id": 102,
@@ -4465,7 +4669,9 @@
       "timeA_resolved": "Vencedor Semifinal 1",
       "timeB_resolved": "Vencedor Semifinal 2",
       "match_resolved": "Vencedor Semifinal 1 x Vencedor Semifinal 2",
-      "pending": true
+      "pending": true,
+      "feeder_a_index": 1,
+      "feeder_b_index": 2
     }
   ],
   "ranking": [

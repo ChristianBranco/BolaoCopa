@@ -384,24 +384,10 @@ function App() {
     </div>
   );
 
-  // ---------- Chaveamento (bracket estilo FIFA, com conectores SVG) ----------
-  const UNIT = 74;     // altura reservada por confronto "folha" (32avos, 8 por lado)
-  const CARD_H = 54;   // altura visual do card de confronto
-  const GAP_W = 34;    // largura do espaço de conexão entre colunas
-
-  // centros verticais (em px) de cada partida, por rodada, dado N confrontos-folha
-  const buildCenters = (N) => {
-    const rounds = [];
-    rounds[0] = Array.from({length:N}, (_,i) => i*UNIT + UNIT/2);
-    let cur = rounds[0];
-    while (cur.length > 1) {
-      const next = [];
-      for (let i=0; i<cur.length; i+=2) next.push((cur[i]+cur[i+1])/2);
-      rounds.push(next);
-      cur = next;
-    }
-    return rounds; // rounds[0]=folhas ... rounds[last]=1 elemento
-  };
+  // ---------- Chaveamento (bracket estilo FIFA, com conectores SVG data-driven) ----------
+  const UNIT = 60;      // altura reservada por confronto na coluna-folha (32avos, 16 jogos)
+  const CARD_H = 54;    // altura visual do card de confronto
+  const GAP_W = 34;     // largura do espaço de conexão entre colunas
 
   const BracketMatch = ({game, top, isFinal}) => {
     if (!game) return null;
@@ -436,20 +422,23 @@ function App() {
     </div>
   );
 
-  // desenha os conectores em "cotovelo" entre uma coluna com feeders (2N confrontos) e a coluna seguinte (N)
-  // dir=1: feeders à esquerda do gap, alvo à direita (lado esquerdo da chave)
-  // dir=-1: feeders à direita do gap, alvo à esquerda (lado direito da chave, espelhado)
-  const BracketGap = ({feederCenters, targetCenters, height, dir}) => {
+  // conecta cada confronto da coluna seguinte aos DOIS jogos reais que o alimentam
+  // (via feeder_a_index/feeder_b_index calculados no extract.py — não supõe posição fixa,
+  // então funciona mesmo quando o chaveamento real cruza jogos não-adjacentes)
+  const BracketGap = ({feederGames, feederCenters, targetGames, targetCenters, height}) => {
     const mid = GAP_W/2;
-    const x = (v) => dir>0 ? v : (GAP_W - v);
     const paths = [];
-    for (let i=0; i<targetCenters.length; i++) {
-      const y1 = feederCenters[i*2], y2 = feederCenters[i*2+1], yT = targetCenters[i];
+    targetGames.forEach((g,i) => {
+      if (!g) return;
+      const ia = g.feeder_a_index, ib = g.feeder_b_index;
+      if (!ia || !ib) return;
+      const y1 = feederCenters[ia-1], y2 = feederCenters[ib-1], yT = targetCenters[i];
+      if (y1==null || y2==null) return;
       paths.push(
-        <path key={i} d={`M ${x(0)} ${y1} H ${x(mid)} V ${y2} H ${x(0)} M ${x(mid)} ${(y1+y2)/2} H ${x(GAP_W)}`}
+        <path key={i} d={`M 0 ${y1} H ${mid} V ${y2} H 0 M ${mid} ${(y1+y2)/2} H ${GAP_W}`}
           fill="none" stroke="#c7d6cb" strokeWidth="2"/>
       );
-    }
+    });
     return (
       <div className="bracket-gap" style={{width:GAP_W, height}}>
         <svg width={GAP_W} height={height} style={{display:"block"}}>{paths}</svg>
@@ -463,42 +452,37 @@ function App() {
     const g8  = gamesOfPhase("MATA-MATA 8");
     const g4  = gamesOfPhase("MATA-MATA 4");
     const g2  = gamesOfPhase("MATA-MATA 2");
-
-    const left32 = g32.slice(0,8), right32 = g32.slice(8,16);
-    const left16 = g16.slice(0,4), right16 = g16.slice(4,8);
-    const left8  = g8.slice(0,2),  right8  = g8.slice(2,4);
-    const left4  = g4.slice(0,1),  right4  = g4.slice(1,2);
-    const final  = g2[0];
-
+    const final = g2[0];
     const champion = final && final.passou ? final.passou : null;
 
-    // centros: rounds[0]=32avos(8), [1]=oitavas(4), [2]=quartas(2), [3]=semifinal(1)
-    const rounds = buildCenters(8);
-    const H = 8*UNIT;
+    // centros calculados de baixo pra cima, usando os feeders REAIS de cada confronto
+    const H = g32.length * UNIT;
+    const c32 = g32.map((_,i) => i*UNIT + UNIT/2);
+    const centerFrom = (games, prevCenters) => games.map(g => {
+      if (!g || !g.feeder_a_index || !g.feeder_b_index) return prevCenters.length ? prevCenters[0] : 0;
+      const y1 = prevCenters[g.feeder_a_index-1], y2 = prevCenters[g.feeder_b_index-1];
+      return (y1+y2)/2;
+    });
+    const c16 = centerFrom(g16, c32);
+    const c8  = centerFrom(g8, c16);
+    const c4  = centerFrom(g4, c8);
+    const c2  = centerFrom(g2, c4);
 
     return (
       <div>
         <div style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:32,color:"#ffd700",letterSpacing:3,marginBottom:6,textShadow:"0 2px 12px rgba(255,215,0,.3)"}}>🌐 Chaveamento</div>
-        <div style={{color:"#6db882",fontSize:12,marginBottom:16}}>Mata-mata completo — os vencedores avançam automaticamente, com as linhas conectando cada confronto à fase seguinte conforme os placares são preenchidos na planilha.</div>
+        <div style={{color:"#6db882",fontSize:12,marginBottom:16}}>Mata-mata completo — as linhas ligam cada confronto exatamente aos dois jogos que o definem, conforme os placares são preenchidos na planilha.</div>
         <div className="bracket-wrap">
           <div className="bracket-outer">
-            <BracketColumn title="32avos" games={left32} centers={rounds[0]} height={H}/>
-            <BracketGap feederCenters={rounds[0]} targetCenters={rounds[1]} height={H} dir={1}/>
-            <BracketColumn title="Oitavas" games={left16} centers={rounds[1]} height={H}/>
-            <BracketGap feederCenters={rounds[1]} targetCenters={rounds[2]} height={H} dir={1}/>
-            <BracketColumn title="Quartas" games={left8} centers={rounds[2]} height={H}/>
-            <BracketGap feederCenters={rounds[2]} targetCenters={rounds[3]} height={H} dir={1}/>
-            <BracketColumn title="Semifinal" games={left4} centers={rounds[3]} height={H}/>
-            <BracketGap feederCenters={[rounds[3][0],rounds[3][0]]} targetCenters={[rounds[3][0]]} height={H} dir={1}/>
-            <BracketColumn title="Final" games={final?[final]:[]} centers={[rounds[3][0]]} height={H} isFinal/>
-            <BracketGap feederCenters={[rounds[3][0],rounds[3][0]]} targetCenters={[rounds[3][0]]} height={H} dir={-1}/>
-            <BracketColumn title="Semifinal" games={right4} centers={rounds[3]} height={H}/>
-            <BracketGap feederCenters={rounds[2]} targetCenters={rounds[3]} height={H} dir={-1}/>
-            <BracketColumn title="Quartas" games={right8} centers={rounds[2]} height={H}/>
-            <BracketGap feederCenters={rounds[1]} targetCenters={rounds[2]} height={H} dir={-1}/>
-            <BracketColumn title="Oitavas" games={right16} centers={rounds[1]} height={H}/>
-            <BracketGap feederCenters={rounds[0]} targetCenters={rounds[1]} height={H} dir={-1}/>
-            <BracketColumn title="32avos" games={right32} centers={rounds[0]} height={H}/>
+            <BracketColumn title="32avos" games={g32} centers={c32} height={H}/>
+            <BracketGap feederGames={g32} feederCenters={c32} targetGames={g16} targetCenters={c16} height={H}/>
+            <BracketColumn title="Oitavas" games={g16} centers={c16} height={H}/>
+            <BracketGap feederGames={g16} feederCenters={c16} targetGames={g8} targetCenters={c8} height={H}/>
+            <BracketColumn title="Quartas" games={g8} centers={c8} height={H}/>
+            <BracketGap feederGames={g8} feederCenters={c8} targetGames={g4} targetCenters={c4} height={H}/>
+            <BracketColumn title="Semifinal" games={g4} centers={c4} height={H}/>
+            <BracketGap feederGames={g4} feederCenters={c4} targetGames={g2} targetCenters={c2} height={H}/>
+            <BracketColumn title="Final" games={g2} centers={c2} height={H} isFinal/>
           </div>
         </div>
         {champion && (

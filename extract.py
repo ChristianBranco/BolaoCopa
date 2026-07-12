@@ -149,6 +149,38 @@ for game in all_games:
         game['match_resolved'] = game['match']
         game['pending'] = False
 
+# ---- 2b passada: descobre QUEM realmente alimenta cada confronto (por nome do time vencedor, ----
+# nao por posicao) -- o chaveamento real pode nao seguir pareamento adjacente (ex.: Quarta 1 e Quarta 3
+# podem se cruzar na Semifinal em vez de Quarta 1 e Quarta 2). Isso garante que o chaveamento visual
+# sempre ligue os confrontos certos, seja qual for o formato real da chave.
+def placeholder_index(text, sheet_name):
+    prefix = PLACEHOLDER_PREFIX.get(sheet_name)
+    if not prefix or not text:
+        return None
+    m = re.fullmatch(rf'{re.escape(prefix)} (\d+)', text.strip())
+    return int(m.group(1)) if m else None
+
+for sheet_name, _ in PHASES:
+    if sheet_name not in PLACEHOLDER_PREFIX:
+        continue
+    prev_sheet = PREV_PHASE[sheet_name]
+    prev_games = games_by_sheet[prev_sheet]
+    name_to_index = {g['passou']: g['local_index'] for g in prev_games if g['passou']}
+
+    def feeder_index(team_raw, team_resolved):
+        idx = placeholder_index(team_raw, sheet_name)      # ainda nao decidido -> indice explicito no placeholder
+        if idx is not None:
+            return idx
+        return name_to_index.get(team_resolved)            # ja decidido -> descobre por quem venceu
+
+    for game in games_by_sheet[sheet_name]:
+        game['feeder_a_index'] = feeder_index(game['timeA'], game['timeA_resolved'])
+        game['feeder_b_index'] = feeder_index(game['timeB'], game['timeB_resolved'])
+
+for game in all_games:
+    game.setdefault('feeder_a_index', None)
+    game.setdefault('feeder_b_index', None)
+
 # ---- 3a passada: pontuacao por fase e acumulada, por participante ----
 def phase_points(sheet_name, participant):
     pts = 0
