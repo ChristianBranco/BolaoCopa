@@ -1,166 +1,230 @@
 import pandas as pd
 import json
+import re
 
-excel = pd.ExcelFile('BOLAO.xlsx')
-org = pd.read_excel('BOLAO.xlsx', sheet_name='ORGANIZAÇÃO')
-
-# Dicionário com as planilhas de mata-mata
-mata_mata_sheets = {
-    'MATA-MATA 16': 'MATA-MATA 16',
-    'MATA-MATA 8': 'MATA-MATA 8',
-    'MATA-MATA 4': 'MATA-MATA 4',
-    'MATA-MATA 2': 'MATA-MATA 2',
-    'MATA-MATA 3º Lugar': 'MATA-MATA 3º Lugar',
-    'MATA-MATA Final': 'MATA-MATA Final'
-}
-
-# Excluir colunas que não são participantes
-exclude_cols = ['DATAS', 'CONFRONTOS', 'TIME A', 'TIME B', 'PLACAR', 'Penalti', 'Prorrogação', 
+EXCLUDE_COLS = ['DATAS', 'CONFRONTOS', 'TIME A', 'TIME B', 'PLACAR', 'Penalti', 'Prorrogação',
                 'Unnamed: 7', 'Gols A', 'Gols B', 'RESULTADO', 'Passou']
 
-participants = sorted([c for c in org.columns 
-                       if c and 'Unnamed' not in str(c) and c not in exclude_cols])
+# Ordem oficial das fases no bolão (nome da aba -> rótulo de exibição)
+PHASES = [
+    ('ORGANIZAÇÃO',  'Fase de Grupos'),
+    ('MATA-MATA 32', '32avos de Final'),
+    ('MATA-MATA 16', 'Oitavas de Final'),
+    ('MATA-MATA 8',  'Quartas de Final'),
+    ('MATA-MATA 4',  'Semifinal'),
+    ('MATA-MATA 2',  'Final'),
+]
 
-games = []
+# Prefixo do placeholder de chaveamento usado em cada fase (ex.: "Vencedor Jogo 3")
+# aponta para o índice local (1-based) do jogo na fase anterior
+PLACEHOLDER_PREFIX = {
+    'MATA-MATA 16': 'Vencedor Jogo',
+    'MATA-MATA 8':  'Vencedor Oitava',
+    'MATA-MATA 4':  'Vencedor Quarta',
+    'MATA-MATA 2':  'Vencedor Semifinal',
+}
+PREV_PHASE = {
+    'MATA-MATA 16': 'MATA-MATA 32',
+    'MATA-MATA 8':  'MATA-MATA 16',
+    'MATA-MATA 4':  'MATA-MATA 8',
+    'MATA-MATA 2':  'MATA-MATA 4',
+}
 
-# Organização
-for idx, row in org.iterrows():
-    match = row.get('CONFRONTOS','')
-    if not match or pd.isna(match):
-      continue
+excel = pd.ExcelFile('BOLAO.xlsx')
+sheets = {name: pd.read_excel('BOLAO.xlsx', sheet_name=name) for name, _ in PHASES}
 
-    game_id = len(games)
-    date = row.get('DATAS')
-    date_str = ''
-    if pd.notna(date):
-      if isinstance(date, str):
-        date_str = date.split()[0]
-      else:
-        try:
-          date_str = date.strftime('%d/%m')
-        except:
-          date_str = str(date)
-    
-    guesses = {}
+participants = sorted([c for c in sheets['ORGANIZAÇÃO'].columns
+                       if c and 'Unnamed' not in str(c) and c not in EXCLUDE_COLS])
+
+def fmt_date(date):
+    if pd.isna(date):
+        return ''
+    if isinstance(date, str):
+        return date.split()[0]
+    try:
+        return date.strftime('%d/%m')
+    except Exception:
+        return str(date)
+
+# ---- 1a passada: monta os jogos de cada fase (com indice local 1-based) ----
+games_by_sheet = {}   # sheet -> list of game dicts (na ordem da planilha)
+all_games = []
+
+for sheet_name, phase_label in PHASES:
+    df = sheets[sheet_name]
+    local_games = []
+    for idx, row in df.iterrows():
+        match = row.get('CONFRONTOS', '')
+        if not match or pd.isna(match):
+            continue
+
+        guesses = {}
+        for p in participants:
+            g = row.get(p, '')
+            guesses[p] = str(g).upper() if pd.notna(g) and g != '' else ''
+
+        resultado = row.get('RESULTADO', '')
+        resultado = str(resultado).upper() if pd.notna(resultado) and resultado != '' else ''
+
+        gols_a = row.get('Gols A', '')
+        gols_a = str(int(gols_a)) if pd.notna(gols_a) and gols_a != '' else ''
+
+        gols_b = row.get('Gols B', '')
+        gols_b = str(int(gols_b)) if pd.notna(gols_b) and gols_b != '' else ''
+
+        penalti = row.get('Penalti', '')
+        penalti = str(penalti).strip().upper() if pd.notna(penalti) and penalti != '' else ''
+
+        prorrogacao = row.get('Prorrogação', '')
+        prorrogacao = str(prorrogacao).strip().upper() if pd.notna(prorrogacao) and prorrogacao != '' else ''
+
+        times = match.split(' x ')
+        timeA = times[0].strip() if len(times) > 0 else ''
+        timeB = times[1].strip() if len(times) > 1 else ''
+
+        passou, tipo_decisao = '', ''
+        if penalti:
+            tipo_decisao = 'Pênaltis'
+            passou = timeA if penalti == 'A' else timeB if penalti == 'B' else ''
+        elif prorrogacao:
+            tipo_decisao = 'Prorrogação'
+            passou = timeA if prorrogacao == 'A' else timeB if prorrogacao == 'B' else ''
+        elif resultado:
+            passou = timeA if resultado == 'A' else timeB if resultado == 'B' else ''
+
+        game_id = len(all_games)
+        game = {
+            'id': game_id,
+            'local_index': len(local_games) + 1,   # posicao dentro da propria fase (1-based)
+            'match': match,
+            'timeA': timeA,
+            'timeB': timeB,
+            'date': fmt_date(row.get('DATAS')),
+            'resultado': resultado,
+            'gols_a': gols_a,
+            'gols_b': gols_b,
+            'guesses': guesses,
+            'sheet': sheet_name,
+            'phase_label': phase_label,
+            'passou': passou,
+            'penalties': penalti != '',
+            'overtime': prorrogacao != '',
+            'tipo_decisao': tipo_decisao,
+        }
+        local_games.append(game)
+        all_games.append(game)
+    games_by_sheet[sheet_name] = local_games
+
+# ---- 2a passada: resolve placeholders "Vencedor Jogo N" com o time real, se ja definido ----
+def resolve_placeholder(text, sheet_name):
+    prefix = PLACEHOLDER_PREFIX.get(sheet_name)
+    if not prefix or not text:
+        return text
+    m = re.fullmatch(rf'{re.escape(prefix)} (\d+)', text.strip())
+    if not m:
+        return text
+    n = int(m.group(1))
+    prev_sheet = PREV_PHASE[sheet_name]
+    prev_games = games_by_sheet.get(prev_sheet, [])
+    if n <= len(prev_games) and prev_games[n - 1]['passou']:
+        return prev_games[n - 1]['passou']
+    return text  # ainda nao definido
+
+for sheet_name, _ in PHASES:
+    if sheet_name not in PLACEHOLDER_PREFIX:
+        continue
+    for game in games_by_sheet[sheet_name]:
+        rA = resolve_placeholder(game['timeA'], sheet_name)
+        rB = resolve_placeholder(game['timeB'], sheet_name)
+        game['timeA_resolved'] = rA
+        game['timeB_resolved'] = rB
+        game['match_resolved'] = f"{rA} x {rB}"
+        game['pending'] = (rA == game['timeA'] and rA.startswith(PLACEHOLDER_PREFIX[sheet_name])) or \
+                           (rB == game['timeB'] and rB.startswith(PLACEHOLDER_PREFIX[sheet_name]))
+
+for game in all_games:
+    if 'timeA_resolved' not in game:
+        game['timeA_resolved'] = game['timeA']
+        game['timeB_resolved'] = game['timeB']
+        game['match_resolved'] = game['match']
+        game['pending'] = False
+
+# ---- 2b passada: descobre QUEM realmente alimenta cada confronto (por nome do time vencedor, ----
+# nao por posicao) -- o chaveamento real pode nao seguir pareamento adjacente (ex.: Quarta 1 e Quarta 3
+# podem se cruzar na Semifinal em vez de Quarta 1 e Quarta 2). Isso garante que o chaveamento visual
+# sempre ligue os confrontos certos, seja qual for o formato real da chave.
+def placeholder_index(text, sheet_name):
+    prefix = PLACEHOLDER_PREFIX.get(sheet_name)
+    if not prefix or not text:
+        return None
+    m = re.fullmatch(rf'{re.escape(prefix)} (\d+)', text.strip())
+    return int(m.group(1)) if m else None
+
+for sheet_name, _ in PHASES:
+    if sheet_name not in PLACEHOLDER_PREFIX:
+        continue
+    prev_sheet = PREV_PHASE[sheet_name]
+    prev_games = games_by_sheet[prev_sheet]
+    name_to_index = {g['passou']: g['local_index'] for g in prev_games if g['passou']}
+
+    def feeder_index(team_raw, team_resolved):
+        idx = placeholder_index(team_raw, sheet_name)      # ainda nao decidido -> indice explicito no placeholder
+        if idx is not None:
+            return idx
+        return name_to_index.get(team_resolved)            # ja decidido -> descobre por quem venceu
+
+    for game in games_by_sheet[sheet_name]:
+        game['feeder_a_index'] = feeder_index(game['timeA'], game['timeA_resolved'])
+        game['feeder_b_index'] = feeder_index(game['timeB'], game['timeB_resolved'])
+
+for game in all_games:
+    game.setdefault('feeder_a_index', None)
+    game.setdefault('feeder_b_index', None)
+
+# ---- 3a passada: pontuacao por fase e acumulada, por participante ----
+def phase_points(sheet_name, participant):
+    pts = 0
+    for g in games_by_sheet[sheet_name]:
+        if g['resultado'] and (g['guesses'].get(participant, '') == g['resultado']):
+            pts += 1
+    return pts
+
+participants_detail = []
+cumulative = {p: 0 for p in participants}
+by_phase_matrix = {p: {} for p in participants}
+
+for sheet_name, phase_label in PHASES:
     for p in participants:
-      guess = row.get(p, '')
-      guesses[p] = str(guess).upper() if pd.notna(guess) and guess != '' else ''
+        pp = phase_points(sheet_name, p)
+        cumulative[p] += pp
+        by_phase_matrix[p][sheet_name] = {'label': phase_label, 'points': pp, 'total_after': cumulative[p]}
 
-    resultado = row.get('RESULTADO','')
-    resultado = str(resultado).upper() if pd.notna(resultado) and resultado != '' else ''
-
-    gols_a = row.get('Gols A','')
-    gols_a = str(int(gols_a)) if pd.notna(gols_a) and gols_a != '' else ''
-
-    gols_b = row.get('Gols B','')
-    gols_b = str(int(gols_b)) if pd.notna(gols_b) and gols_b != '' else ''
-
-    games.append({
-      'id': game_id,
-      'match': match,
-      'date': date_str,
-      'resultado': resultado,
-      'gols_a': gols_a,
-      'gols_b': gols_b,
-      'guesses': guesses,
-      'sheet': 'ORGANIZAÇÃO',
-      'passou': '',
-      'penalties': False,
-      'overtime': False,
-      'tipo_decisao': ''
+for p in participants:
+    acertos_total = sum(v['points'] for v in by_phase_matrix[p].values())
+    participants_detail.append({
+        'name': p,
+        'total_points': cumulative[p],
+        'acertos': acertos_total,
+        'by_phase': by_phase_matrix[p],
     })
 
-# Mata-Mata
-for display_name, sheet_name in sorted(mata_mata_sheets.items()):
-  if sheet_name not in excel.sheet_names:
-    continue
-    
-  mm = pd.read_excel('BOLAO.xlsx', sheet_name=sheet_name)
-  
-  for idx, row in mm.iterrows():
-    match = row.get('CONFRONTOS','')
-    if not match or pd.isna(match):
-      continue
+ranking = sorted(participants_detail, key=lambda x: (-x['total_points'], x['name']))
+for i, r in enumerate(ranking):
+    r['position'] = i + 1
 
-    game_id = len(games)
-    date = row.get('DATAS')
-    date_str = ''
-    if pd.notna(date):
-      if isinstance(date, str):
-        date_str = date.split()[0]
-      else:
-        try:
-          date_str = date.strftime('%d/%m')
-        except:
-          date_str = str(date)
-    
-    guesses = {}
-    for p in participants:
-      guess = row.get(p, '')
-      guesses[p] = str(guess).upper() if pd.notna(guess) and guess != '' else ''
+results = {
+    'participants': participants,
+    'phases': [s for s, _ in PHASES],
+    'phase_labels': {s: l for s, l in PHASES},
+    'games': all_games,
+    'ranking': ranking,
+}
 
-    resultado = row.get('RESULTADO','')
-    resultado = str(resultado).upper() if pd.notna(resultado) and resultado != '' else ''
-
-    gols_a = row.get('Gols A','')
-    gols_a = str(int(gols_a)) if pd.notna(gols_a) and gols_a != '' else ''
-
-    gols_b = row.get('Gols B','')
-    gols_b = str(int(gols_b)) if pd.notna(gols_b) and gols_b != '' else ''
-
-    penalti = row.get('Penalti', '')
-    penalti = str(penalti).strip().upper() if pd.notna(penalti) and penalti != '' else ''
-
-    prorrogacao = row.get('Prorrogação', '')
-    prorrogacao = str(prorrogacao).strip().upper() if pd.notna(prorrogacao) and prorrogacao != '' else ''
-
-    passou = ""
-    tipo_decisao = ""
-    
-    times = match.split(" x ")
-    timeA = times[0].strip() if len(times) > 0 else ""
-    timeB = times[1].strip() if len(times) > 1 else ""
-
-    if penalti:
-      tipo_decisao = "Pênaltis"
-      passou = timeA if penalti == "A" else timeB if penalti == "B" else ""
-    elif prorrogacao:
-      tipo_decisao = "Prorrogação"
-      passou = timeA if prorrogacao == "A" else timeB if prorrogacao == "B" else ""
-    elif resultado:
-      if resultado == "A":
-        passou = timeA
-      elif resultado == "B":
-        passou = timeB
-      elif resultado == "E":
-        passou = ""
-
-    penalties = (penalti != "")
-    overtime = (prorrogacao != "")
-
-    games.append({
-      'id': game_id,
-      'match': match,
-      'date': date_str,
-      'resultado': resultado,
-      'gols_a': gols_a,
-      'gols_b': gols_b,
-      'guesses': guesses,
-      'sheet': sheet_name,
-      'passou': passou,
-      'penalties': penalties,
-      'overtime': overtime,
-      'tipo_decisao': tipo_decisao
-    })
-
-results = {'participants': participants, 'games': games}
 with open('results.json', 'w', encoding='utf-8') as f:
-  json.dump(results, f, ensure_ascii=False, indent=2)
+    json.dump(results, f, ensure_ascii=False, indent=2)
 
-print(f"✅ results.json gerado")
-print(f"   72 jogos (Organização)")
-for display_name, sheet_name in sorted(mata_mata_sheets.items()):
-  count = sum(1 for g in games if g['sheet'] == sheet_name)
-  if count > 0:
-    print(f"   {count} jogos ({display_name})")
+print("results.json gerado")
+for sheet_name, phase_label in PHASES:
+    n = len(games_by_sheet[sheet_name])
+    print(f"   {phase_label}: {n} jogo(s)")
 print(f"   {len(participants)} participantes")
